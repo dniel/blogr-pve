@@ -1,0 +1,13 @@
+pve::profiles::blogr:
+  db_name: blogr
+  db_host: db-1.dragon.lan
+  db_user: blogr
+  db_password: password1
+
+pve::profiles::reverseproxy:
+  app_host: app-1.dragon.lan
+
+pve::profiles::postgres:
+  db_name: blogr
+  db_user: blogr
+  db_password: password1
