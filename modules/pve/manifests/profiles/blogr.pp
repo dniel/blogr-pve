@@ -1,3 +1,3 @@
 class pve::profiles::blogr{
-  include pve::components::nodejs
+  include pve::components::node-js
 }

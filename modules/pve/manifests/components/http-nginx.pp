@@ -1,4 +1,4 @@
-class pve::components::reverseproxy{
+class pve::components::http-nginx{
   class { '::nginx':
     manage_repo    => true,
     package_source => 'nginx-mainline'
