@@ -1,3 +1,6 @@
 class pve::profiles::blogr{
-  include pve::components::node-js
+  class { 'nodejs':
+    version      => 'v6.2.0',
+    make_install => false
+  }
 }
