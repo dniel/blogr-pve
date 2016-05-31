@@ -1,5 +1,5 @@
 class pve::profiles::network{
-  class{ 'network':
+  class{ '::network':
     hostname => 'front-1'
   }
 
