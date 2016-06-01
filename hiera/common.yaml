@@ -7,7 +7,10 @@ pve::profiles::blogr:
 pve::profiles::reverseproxy:
   app_host: app-1.dragon.lan
 
-pve::profiles::postgres:
-  db_name: blogr
-  db_user: blogr
-  db_password: password1
+pve::profiles::database:
+  name: blogr
+  user: blogr
+  password: password1
+
+pve::profiles::network
+  gateway: 10.0.1.204

@@ -1,12 +1,15 @@
 class pve::profiles::network{
+  $network = hiera('pve::profiles::network')
+
   class{ '::network':
-    hostname => 'front-1'
+    hostname => "$network['hostname']"
   }
 
   network::interface { 'eth0':
-    ipaddress => '10.0.1.201',
+    ipaddress => "$network['ipaddress']",
     netmask   => '255.255.255.0',
-    gateway   => '10.0.1.204'
+    gateway   => "$network['gateway']",
+
   }
 
 }
