@@ -26,7 +26,7 @@ class pve::profiles::database{
     role      => "${db['user']}",
   }
 
-  postgresql::server::pg_hba_rule { 'allow ${db['user']} to access ${db['name']} database':
+  postgresql::server::pg_hba_rule { "allow ${db['user']} to access ${db['name']} database":
     description => "Open up PostgreSQL for access from network",
     type        => 'host',
     database    => "${db['name']}",
