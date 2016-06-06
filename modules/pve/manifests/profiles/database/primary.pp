@@ -1,4 +1,4 @@
-class pve::profiles::database{
+class pve::profiles::database::primary{
 
   $db = hiera('pve::profiles::database')
 
@@ -14,6 +14,10 @@ class pve::profiles::database{
   postgresql::server::db { "${db['name']}":
     user     => "${db['user']}",
     password => postgresql_password("${db['user']}", "${db['password']}"),
+  }
+
+  postgresql::server::role { "${db['user']}":
+    password_hash => postgresql_password("${db['user']}", "${db['password']}"),
   }
 
   postgresql::server::role { "${db['user']}":

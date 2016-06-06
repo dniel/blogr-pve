@@ -1,5 +1,5 @@
 # https://puppet.com/presentations/designing-puppet-rolesprofiles-pattern
 
-node /^db-\d+$/ {
-  include pve::roles::dbserver
+node /^db-1$/ {
+  include pve::roles::dbserver::primary
 }

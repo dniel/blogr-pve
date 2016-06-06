@@ -12,5 +12,5 @@ pve::profiles::database:
   user: blogr
   password: password1
 
-pve::profiles::network
+pve::profiles::network:
   gateway: 10.0.1.204
