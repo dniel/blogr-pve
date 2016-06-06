@@ -1,6 +1,6 @@
 class pve::profiles::reverseproxy{
 
-  $reverseproxy = hiera('pve::profiles::reverseproxy')
+  $reverseproxy = hiera_hash('pve::profiles::reverseproxy')
 
   class { '::nginx':
     manage_repo    => true,
