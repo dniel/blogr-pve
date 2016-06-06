@@ -6,4 +6,9 @@ class pve::profiles::common{
   package { 'vim':
     ensure => 'installed',
   }
+
+  package { 'sudo':
+    ensure => 'installed',
+  }
+
 }
