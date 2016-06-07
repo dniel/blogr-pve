@@ -7,6 +7,7 @@ class pve::roles::dbserver::primary{
 class pve::roles::dbserver::standby{
   include pve::profiles::common
   include pve::profiles::database::standby
+  include pve::profiles::blogr::database
   include pve::profiles::network
 }
 
