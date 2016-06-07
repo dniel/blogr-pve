@@ -1,7 +1,7 @@
 :backends:
   - yaml
 :yaml:
-  :datadir: "/opt/puppet/pve/hiera"
+  :datadir: "/opt/pve/hiera"
 :hierarchy:
   - "nodes/%{fqdn}"
   - common
