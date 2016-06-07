@@ -1,0 +1,8 @@
+:backends:
+  - yaml
+:yaml:
+  :datadir: "/opt/pve/hiera"
+:hierarchy:
+  - "nodes/%{fqdn}"
+  - common
+:merge-behaviour: deeper
