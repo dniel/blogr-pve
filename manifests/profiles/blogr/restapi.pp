@@ -1,7 +1,7 @@
 class pve::profiles::blogr::restapi{
   vcsrepo { '/opt/blogr':
-    ensure   => present,
+    ensure   => latest,
     provider => git,
-    source   => 'git@github.com:dniel/blogr-pve.git',
+    source   => 'https://github.com/dniel/blogr-pve'
   }
 }
