@@ -1,6 +1,0 @@
-###
-### File managed by Puppet
-###
-<% @routes.each do |net,gw| -%>
-<%= net %> <% if /^\d/.match(gw) %>via<% else %>dev<% end %> <%= gw %>
-<% end -%>
