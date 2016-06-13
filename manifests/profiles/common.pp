@@ -19,5 +19,8 @@ class pve::profiles::common{
     ensure => installed,
   }
 
+  file { "/opt/pve/apply.sh":
+    mode => 700,
+  }
 
 }
