@@ -24,12 +24,12 @@ class pve::profiles::common{
   }
 
   file { 'post-hook':
-    ensure  => file,
-    path    => '/opt/pve/.git/hooks/post-merge',
-    source  => 'puppet:///modules/pve/post-merge',
-    mode    => "0755",
-    owner   => root,
-    group   => root,
+    ensure   => file,
+    path     => '/opt/pve/.git/hooks/post-merge',
+    content  => 'cd /opt/pve ; ./apply.sh',
+    mode     => "0755",
+    owner    => root,
+    group    => root,
   }
   cron { 'puppet-apply':
     ensure  => present,
