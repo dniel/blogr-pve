@@ -26,7 +26,7 @@ class pve::profiles::common{
   file { 'post-hook':
     ensure  => file,
     path    => '/opt/pve/.git/hooks/post-merge',
-    source  => 'file:///opt/pve/apply.sh',
+    source  => 'puppet:///pve/post-merge',
     mode    => 0755,
     owner   => root,
     group   => root,
