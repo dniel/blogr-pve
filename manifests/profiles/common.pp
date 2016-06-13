@@ -14,4 +14,10 @@ class pve::profiles::common{
   package { 'lsb-release':
     ensure => installed,
   }
+
+  package { 'ca-certificates':
+    ensure => installed,
+  }
+
+
 }
