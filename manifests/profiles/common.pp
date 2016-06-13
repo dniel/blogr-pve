@@ -11,4 +11,7 @@ class pve::profiles::common{
     ensure => 'installed',
   }
 
+  package { 'lsb-release':
+    ensure => installed,
+  }
 }
