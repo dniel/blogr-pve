@@ -6,7 +6,7 @@ class pve::profiles::database::primary{
     manage_package_repo => true,
     version             => '9.4',
     encoding            => 'UTF-8',
-    locale              => 'en_US.UTF-8',
+    locale              => 'nb_NO.UTF-8',
   }-> class { 'postgresql::server':
     listen_addresses           => '*',
   }
