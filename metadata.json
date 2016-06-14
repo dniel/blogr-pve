@@ -16,7 +16,8 @@
     {"name":"willdurand-nodejs","version_requirement":">= 1.9.5"},
     {"name":"example42-stdmod","version_requirement":">= 0.0.3"},
     {"name":"example42-network","version_requirement":">= 3.3.1"},
-    {"name":"jfryman-nginx","version_requirement":">= 0.3.0"}
+    {"name":"jfryman-nginx","version_requirement":">= 0.3.0"},
+    {"name":"saz-locales","version_requirement":">= 2.2.2"}
   ]
 }
 

@@ -1,4 +1,9 @@
 class pve::profiles::common{
+  class { 'locales':
+    default_locale  => 'nb_NO.UTF-8',
+    locales         => ['en_US.UTF-8 UTF-8', 'nb_NO.UTF-8 UTF-8'],
+  }
+
   package { 'git':
     ensure => 'installed',
   }
