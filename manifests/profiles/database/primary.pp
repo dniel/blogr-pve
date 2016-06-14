@@ -30,8 +30,18 @@ class pve::profiles::database::primary{
     password_hash    => postgresql_password("repuser", "${db['password']}"),
   }
 
-  file { '/var/lib/postgresql/main/mnt/server/archivedir':
+  $archive_dirs = [
+    '/var/lib/postgresql/main',
+    '/var/lib/postgresql/main/mnt',
+    '/var/lib/postgresql/main/mnt/server',
+    '/var/lib/postgresql/main/mnt/server/archivedir',
+  ]
+
+  file { $archive_dirs:
     ensure => 'directory',
+    owner  => 'postgres',
+    group  => 'postgres',
+    mode   => '0750',
   }
 
   postgresql::server::pg_hba_rule { "allow repuser from db-2 to replicate the database":
