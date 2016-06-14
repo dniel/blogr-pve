@@ -10,4 +10,9 @@ class pve::profiles::blogr::restapi{
     user => 'root',
     path => '/usr/local/node/node-default/bin'
   }
+
+  service { 'node-app':
+    ensure => running,
+    enable => true,
+  }
 }
