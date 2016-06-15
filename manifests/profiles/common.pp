@@ -25,7 +25,7 @@ class pve::profiles::common{
   }
 
   file { "/opt/pve/apply.sh":
-    mode => "700",
+    mode => "744",
   }
 
   file { 'post-hook':
