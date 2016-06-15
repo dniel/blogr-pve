@@ -1,6 +1,6 @@
 class pve::profiles::database::standby{
 
-  $db = hiera('pve::profiles::database')
+  $db = hiera_hash('pve::profiles::database')
 
   class { 'postgresql::globals':
     manage_package_repo => true,
@@ -22,4 +22,14 @@ class pve::profiles::database::standby{
     standby_mode                   => 'on',
     primary_conninfo               => 'host=10.0.1.203 port=5432 user=repuser password=password1',
   }
+
+  postgresql::server::pg_hba_rule { "allow ${db['user']} to access ${db['name']} database":
+    description => "Open up PostgreSQL for access from network",
+    type        => 'host',
+    database    => "${db['name']}",
+    user        => "${db['user']}",
+    address     => '0.0.0.0/0',
+    auth_method => 'md5',
+  }
+
 }

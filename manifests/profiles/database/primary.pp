@@ -1,6 +1,6 @@
 class pve::profiles::database::primary{
 
-  $db = hiera('pve::profiles::database')
+  $db = hiera_hash('pve::profiles::database')
 
   class { 'postgresql::globals':
     manage_package_repo => true,
