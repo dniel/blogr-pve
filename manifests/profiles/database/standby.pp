@@ -30,10 +30,6 @@ class pve::profiles::database::standby{
     user        => "${db['user']}",
     address     => '0.0.0.0/0',
     auth_method => 'md5',
-  }
-
-  service { 'postgresqld':
-    ensure    => running,
-    enable    => true,
+    notify => Service['postgresqld']
   }
 }
