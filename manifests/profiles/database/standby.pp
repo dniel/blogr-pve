@@ -30,6 +30,14 @@ class pve::profiles::database::standby{
     user        => "${db['user']}",
     address     => '0.0.0.0/0',
     auth_method => 'md5',
-    notify => Service['postgresqld']
+    notify      => Service['postgresqld']
   }
+
+  exec { "pg_basebackup":
+    environment => "PGPASSWORD=password1",
+    command     => "/usr/bin/pg_basebackup -X stream -D /var/lib/postgresql/9.4/main -h db-1 -U repuser -w",
+    user        => 'postgres',
+    unless      => "/usr/bin/test -f /var/lib/postgresql/9.4/main/PG_VERSION",
+  }
+
 }
