@@ -1,5 +1,4 @@
 class pve::profiles::database::primary{
-
   $db = hiera_hash('pve::profiles::database')
 
   class { 'postgresql::globals':
@@ -11,6 +10,8 @@ class pve::profiles::database::primary{
     listen_addresses           => '*',
   }
 
+  ### Standby configuration for primary db server.
+  # configure postgres with hot standby as described here: https://cloud.google.com/solutions/setup-postgres-hot-standby
   postgresql::server::config_entry { 'wal_level':
     value => 'hot_standby',
   }
@@ -52,6 +53,7 @@ class pve::profiles::database::primary{
     address     => '10.0.1.206/32',
     auth_method => 'md5',
   }
+  ## end.
 
   postgresql::server::db { "${db['name']}":
     user     => "${db['user']}",
