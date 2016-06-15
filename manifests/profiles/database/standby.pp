@@ -21,9 +21,10 @@ class pve::profiles::database::standby{
     archive_cleanup_command        => 'pg_archivecleanup /mnt/server/archivedir %r',
     standby_mode                   => 'on',
     primary_conninfo               => 'host=10.0.1.203 port=5432 user=repuser password=password1',
+    require                        => Exec["pg_basebackup"]
   }
 
-  postgresql::server::pg_hba_rule { "allow ${db['user']} to access ${db['name']} database":
+  postgresql::server::pg_hba_rule { "allow ${ db['user'] } to access ${ db['name'] } database":
     description => "Open up PostgreSQL for access from network",
     type        => 'host',
     database    => "${db['name']}",
@@ -35,9 +36,10 @@ class pve::profiles::database::standby{
 
   exec { "pg_basebackup":
     environment => "PGPASSWORD=password1",
-    command     => "/usr/bin/pg_basebackup -X stream -D /var/lib/postgresql/9.4/main -h db-1 -U repuser -w",
+    command     => "/usr/bin/pg_basebackup -X stream -D /var/lib/postgresql/9.4/main -h 10.0.1.203 -U repuser -w",
     user        => 'postgres',
     unless      => "/usr/bin/test -f /var/lib/postgresql/9.4/main/PG_VERSION",
+    logoutput => true,
   }
 
 }
