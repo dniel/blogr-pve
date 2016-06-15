@@ -34,13 +34,14 @@ class pve::profiles::common{
     content  => 'cd /opt/pve ; ./apply.sh',
     mode     => "0755",
     owner    => root,
-    group    => root,
-  }
+    group    => root
+  }->
   cron { 'puppet-apply':
     ensure  => present,
     command => "cd /opt/pve ; /usr/bin/git pull",
     user    => root,
     minute  => '*/60',
-    require => File['post-hook'],
+    require => File['post-hook']
   }
+
 }
