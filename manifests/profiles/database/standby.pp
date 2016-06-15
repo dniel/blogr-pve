@@ -32,4 +32,8 @@ class pve::profiles::database::standby{
     auth_method => 'md5',
   }
 
+  service { 'postgresqld':
+    ensure    => running,
+    enable    => true,
+  }
 }
