@@ -16,6 +16,7 @@ class pve::profiles::common{
     ensure => 'installed',
   }
 
+  # https://tickets.puppetlabs.com/browse/FACT-866
   package { 'lsb-release':
     ensure => installed,
   }
