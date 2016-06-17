@@ -77,6 +77,6 @@ class pve::profiles::database::primary{
     user        => "${db['user']}",
     address     => '0.0.0.0/0',
     auth_method => 'md5',
-    notify => Service['postgresqld']
+    notify      => Service['postgresqld']
   }
 }
