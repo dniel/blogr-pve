@@ -12,27 +12,13 @@ class pve::profiles::database::standby{
     listen_addresses           => '*',
   }
 
-  $archive_dirs = [
-    '/var/lib/postgresql/9.4/main',
-    '/var/lib/postgresql/9.4/main/mnt',
-    '/var/lib/postgresql/9.4/main/mnt/server',
-    '/var/lib/postgresql/9.4/main/mnt/server/archivedir',
-  ]
-
-  file { $archive_dirs:
-    ensure => 'directory',
-    owner  => 'postgres',
-    group  => 'postgres',
-    mode   => '0750',
-  }
-
   postgresql::server::config_entry { 'hot_standby':
     value => 'on',
   }
 
   postgresql::server::recovery{ 'Create a recovery.conf file with the following defined parameters':
-    restore_command                => 'cp /mnt/server/archivedir/%f %p',
-    archive_cleanup_command        => 'pg_archivecleanup /mnt/server/archivedir %r',
+    restore_command                => 'cp /var/lib/postgresql/9.4/main/mnt/server/archivedir%f %p',
+    archive_cleanup_command        => 'pg_archivecleanup /var/lib/postgresql/9.4/main/mnt/server/archivedir %r',
     standby_mode                   => 'on',
     primary_conninfo               => 'host=10.0.1.203 port=5432 user=repuser password=password1',
     require                        => Exec["pg_basebackup"]
