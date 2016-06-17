@@ -1,6 +1,11 @@
 class pve::profiles::blogr::restapi{
   require nodejs
 
+  class { 'nodejs':
+    version      => 'v6.2.0',
+    make_install => false
+  }
+
   vcsrepo { '/opt/blogr':
     ensure   => latest,
     provider => git,
