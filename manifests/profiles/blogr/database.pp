@@ -21,6 +21,7 @@ class pve::profiles::blogr::database{
     privilege   => "ALL",
     db          => "${db['name']}",
     role        => "${db['user']}",
+    require     => Postgresql::Server::Db["${db['name']}"],
   }
 
   postgresql_psql { "create posts table ":
