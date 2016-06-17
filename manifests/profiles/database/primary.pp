@@ -32,11 +32,12 @@ class pve::profiles::database::primary{
   }
 
   $archive_dirs = [
-    '/var/lib/postgresql/main',
-    '/var/lib/postgresql/main/mnt',
-    '/var/lib/postgresql/main/mnt/server',
-    '/var/lib/postgresql/main/mnt/server/archivedir',
+    '/var/lib/postgresql/9.4/main',
+    '/var/lib/postgresql/9.4/main/mnt',
+    '/var/lib/postgresql/9.4/main/mnt/server',
+    '/var/lib/postgresql/9.4/main/mnt/server/archivedir',
   ]
+
 
   file { $archive_dirs:
     ensure => 'directory',
@@ -68,6 +69,7 @@ class pve::profiles::database::primary{
     privilege => "ALL",
     db        => "${db['name']}",
     role      => "${db['user']}",
+    require     => Postgresql::Server::Db["${db['name']}"],
   }
 
   postgresql::server::pg_hba_rule { "allow ${db['user']} to access ${db['name']} database":
@@ -79,4 +81,21 @@ class pve::profiles::database::primary{
     auth_method => 'md5',
     notify      => Service['postgresqld']
   }
+
+  postgresql_psql { "create posts table ":
+    db          => "${db['name']}",
+    command     => "create table IF NOT EXISTS posts (
+                      id serial primary key,
+                      title varchar(50) not null default '',
+                      owner varchar(30) not null default '',
+                      body varchar(1000) not null default '',
+                      created timestamptz not null default now(),
+                      updated timestamptz not null default now());",
+    unless      => "SELECT table_schema||'.'||table_name AS full_rel_name
+                    FROM information_schema.tables
+                    WHERE table_schema = 'public' and table_name = 'posts'",
+
+    require     => Postgresql::Server::Db["${db['name']}"],
+  }
+
 }

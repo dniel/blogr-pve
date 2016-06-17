@@ -12,6 +12,20 @@ class pve::profiles::database::standby{
     listen_addresses           => '*',
   }
 
+  $archive_dirs = [
+    '/var/lib/postgresql/9.4/main',
+    '/var/lib/postgresql/9.4/main/mnt',
+    '/var/lib/postgresql/9.4/main/mnt/server',
+    '/var/lib/postgresql/9.4/main/mnt/server/archivedir',
+  ]
+
+  file { $archive_dirs:
+    ensure => 'directory',
+    owner  => 'postgres',
+    group  => 'postgres',
+    mode   => '0750',
+  }
+
   postgresql::server::config_entry { 'hot_standby':
     value => 'on',
   }
