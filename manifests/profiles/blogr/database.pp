@@ -18,10 +18,11 @@ class pve::profiles::blogr::database{
   }
 
   postgresql::server::table_grant { "grant to table post of ${db['name']}":
-    privilege => 'SELECT UPDATE DELETE',
+    privilege => 'SELECT',
     table     => 'posts',
     db        => "${db['name']}",
     role      => "${db['user']}",
+    require     => Postgresql::Server::Db["${db['name']}"],
   }
 
   postgresql::server::database_grant { "GRANT ALL ${db['user']} - ${db['name']}:":
