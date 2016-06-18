@@ -20,7 +20,6 @@ class pve::profiles::blogr::restapi{
     cwd  => '/opt/blogr',
     user => 'root',
     path => '/usr/local/node/node-default/bin',
-
   }->
   file { '/etc/init.d/node-app':
     source => 'puppet:///modules/pve/app/etc/init.d/node-app'
