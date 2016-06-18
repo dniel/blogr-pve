@@ -7,6 +7,10 @@ class pve::profiles::reverseproxy{
     package_source => 'nginx-mainline'
   }
 
+  nginx::resource::upstream { 'proxypass':
+    ensure              => present,
+  }
+
   nginx::resource::vhost { "${hostname}":
     server_name  => ["${hostname}", "${fqdn}"],
     access_log   => "/var/log/nginx/${hostname}.access.log",
