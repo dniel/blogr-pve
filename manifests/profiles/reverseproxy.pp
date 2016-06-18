@@ -7,16 +7,12 @@ class pve::profiles::reverseproxy{
     package_source => 'nginx-mainline'
   }
 
-  nginx::resource::upstream { 'proxypass':
-    ensure              => present,
+  nginx::resource::upstream { 'backend':
+    ensure => "present",
+    members => ["app-1:3000","app-2:3000"],
   }
 
   nginx::resource::vhost { "${hostname}":
-    server_name  => ["${hostname}", "${fqdn}"],
-    access_log   => "/var/log/nginx/${hostname}.access.log",
-    error_log    => "/var/log/nginx/${hostname}.error.log",
-    listen_port  => "3000",
-    ensure       => "present",
-    proxy        => "http://${reverseproxy['app_host']}:3000"
+    proxy        => "http://backend"
   }
 }
