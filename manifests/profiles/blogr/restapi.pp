@@ -26,7 +26,7 @@ class pve::profiles::blogr::restapi{
     source => 'puppet:///modules/pve/app/etc/init.d/node-app'
   }->
   file { '/etc/environment':
-    content => template('puppet:///modules/pve/app/etc/environment.erb')
+    content => template('pve/app/etc/environment.erb')
   }~>
   service { 'node-app':
     ensure => running,
