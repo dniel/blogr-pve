@@ -22,13 +22,14 @@ class pve::profiles::blogr::restapi{
     path => '/usr/local/node/node-default/bin',
   }->
   file { '/etc/init.d/node-app':
-    source => 'puppet:///modules/pve/app/etc/init.d/node-app'
-  }->
-  file { '/etc/environment':
-    content => template('pve/app/etc/environment.erb')
-  }~>
+    source => 'puppet:///modules/pve/app/etc/init.d/node-app',
+    notify => Service['node-app'],
+    require => Exec['npm install']
+  }
+
   service { 'node-app':
-    ensure => running,
-    enable => true,
+    ensure  => running,
+    enable  => true,
+    require => File['/etc/init.d/node-app']
   }
 }
