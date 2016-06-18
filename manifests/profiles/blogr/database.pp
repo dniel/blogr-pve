@@ -31,7 +31,6 @@ class pve::profiles::blogr::database{
     db        => "${db['name']}",
     role      => "${db['user']}",
     require   => Postgresql::Server::Db["${db['name']}"],
-    notify    => Service[postgresqld]
   }
   postgresql::server::table_grant { "grant SELECT to table post of ${db['name']}":
     privilege => 'SELECT',
@@ -39,14 +38,12 @@ class pve::profiles::blogr::database{
     db        => "${db['name']}",
     role      => "${db['user']}",
     require     => Postgresql::Server::Db["${db['name']}"],
-    notify    => Service[postgresqld]
   }
   postgresql::server::database_grant { "GRANT ALL ${db['user']} - ${db['name']}:":
     privilege   => "ALL",
     db          => "${db['name']}",
     role        => "${db['user']}",
     require     => Postgresql::Server::Db["${db['name']}"],
-    notify    => Service[postgresqld]
   }
 
   postgresql_psql { "create posts table ":
