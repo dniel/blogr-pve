@@ -1,6 +1,7 @@
 class pve::profiles::reverseproxy{
 
   $reverseproxy = hiera_hash('pve::profiles::reverseproxy')
+  $app_hosts = $reverseproxy['app_hosts']
 
   class { '::nginx':
     manage_repo    => true,
@@ -9,7 +10,7 @@ class pve::profiles::reverseproxy{
 
   nginx::resource::upstream { 'backend':
     ensure => "present",
-    members => ["app-1:3000","app-2:3000"],
+    members => $app_hosts
   }
 
   nginx::resource::vhost { "${hostname}":
