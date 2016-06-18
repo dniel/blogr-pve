@@ -1,10 +1,6 @@
 class pve::profiles::blogr::restapi{
 
   $config = hiera_hash('pve::profiles::blogr')
-  $db_name = $config['db_name']
-  $db_host = $config['db_host']
-  $db_user = $config['db_user']
-  $db_password = $config['db_password']
 
   class { 'nodejs':
     version      => 'v6.2.0',
@@ -20,6 +16,7 @@ class pve::profiles::blogr::restapi{
     cwd  => '/opt/blogr',
     user => 'root',
     path => '/usr/local/node/node-default/bin',
+    require => Class['nodejs']
   }->
   file { '/etc/init.d/node-app':
     source => 'puppet:///modules/pve/app/etc/init.d/node-app',
@@ -31,6 +28,6 @@ class pve::profiles::blogr::restapi{
   service { 'node-app':
     ensure  => running,
     enable  => true,
-    require => File['/etc/init.d/node-app']
+    require => [File['/etc/init.d/node-app'], Exec['npm install']]
   }
 }
