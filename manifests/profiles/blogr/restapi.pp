@@ -24,7 +24,8 @@ class pve::profiles::blogr::restapi{
   file { '/etc/init.d/node-app':
     source => 'puppet:///modules/pve/app/etc/init.d/node-app',
     notify => Service['node-app'],
-    require => Exec['npm install']
+    require => Exec['npm install'],
+    mode => "755"
   }
 
   service { 'node-app':
