@@ -1,6 +1,4 @@
 pve::profiles::network:
   hostname: app-1
   ipaddress: 10.0.3.4
-
-pve::profiles::network:
   gateway: 10.0.3.1

@@ -1,8 +1,6 @@
 pve::profiles::network:
   hostname: db-2
   ipaddress: 10.0.3.6
-
-pve::profiles::network:
   gateway: 10.0.3.1
 
 pve::profiles::database:

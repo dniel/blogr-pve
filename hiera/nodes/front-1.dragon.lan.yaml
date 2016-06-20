@@ -1,11 +1,9 @@
 pve::profiles::network:
   hostname: front-1
   ipaddress: 10.0.2.2
+  gateway: 10.0.2.1
 
 pve::profiles::reverseproxy:
   app_hosts:
     - app-1.dragon.lan:3000
     - app-2.dragon.lan:3000
-
-pve::profiles::network:
-  gateway: 10.0.2.1
