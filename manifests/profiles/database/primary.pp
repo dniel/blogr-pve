@@ -36,7 +36,7 @@ class pve::profiles::database::primary{
     type        => 'host',
     database    => "replication",
     user        => "repuser",
-    address     => '10.0.1.206/32',
+    address     => '10.0.3.6/32',
     auth_method => 'md5',
   }
   ## end.

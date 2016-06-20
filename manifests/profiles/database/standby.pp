@@ -20,7 +20,7 @@ class pve::profiles::database::standby{
     restore_command                => 'cp /var/lib/postgresql/9.4/main/mnt/server/archivedir%f %p',
     archive_cleanup_command        => 'pg_archivecleanup /var/lib/postgresql/9.4/main/mnt/server/archivedir %r',
     standby_mode                   => 'on',
-    primary_conninfo               => 'host=10.0.1.203 port=5432 user=repuser password=password1',
+    primary_conninfo               => 'host=db-1.dragon.lan port=5432 user=repuser password=password1',
     require                        => Exec["pg_basebackup"]
   }
 
@@ -36,7 +36,7 @@ class pve::profiles::database::standby{
 
   exec { "pg_basebackup":
     environment => "PGPASSWORD=password1",
-    command     => "/usr/bin/pg_basebackup -X stream -D /var/lib/postgresql/9.4/main -h 10.0.1.203 -U repuser -w",
+    command     => "/usr/bin/pg_basebackup -X stream -D /var/lib/postgresql/9.4/main -h db-1.dragon.lan -U repuser -w",
     user        => 'postgres',
     unless      => "/usr/bin/test -f /var/lib/postgresql/9.4/main/PG_VERSION",
     logoutput => true,
