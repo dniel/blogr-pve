@@ -1,7 +1,5 @@
 class pve::profiles::blogr::restapi{
 
-  $config = hiera_hash('pve::profiles::blogr')
-
   class { 'nodejs':
     version      => 'v6.2.0',
     make_install => false
