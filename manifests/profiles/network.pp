@@ -9,7 +9,7 @@ class pve::profiles::network{
     ipaddress => "${network['ipaddress']}",
     netmask   => '255.255.255.0',
     gateway   => "${network['gateway']}",
-
+    mtu       => '1495'
   }
 
 }
