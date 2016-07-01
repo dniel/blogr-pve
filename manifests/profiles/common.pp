@@ -1,5 +1,11 @@
 class pve::profiles::common{
 
+  class { 'apt':
+    update => {
+      frequency => 'daily',
+    }
+  }
+
   class { 'ssh::server':
     storeconfigs_enabled => false,
     options              => {
