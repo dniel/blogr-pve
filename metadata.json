@@ -4,7 +4,7 @@
   "author": "Daniel",
   "summary": "Configuration for the Proxmox virtual runtime environment for Blogr.",
   "license": "Apache 2.0",
-  "source": "",
+  "source": "https://github.com/dniel/blogr-pve",
   "project_page": null,
   "issues_url": null,
   "dependencies": [
@@ -18,7 +18,8 @@
     {"name":"example42-network","version_requirement":">= 3.3.1"},
     {"name":"jfryman-nginx","version_requirement":">= 0.3.0"},
     {"name":"saz-locales","version_requirement":">= 2.2.2"},
-    {"name":"saz-ssh","version_requirement":">= 2.8.1"}
+    {"name":"saz-ssh","version_requirement":">= 2.8.1"},
+    {"name":"saz-timezone","version_requirement":">= 3.3.0"}
   ]
 }
 

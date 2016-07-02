@@ -1,5 +1,9 @@
 class pve::profiles::common{
 
+  class { 'timezone':
+    timezone => 'Europe/Oslo',
+  }
+
   class { 'apt':
     update => {
       frequency => 'daily',
