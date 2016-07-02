@@ -20,7 +20,7 @@ if ! hash bundle 2>/dev/null;  then
 fi
 
 # Install gems from Gemfile or Gemfile.lock if checked in
-bundle install --path=.bundle --binstubs=bin || exit 1
+/usr/local/bin/bundle install --path=.bundle --binstubs=bin || exit 1
 
 # get environment from current git branch
 environment=$(git symbolic-ref --short HEAD)
