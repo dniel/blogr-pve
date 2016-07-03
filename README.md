@@ -1,4 +1,4 @@
-# pve
+# My home lab high-availability development environment.
 
 #### Table of Contents
 
@@ -11,27 +11,37 @@
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
 5. [Limitations - OS compatibility, etc.](#limitations)
-6. [Development - Guide for contributing to the module](#development)
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+Puppet scripts for my home lab high-availability(HA) development environment.
+Features
+* load balanced frontend servers
+* db servers with hot-standby
+* load balanced node backend server
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
-
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+This module configure the linux servers in my virtual development environment.
+It configures a pretty standard HA environment with double frontend servers with reverseproxies that
+load balance infront of four backend servers that has been divided in two clusters and using a primary and 
+hot-standby for stored state. Everything is devided in a DMZ and INTRA network for production like network
+configuration.
 
 ## Setup
 
-### What pve affects
+### Before using this modules, the following must be manually installed:
+
+#### Download and install proxmox >4.2
+* three virtual ethernet devices in proxmox.
+* tag the virtual ethernet devices with vlan tag 2,3 and 4.
+
+#### Download and install pfSense >2.3.1-RELEASE-p5 
+* create a linux vm in proxmox, install pfsense.
+* assign all virtual ethernet devices from proxmox to the qemu linux container.
+* configure two new interfaces in pfsense, DMZ and INTRA on two new subnets.
+
+## What pve affects
 
 * A list of files, packages, services, or operations that the module will alter,
   impact, or execute on the system it's installed on.
@@ -40,16 +50,14 @@ management, etc.) this is the time to mention it.
 
 ### Setup Requirements **OPTIONAL**
 
-If your module requires anything extra before setting up (pluginsync enabled,
-etc.), mention it here.
+Needed packages for quick installation
+Install GIT for cloning this repo,
+Install ca-certificates for https/ssl when cloning from https.
 
 ### Beginning with pve
 
-The very basic steps needed for a user to get the module up and running.
+Create empty debian 8 containers in ProxMox for every server you want in your environment.
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
 
 ## Usage
 
@@ -65,15 +73,7 @@ with things. (We are working on automating this section!)
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
-
-## Development
-
-Since your module is awesome, other users will want to play with it. Let them
-know what the ground rules for contributing are.
-
-## Release Notes/Contributors/Etc **Optional**
-
-If you aren't using changelog, put your release notes here (though you should
-consider using changelog). You may also add any additional sections you feel are
-necessary or important to include here. Please use the `## ` header.
+- Tested with Proxmox Virtual Environment 4.2-2/725d76f0.
+- Virtual containers in Proxmox LXC installed with Debian 8.
+- pfSense for firewall, gateway, routing, virtual ips of WAN, DMZ and LAN.
+- A hardware network switch to route the vlans between different hardware nodes.
