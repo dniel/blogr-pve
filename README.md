@@ -51,6 +51,7 @@ configuration.
 * node
 * git
 * crontab
+* timezone
 
 ### Setup Requirements **OPTIONAL**
 
