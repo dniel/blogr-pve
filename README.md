@@ -40,7 +40,7 @@ configuration.
 #### Download and install pfSense >2.3.1-RELEASE-p5 
 * create a linux vm in proxmox, install pfsense.
 * assign all virtual ethernet devices from proxmox to the qemu linux container.
-* configure two new interfaces in pfsense, DMZ and INTRA on two new subnets.
+* create two interfaces in pfsense, DMZ and INTRA on two new subnets.
 
 ## What pve affects
 
@@ -64,6 +64,8 @@ configuration.
 #### To install a new lxc container 
 * create a Debian 8 LXC container.
 * Name the container app-, front- or db- dependening of the role you want for the new container.
+* Assign correct virtual network device depending on which vlan you want your container.
+* Assign vlan tag to network device (dmz=2 or intra=3) 
 * Configure hieradata in this module for the new container
 * Login to the new container, clone this repo and run apply.sh in the root folder.
 
