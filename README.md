@@ -86,3 +86,4 @@ with things. (We are working on automating this section!)
 * Virtual containers in Proxmox LXC installed with Debian 8.
 * pfSense for firewall, gateway, routing, virtual ips of WAN, DMZ and LAN.
 * A hardware network switch to route the vlans between different hardware nodes.
+* Will not configure proxmox or pfsense, both must be manually installed and configured.
