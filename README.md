@@ -104,3 +104,5 @@ with things. (We are working on automating this section!)
 ### Future development
 * Splunk for tracking nginx, postgres, puppet, proxmox pfsense and other important logfiles from all parts of the system.
 * Network storage using iSCSI drive with multiple bays for configuring RAID failover on hard drives.
+* Configure proxmox with puppet
+* Configure pfsense with puppet
