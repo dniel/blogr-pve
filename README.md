@@ -10,11 +10,14 @@
     * [Beginning with pve](#beginning-with-pve)
 4. [Usage - Configuration options and additional functionality](#usage)
 5. [Reference - An under-the-hood peek at what the module is doing and how](#reference)
-5. [Limitations - OS compatibility, etc.](#limitations)
+6. [Limitations - OS compatibility, etc.](#limitations)
+8. [Development](#development)
 
 ## Overview
 
 Puppet scripts for my home lab high-availability(HA) development environment.
+A lab environment for software development and infrastructure that has a production like configuration and handling some of the more trickier parts of the development cycle a code pipeline from dev to production, dividing the networks for security,centralized log tracking for catching errors quickly, robustness and redundancy of both intrastructure and software. 
+
 Features
 * hardware failover with virtualized proxmox cluster on two nodes
 * load balanced frontend servers
@@ -89,3 +92,9 @@ with things. (We are working on automating this section!)
 * pfSense for firewall, gateway, routing, virtual ips of WAN, DMZ and LAN.
 * A hardware network switch to route the vlans between different hardware nodes.
 * Will not configure proxmox or pfsense, both must be manually installed and configured.
+
+## Development
+
+### Future development
+* Splunk for tracking nginx, postgres, puppet, proxmox pfsense and other important logfiles from all parts of the system.
+* Network storage using iSCSI drive with multiple bays for configuring RAID failover on hard drives.
