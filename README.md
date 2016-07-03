@@ -1,4 +1,4 @@
-# My home lab high-availability development environment.
+# Proxmox Virtual Environment
 
 #### Table of Contents
 
@@ -16,6 +16,7 @@
 
 Puppet scripts for my home lab high-availability(HA) development environment.
 Features
+* hardware failover with virtualized proxmox cluster on two nodes
 * load balanced frontend servers
 * db servers with hot-standby
 * load balanced node backend server
@@ -43,10 +44,13 @@ configuration.
 
 ## What pve affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+* network
+* locale
+* postgres
+* nginx
+* node
+* git
+* crontab
 
 ### Setup Requirements **OPTIONAL**
 
