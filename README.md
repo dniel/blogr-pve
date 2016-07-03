@@ -50,9 +50,9 @@ configuration.
 
 ### Setup Requirements **OPTIONAL**
 
-Needed packages for quick installation
-Install GIT for cloning this repo,
-Install ca-certificates for https/ssl when cloning from https.
+#### Needed packages for quick installation
+* Install GIT for cloning this repo,
+* Install ca-certificates for https/ssl when cloning from https.
 
 ### Beginning with pve
 
@@ -73,7 +73,7 @@ with things. (We are working on automating this section!)
 
 ## Limitations
 
-- Tested with Proxmox Virtual Environment 4.2-2/725d76f0.
-- Virtual containers in Proxmox LXC installed with Debian 8.
-- pfSense for firewall, gateway, routing, virtual ips of WAN, DMZ and LAN.
-- A hardware network switch to route the vlans between different hardware nodes.
+* Tested with Proxmox Virtual Environment 4.2-2/725d76f0.
+* Virtual containers in Proxmox LXC installed with Debian 8.
+* pfSense for firewall, gateway, routing, virtual ips of WAN, DMZ and LAN.
+* A hardware network switch to route the vlans between different hardware nodes.
