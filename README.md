@@ -53,7 +53,7 @@ configuration.
 * crontab
 * timezone
 
-### Setup Requirements **OPTIONAL**
+### Setup Requirements
 
 #### Needed packages for quick installation
 * Install GIT for cloning this repo,
@@ -61,7 +61,11 @@ configuration.
 
 ### Beginning with pve
 
-Create empty debian 8 containers in ProxMox for every server you want in your environment.
+#### To install a new lxc container 
+* create a Debian 8 LXC container.
+* Name the container app-, front- or db- dependening of the role you want for the new container.
+* Configure hieradata in this module for the new container
+* Login to the new container, clone this repo and run apply.sh in the root folder.
 
 
 ## Usage
