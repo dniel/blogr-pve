@@ -75,8 +75,14 @@ configuration.
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+The ROLE classes that has been assign to the different host manifests.
+Depending on what kind of role you want your server to have, assign a role class to the host manifest.
+* class pve::roles::appserver
+* class pve::roles::dbserver
+* class pve::roles::frontserver
+
+Hiera data contains the configuration needed in the hiera-directory.
+
 
 ## Reference
 
