@@ -19,7 +19,8 @@
     {"name":"jfryman-nginx","version_requirement":">= 0.3.0"},
     {"name":"saz-locales","version_requirement":">= 2.2.2"},
     {"name":"saz-ssh","version_requirement":">= 2.8.1"},
-    {"name":"saz-timezone","version_requirement":">= 3.3.0"}
+    {"name":"saz-timezone","version_requirement":">= 3.3.0"},
+    {"name":"puppet-unattended_upgrades","version_requirement":">= 2.0.0"}
   ]
 }
 
