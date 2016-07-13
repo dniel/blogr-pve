@@ -1,5 +1,8 @@
 class pve::profiles::common{
 
+  class { 'unattended_upgrades':
+  }
+
   class { 'timezone':
     timezone => 'Europe/Oslo',
   }
