@@ -17,7 +17,7 @@ network + more to emulate a production like environment.
 
 ##### Features
 * clustered proxmox virtual environment on three machines.
-* hardware failover with virtualized linux containers deployed on three machines.
+* hardware failover with virtualized linux containers deployed on the proxmox cluster.
 * firewall with failover.
 * secured network, divided into separate vlan zones.
 * database with failover.
@@ -37,7 +37,7 @@ Three retired work laptops, Lenovo W520 and W530 with 16GB ram
 ##### Proxmox cluster on three nodes.
 ![alt tag](doc/pve.jpg)
 
-##### Virtual machines overview
+##### Virtual machines overview with networks
 ![alt tag](doc/virtual.jpg)
 
 ##### The sample application that is deployed
