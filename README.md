@@ -26,7 +26,7 @@ network + more to emulate a production like environment.
 * immutable virtual servers.
 * a sample web application.
 
-##### Hardware
+## Hardware
 Three retired work laptops, Lenovo W520 and W530 with 16GB ram
  and old school spinning hard drives connected with a Cisco
  switch with VLAN support, SG 200-08, for directing network
@@ -34,20 +34,26 @@ Three retired work laptops, Lenovo W520 and W530 with 16GB ram
 
 ![alt tag](doc/machines.jpg)
 
-##### Proxmox cluster on three nodes.
+## Proxmox cluster on three nodes.
+A screenshot from the Proxmox Web Admin. The three machines has
+been added to the same cluster and can be managed through the
+same admin console.
+
 ![alt tag](doc/pve.jpg)
 
 ##### Virtual machines overview with networks
+This is how is looks like if modelled with Archimate and Archi.
+I have modelled just the virtual machines, the networks and firewalls
+that connect them.
+
 ![alt tag](doc/virtual.jpg)
 
-##### The sample application that is deployed
+## The sample application that is deployed
 Is a very simple React application [Blogr](https://github.com/dniel/blogr-workshop)
 that uses a Node Express backend and a PostgreSQL database for
 persistence. Right now its deployed using the same puppet script
 that install the configuration and system software but this
 eventually be handled by Jenkins Pipeline.
-
-## Description
 
 ## Installation
 #### First steps
