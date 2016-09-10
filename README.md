@@ -1,5 +1,5 @@
 # Proxmox Virtual Environment
-##### Puppet scripts for my home lab high-availability(HA) development environment.
+#### Puppet scripts for my home lab high-availability(HA) development environment.
 My home lab environment for software development and infrastructure
 that has a production like configuration that I use to learn and
 practice on DevOps and software development. The setup is similar
@@ -15,7 +15,7 @@ The network has been
 separated into network zones for dmz and a internal corporate
 network + more to emulate a production like environment.
 
-##### Features
+#### Features
 * clustered proxmox virtual environment on three machines.
 * hardware failover with virtualized linux containers deployed on the proxmox cluster.
 * firewall with failover.
@@ -56,8 +56,8 @@ that install the configuration and system software but this
 eventually be handled by Jenkins Pipeline.
 
 ## Installation
-#### First steps
-##### Create VLANs in the network switch
+### First steps
+#### Create VLANs in the network switch
 Name the vlans
 * 2=DMZ
 * 3=INTRA
@@ -71,19 +71,19 @@ DEV is the development infrastructure network, where Jenkins and ELK is configur
 
 The network setup use subnets 10.0.1.x, 10.0.2.x, 10.0.3 and 10.0.4.x
 
-##### Download and install proxmox
+#### Download and install proxmox
 Install Proxmox on all three laptops.
 * Proxmox version > 4.2
 * Create four virtual ethernet devices in proxmox.
 * Tag the virtual ethernet devices with vlan tag 2,3,4 and 5
 
-##### Download, install and configure pfSense
+#### Download, install and configure pfSense
 * pfSense version > 2.3.1-RELEASE-p5
 * Create a linux VM in Proxmox, install pfsense.
 * Assign all virtual ethernet devices from proxmox to the qemu linux container.
 * Create four interfaces in pfsense, DMZ and INTRA on two new subnets.
 
-##### To create a new LXC container
+#### To create a new LXC container
 * Create a Debian 8 LXC container.
 * Assign correct virtual network device depending on which vlan you want your container.
 * Assign vlan tag to network device (dmz=2, intra=3, dev=4)
@@ -104,8 +104,8 @@ for the node roles.
 * ci-[n] for Jenkins continuous integration server.
 * log-[n] for the Elasticsearch and Kibana backend for centralized logging.
 
-#### Then
-##### perform manual steps that must be performed on each virtual container.
+### Then
+#### perform manual steps that must be performed on each virtual container.
 * Install GIT for cloning this repo,
 * Install ca-certificates for https/ssl when cloning from https.
 * Clone https://github.com/ with puppet scripts as /opt/pve
