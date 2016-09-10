@@ -41,7 +41,7 @@ same admin console.
 
 ![alt tag](doc/pve.jpg)
 
-##### Virtual machines overview with networks
+## Virtual machines overview with networks
 This is how is looks like if modelled with Archimate and Archi.
 I have modelled just the virtual machines, the networks and firewalls
 that connect them.
