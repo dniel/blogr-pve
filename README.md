@@ -113,9 +113,8 @@ for the node roles.
 depending on the hostname a role in the puppet script will be selected
 for the container and executed.
 
-
 ## The Puppet Module
-
+TODO: add detailed documentation about the puppet scripts, classes etc.
 
 ## Limitations
 * Tested with Proxmox Virtual Environment 4.2-2/725d76f0.
