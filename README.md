@@ -1,8 +1,19 @@
 # Proxmox Virtual Environment
 ##### Puppet scripts for my home lab high-availability(HA) development environment.
-A lab environment for software development and infrastructure
+My home lab environment for software development and infrastructure
 that has a production like configuration that I use to learn and
-practice on DevOps, automating the environment as much as I manage.
+practice on DevOps and software development. The setup is similar
+to and handle some of the complexity that a IT-department would
+need to meet the demands of a production, test and dev environment.
+
+It configures a pretty standard high-availability environment with a
+pair of reverse proxies that load balance in front of four backend
+servers that has been divided in two clusters and using a primary
+and hot-standby for stored state.
+
+The network has been
+separated into network zones for dmz and a internal corporate
+network + more to emulate a production like environment.
 
 ##### Features
 * clustered proxmox virtual environment on three machines.
@@ -37,11 +48,6 @@ that install the configuration and system software but this
 eventually be handled by Jenkins Pipeline.
 
 ## Description
-This module configure the linux servers in my virtual development environment.
-It configures a pretty standard HA environment with double frontend servers with reverseproxies that
-load balance infront of four backend servers that has been divided in two clusters and using a primary and 
-hot-standby for stored state. Everything is devided in a DMZ and INTRA network for production like network
-configuration.
 
 ## Installation
 #### First steps
@@ -73,16 +79,37 @@ Install Proxmox on all three laptops.
 
 ##### To create a new LXC container
 * Create a Debian 8 LXC container.
-* Name the container app-, front- or db- dependening of the role you want for the new container.
 * Assign correct virtual network device depending on which vlan you want your container.
 * Assign vlan tag to network device (dmz=2, intra=3, dev=4)
 * Configure Hiera-data in this module for the new container
+
+I have used standard Debian 8 base images for the LXC containers.
+I have assinged 1gb of ram, 1gb of swap space and 1gb of harddrive space for each container
+and it seems to work pretty well.
+
+I have used in the puppet scripts the following naming convention
+for the node roles.
+* app-[n] for the Node.js Express backend servers.
+* db-1 for the primary database.
+* db-2 for the standby database.
+* front-[n] for nginx reverse proxy servers that serve content in the dmz infront of the app-servers.
+* router-1 for the primary firewall.
+* router-2 for the standby firewall.
+* ci-[n] for Jenkins continuous integration server.
+* log-[n] for the Elasticsearch and Kibana backend for centralized logging.
 
 #### Then
 ##### perform manual steps that must be performed on each virtual container.
 * Install GIT for cloning this repo,
 * Install ca-certificates for https/ssl when cloning from https.
-* Cloned this repo with puppet scripts as /opt/pve
+* Clone https://github.com/ with puppet scripts as /opt/pve
+* run the *apply.sh* script in */opt/pve/apply.sh* to run the puppet and
+depending on the hostname a role in the puppet script will be selected
+for the container and executed.
+
+
+## The Puppet Module
+
 
 ## Limitations
 * Tested with Proxmox Virtual Environment 4.2-2/725d76f0.
@@ -92,7 +119,7 @@ Install Proxmox on all three laptops.
 * Will not configure proxmox or pfsense, both must be manually installed and configured.
 
 ### Future development
-* ELK stack for tracking nginx, postgres, puppet, proxmox pfsense and other important logfiles from all parts of the system.
+* ELK collecting the log-files from all servers and applications.
 * NAS, Network storage using iSCSI drive with multiple bays for configuring RAID failover on hard drives.
 * Configure proxmox with puppet
 * Configure pfSense with puppet
