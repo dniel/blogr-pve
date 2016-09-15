@@ -77,4 +77,5 @@ TODO: add detailed documentation about the puppet scripts, classes etc.
 * Configure proxmox with puppet
 * Configure pfSense with puppet
 * Jenkins2 build server with Pipeline for deploying the Node Application to dev, test and production.
-* Secured and hardened jump/login server to give access all virtal servers from remote login.
+* Secured and hardened jump/login server to give access all virtal servers from remote login in DEV zone.
+* Encrypt sensitive values in Hiera data with [hiera-eyaml](https://puppet.com/blog/encrypt-your-data-using-hiera-eyaml)
