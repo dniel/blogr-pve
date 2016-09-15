@@ -1,5 +1,7 @@
 # Network setup
 ### Create the VLANS and assign to the correct ports on your switch.
+Prepare communication between the laptops your switch/router
+be configured to route a set of VLANS.
 
 | VLAN          | Subnet        | Name          | Description  |
 | ------------- | ------------- | ------------- |------------- |
