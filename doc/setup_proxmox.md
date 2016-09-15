@@ -5,4 +5,7 @@ Install Proxmox on all three laptops.
 * Create four virtual ethernet devices in proxmox.
 * Tag the virtual ethernet devices with vlan tag 2,3,4 and 5
 
-![network in proxmox](doc/network_proxmox.png)
+![network in proxmox](network_proxmox.png)
+
+![network in proxmox](network_device_proxmox.png)
+

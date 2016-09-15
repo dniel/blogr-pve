@@ -5,3 +5,4 @@
 * Assign all virtual ethernet devices from proxmox to the qemu linux container.
 * Create four interfaces in pfsense, DMZ and INTRA on two new subnets.
 
+![network in proxmox](network_proxmox.png)
