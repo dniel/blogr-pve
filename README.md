@@ -29,7 +29,7 @@ network + more to emulate a production like environment.
 ## Hardware
 Three retired work laptops, Lenovo W520 and W530 with 16GB ram
  and old school spinning hard drives connected with a Cisco
- switch with VLAN support, SG 200-08, for directing network
+ switch with VLAN support, [Cisco SG 200-08](https://www.amazon.co.uk/Cisco-SG200-08-8-port-Gigabit-SLM2008T-EU/dp/B004UOT4BI/ref=sr_1_2?ie=UTF8&qid=1473971098&sr=8-2&keywords=SG+200-08), for directing network
  traffic between them.
 
 ![alt tag](doc/machines.jpg)
