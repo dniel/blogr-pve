@@ -56,62 +56,10 @@ that install the configuration and system software but this
 eventually be handled by Jenkins Pipeline.
 
 ## Installation
-### First steps
-#### Create VLANs in the network switch
-Name the vlans
-* 2=DMZ
-* 3=INTRA
-* 4=SYNC
-* 5=DEV
-
-DMZ is the internet facing vlan.
-INTRA is the internal corporate network.
-SYNC is the network pfSense instances uses to sync failover state.
-DEV is the development infrastructure network, where Jenkins and ELK is configured.
-
-The network setup use subnets 10.0.1.x, 10.0.2.x, 10.0.3 and 10.0.4.x
-
-#### Download and install proxmox
-Install Proxmox on all three laptops.
-* Proxmox version > 4.2
-* Create four virtual ethernet devices in proxmox.
-* Tag the virtual ethernet devices with vlan tag 2,3,4 and 5
-
-#### Download, install and configure pfSense
-* pfSense version > 2.3.1-RELEASE-p5
-* Create a linux VM in Proxmox, install pfsense.
-* Assign all virtual ethernet devices from proxmox to the qemu linux container.
-* Create four interfaces in pfsense, DMZ and INTRA on two new subnets.
-
-#### To create a new LXC container
-* Create a Debian 8 LXC container.
-* Assign correct virtual network device depending on which vlan you want your container.
-* Assign vlan tag to network device (dmz=2, intra=3, dev=4)
-* Configure Hiera-data in this module for the new container
-
-I have used standard Debian 8 base images for the LXC containers.
-I have assinged 1gb of ram, 1gb of swap space and 1gb of harddrive space for each container
-and it seems to work pretty well.
-
-I have used in the puppet scripts the following naming convention
-for the node roles.
-* app-[n] for the Node.js Express backend servers.
-* db-1 for the primary database.
-* db-2 for the standby database.
-* front-[n] for nginx reverse proxy servers that serve content in the dmz infront of the app-servers.
-* router-1 for the primary firewall.
-* router-2 for the standby firewall.
-* ci-[n] for Jenkins continuous integration server.
-* log-[n] for the Elasticsearch and Kibana backend for centralized logging.
-
-### Then
-#### perform manual steps that must be performed on each virtual container.
-* Install GIT for cloning this repo,
-* Install ca-certificates for https/ssl when cloning from https.
-* Clone https://github.com/ with puppet scripts as /opt/pve
-* run the *apply.sh* script in */opt/pve/apply.sh* to run the puppet and
-depending on the hostname a role in the puppet script will be selected
-for the container and executed.
+#### [Network configuration](doc/setup_network.md)
+#### [Proxmox configuration](doc/setup_proxmox.md)
+#### [Pfsense configuration](doc/setup_pfsense.md)
+#### [lxc configuration](doc/setup_lxc.md)
 
 ## The Puppet Module
 TODO: add detailed documentation about the puppet scripts, classes etc.
