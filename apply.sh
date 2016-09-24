@@ -29,4 +29,4 @@ environment=$(git symbolic-ref --short HEAD)
 ./bin/librarian-puppet install --path ./modules --verbose || exit 1
 
 # Run Puppet
-./bin/puppet apply --modulepath="..:./modules" --hiera_config=hiera.yaml manifests "$@" || exit 1
+./bin/puppet apply --modulepath="./modules" --hiera_config=hiera.yaml manifests "$@" || exit 1
