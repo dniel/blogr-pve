@@ -1,4 +1,4 @@
 pve::profiles::network:
   hostname: app-4
   ipaddress: 10.0.3.7
-  gateway: 10.0.3.1
+  gateway: 10.0.3.3

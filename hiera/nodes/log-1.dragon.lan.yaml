@@ -1,0 +1,4 @@
+pve::profiles::network:
+  hostname: log-1
+  ipaddress: 10.0.5.4
+  gateway: 10.0.5.3
