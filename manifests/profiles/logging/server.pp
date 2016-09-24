@@ -13,4 +13,5 @@ class pve::profiles::logging::server{
     ensure => 'installed',
   }
 
+  include kibana4
 }
