@@ -15,7 +15,7 @@ class pve::profiles::logging::forwarder{
       '/var/log/auth.log',
       '/var/log/syslog',
     ],
-    doc_type => 'syslog-beat',
+    doc_type => 'syslog',
   }
 }
 
@@ -27,7 +27,7 @@ class pve::profiles::logging::forwarder::nginx{
       '/var/log/nginx/*',
     ],
     exclude_files => ['.gz$','.[0-9]$'],
-    doc_type => 'nginx-access',
+    doc_type => 'nginx',
   }
 }
 
@@ -38,6 +38,6 @@ class pve::profiles::logging::forwarder::blogr{
       '/opt/blogr/log/*',
     ],
     exclude_files => ['.gz$','.[0-9]$'],
-    doc_type => 'blogr-access',
+    doc_type => 'blogr',
   }
 }
