@@ -1,6 +1,6 @@
 pve::profiles::network:
   hostname: front-2
-  ipaddress: 10.0.2.3
+  ipaddress: 10.0.2.5
   gateway: 10.0.2.3
 
 pve::profiles::reverseproxy:
