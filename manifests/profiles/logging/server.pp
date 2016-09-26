@@ -17,7 +17,6 @@ class pve::profiles::logging::server{
 
   class { 'logstash':
     manage_repo  => true,
-    repo_version => '2.x',
     autoupgrade  => true,
   }
 
@@ -41,7 +40,7 @@ class pve::profiles::logging::server{
   LOGSTASH_CONFIG
 
   logstash::configfile { 'beats_logstash_config':
-    content => logstash_config,
+    content => $logstash_config,
   }
 
   include kibana4
