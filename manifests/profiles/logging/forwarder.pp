@@ -26,7 +26,7 @@ class pve::profiles::logging::forwarder::nginx{
     paths    => [
       '/var/log/nginx/*',
     ],
-    exclude_files => ['.gz$'],
+    exclude_files => ['.gz$','.[0-9]$'],
     doc_type => 'nginx-access',
   }
 }
