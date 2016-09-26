@@ -3,4 +3,5 @@ class pve::roles::frontserver{
   include pve::profiles::reverseproxy
   include pve::profiles::network
   include pve::profiles::logging::forwarder
+  include pve::profiles::logging::forwarder::nginx
 }
