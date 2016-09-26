@@ -17,13 +17,13 @@ class pve::profiles::logging::server{
 
   class { 'logstash':
     manage_repo  => true,
-    repo_version => '1.5',
+    repo_version => '2.x',
     autoupgrade  => true,
   }
 
-  logstash::plugin { 'logstash-input-beats': }
+#  logstash::plugin { 'logstash-input-beats': }
 
-  logstash_config = <<LOGSTASH_CONFIG
+  $logstash_config = @(LOGSTASH_CONFIG)
   input {
     beats {
       port => 5044
@@ -38,7 +38,7 @@ class pve::profiles::logging::server{
       document_type => "%{[@metadata][type]}"
     }
   }
-LOGSTASH_CONFIG
+  LOGSTASH_CONFIG
 
   logstash::configfile { 'beats_logstash_config':
     content => logstash_config,
