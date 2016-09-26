@@ -30,3 +30,14 @@ class pve::profiles::logging::forwarder::nginx{
     doc_type => 'nginx-access',
   }
 }
+
+class pve::profiles::logging::forwarder::blogr{
+
+  filebeat::prospector { 'blogr':
+    paths    => [
+      '/opt/blogr/log/*',
+    ],
+    exclude_files => ['.gz$','.[0-9]$'],
+    doc_type => 'blogr-access',
+  }
+}
