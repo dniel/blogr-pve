@@ -18,3 +18,15 @@ class pve::profiles::logging::forwarder{
     doc_type => 'syslog-beat',
   }
 }
+
+
+class pve::profiles::logging::forwarder::nginx{
+
+  filebeat::prospector { 'nginx':
+    paths    => [
+      '/var/log/nginx/*',
+    ],
+    exclude_files => ['.gz$'],
+    doc_type => 'nginx-access',
+  }
+}
