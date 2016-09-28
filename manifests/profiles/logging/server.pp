@@ -18,6 +18,7 @@ class pve::profiles::logging::server{
   class { 'logstash':
     manage_repo  => true,
     autoupgrade  => true,
+    repo_version => '2.4',
   }
 
 #  logstash::plugin { 'logstash-input-beats': }
