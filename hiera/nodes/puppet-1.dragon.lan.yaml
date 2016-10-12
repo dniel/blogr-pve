@@ -1,4 +1,0 @@
-pve::profiles::network:
-  hostname: puppet-1
-  ipaddress: 10.0.5.5
-  gateway: 10.0.5.3

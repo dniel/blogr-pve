@@ -1,7 +1,6 @@
-pve::profiles::network:
-  hostname: db-1
-  ipaddress: 10.0.3.5
-  gateway: 10.0.3.3
+pve::profiles::network::hostname: db-1
+pve::profiles::network::ipaddress: 10.0.3.5
+pve::profiles::network::gateway: 10.0.3.3
 
 pve::profiles::database:
   name: blogr
