@@ -1,5 +1,8 @@
-class pve::profiles::database::primary{
-  $db = hiera_hash('pve::profiles::database')
+class pve::profiles::database::primary(
+  $rep_user,
+  $rep_password,
+  $rep_adress,
+){
 
   class { 'postgresql::globals':
     manage_package_repo => true,
@@ -25,21 +28,20 @@ class pve::profiles::database::primary{
     value => '3',
   }
 
-  postgresql::server::role { "repuser":
+  postgresql::server::role { $rep_user:
     replication      => true,
     connection_limit => 5,
-    password_hash    => postgresql_password("repuser", "${db['password']}"),
+    password_hash    => postgresql_password($rep_user, $rep_password),
   }
 
-  postgresql::server::pg_hba_rule { "allow repuser from db-2 to replicate the database":
+  postgresql::server::pg_hba_rule { "allow replication user from standby to replicate the database":
     description => "Open up replication for access from network",
     type        => 'host',
     database    => "replication",
-    user        => "repuser",
-    address     => '10.0.3.6/32',
+    user        => $rep_user,
+    address     => $rep_adress,
     auth_method => 'md5',
   }
-  ## end.
 
   postgresql::server::pg_hba_rule { "allow all to access all database":
     description => "Open up PostgreSQL for access from network",
