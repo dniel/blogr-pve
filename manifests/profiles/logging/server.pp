@@ -1,4 +1,6 @@
 class pve::profiles::logging::server{
+  include kibana4
+
   class { 'elasticsearch':
     java_install => true,
     manage_repo  => true,
@@ -24,7 +26,6 @@ class pve::profiles::logging::server{
 #  logstash::plugin { 'logstash-input-beats': }
 
   $logstash_config = @(LOGSTASH_CONFIG)
-
   input {
     tcp {
       port => 5000
@@ -70,5 +71,4 @@ class pve::profiles::logging::server{
     content => $logstash_config,
   }
 
-  include kibana4
 }
