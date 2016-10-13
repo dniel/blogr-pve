@@ -1,7 +1,3 @@
-pve::profiles::network:hostname: front-2
-pve::profiles::network:ipaddress: 10.0.2.5
-pve::profiles::network:gateway: 10.0.2.3
-
 pve::profiles::reverseproxy:
   app_hosts:
     - app-2.dragon.lan:3000
