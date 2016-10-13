@@ -1,7 +1,7 @@
 class pve::profiles::blogr::database(
-  $name,
-  $user,
-  $password
+  $db_name,
+  $db_user,
+  $db_password
 ){
   require postgresql::server
 

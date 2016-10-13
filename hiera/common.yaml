@@ -1,6 +1,6 @@
-pve::profiles::blogr::database::name: blogr
-pve::profiles::blogr::database::user: blogr
-pve::profiles::blogr::database::password:  password1
+pve::profiles::blogr::database::db_name: blogr
+pve::profiles::blogr::database::db_user: blogr
+pve::profiles::blogr::database::db_password:  password1
 
 pve::profiles::database::primary::rep_user: repuser
 pve::profiles::database::primary::rep_password: password1
