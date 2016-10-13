@@ -1,0 +1,14 @@
+pve::profiles::blogr::database::name: blogr
+pve::profiles::blogr::database::user: blogr
+pve::profiles::blogr::database::password:  password1
+
+pve::profiles::database::primary::rep_user: repuser
+pve::profiles::database::primary::rep_password: password1
+pve::profiles::database::primary::rep_adress: 10.0.3.6/32
+
+pve::profiles::database::standby::db_name: blogr
+pve::profiles::database::standby::db_user: blogr
+pve::profiles::database::standby::db_password: password1
+pve::profiles::database::standby::db_host: db-1.dragon.lan
+pve::profiles::database::standby::rep_user: repuser
+pve::profiles::database::standby::rep_password: password1

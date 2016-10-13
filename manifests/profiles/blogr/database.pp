@@ -1,6 +1,9 @@
-class pve::profiles::blogr::database{
+class pve::profiles::blogr::database(
+  $name,
+  $user,
+  $password
+){
   require postgresql::server
-  $db = hiera_hash('pve::profiles::database')
 
   vcsrepo { '/opt/blogr':
     ensure   => latest,
@@ -8,45 +11,45 @@ class pve::profiles::blogr::database{
     source   => 'https://github.com/dniel/blogr-workshop'
   }
 
-  postgresql::server::db { "${db['name']}":
-    user     => "${db['user']}",
-    password => postgresql_password("${db['user']}", "${db['password']}"),
+  postgresql::server::db { $name:
+    user     => $user,
+    password => postgresql_password($user, $password),
   }
 
-  postgresql::server::role { "${db['user']}":
-    password_hash => postgresql_password("${db['user']}", "${db['password']}"),
+  postgresql::server::role { $user:
+    password_hash => postgresql_password($user, $password),
   }
 
-  postgresql::server::table_grant { "grant INSERT to table post of ${db['name']}":
+  postgresql::server::table_grant { "grant INSERT to table post of ${name}":
     privilege => 'INSERT',
     table     => 'posts',
-    db        => "${db['name']}",
-    role      => "${db['user']}",
-    require     => Postgresql::Server::Db["${db['name']}"],
+    db        => $name,
+    role      => $user,
+    require     => Postgresql::Server::Db[$name],
   }
-  postgresql::server::table_grant { "grant DELETE to table post of ${db['name']}":
+  postgresql::server::table_grant { "grant DELETE to table post of ${name}":
     privilege => 'DELETE',
     table     => 'posts',
-    db        => "${db['name']}",
-    role      => "${db['user']}",
-    require   => Postgresql::Server::Db["${db['name']}"],
+    db        => $name,
+    role      => $user,
+    require   => Postgresql::Server::Db[$name],
   }
-  postgresql::server::table_grant { "grant SELECT to table post of ${db['name']}":
+  postgresql::server::table_grant { "grant SELECT to table post of ${name}":
     privilege => 'SELECT',
     table     => 'posts',
-    db        => "${db['name']}",
-    role      => "${db['user']}",
-    require     => Postgresql::Server::Db["${db['name']}"],
+    db        => $name,
+    role      => $user,
+    require     => Postgresql::Server::Db[$name],
   }
-  postgresql::server::database_grant { "GRANT ALL ${db['user']} - ${db['name']}:":
+  postgresql::server::database_grant { "GRANT ALL ${user} - ${name}:":
     privilege   => "ALL",
-    db          => "${db['name']}",
-    role        => "${db['user']}",
-    require     => Postgresql::Server::Db["${db['name']}"],
+    db          => $name,
+    role        => $user,
+    require     => Postgresql::Server::Db[$name],
   }
 
   postgresql_psql { "create posts table ":
-    db          => "${db['name']}",
+    db          => $name,
     command     => "create table IF NOT EXISTS posts (
                       id serial primary key,
                       title varchar(50) not null default '',
@@ -58,7 +61,7 @@ class pve::profiles::blogr::database{
                     FROM information_schema.tables
                     WHERE table_schema = 'public' and table_name = 'posts'",
 
-    require     => Postgresql::Server::Db["${db['name']}"],
+    require     => Postgresql::Server::Db[$name],
   }
 
 }
