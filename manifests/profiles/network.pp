@@ -1,20 +1,7 @@
-class pve::profiles::network(
-  $hostname,
-  $ipaddress,
-  $gateway,
-  $netmask = "255.255.255.0",
-  $mtu = "1495"
-){
-
-  class{ '::network':
-    hostname => $hostname
-  }
+class pve::profiles::network{
 
   network::interface { 'eth0':
-    ipaddress => $ipaddress,
-    netmask   => $netmask,
-    gateway   => $gateway,
-    mtu       => $mtu
+    mtu       => "1495"
   }
 
 }
