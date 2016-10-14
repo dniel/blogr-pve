@@ -10,7 +10,13 @@ class pve::profiles::logging::forwarder{
     },
   }
 
-  filebeat::prospector { 'syslogs': }
+  filebeat::prospector { 'syslogs':
+    paths    => [
+      '/var/log/auth.log',
+      '/var/log/syslog',
+    ],
+    doc_type => 'syslog',
+  }
 }
 
 
