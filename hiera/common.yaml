@@ -12,3 +12,8 @@ pve::profiles::database::standby::db_password: password1
 pve::profiles::database::standby::db_host: db-1.dragon.lan
 pve::profiles::database::standby::rep_user: repuser
 pve::profiles::database::standby::rep_password: password1
+
+filebeat::prospector::paths:
+  - '/var/log/auth.log'
+  - '/var/log/syslog'
+filebeat::prospector::doc_type: 'syslog'
