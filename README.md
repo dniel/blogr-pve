@@ -72,7 +72,6 @@ TODO: add detailed documentation about the puppet scripts, classes etc.
 * Will not configure proxmox or pfsense, both must be manually installed and configured.
 
 ### Future development
-* ELK collecting the log-files from all servers and applications.
 * NAS, Network storage using iSCSI drive with multiple bays for configuring RAID failover on hard drives.
 * Configure proxmox with puppet
 * Configure pfSense with puppet
