@@ -9,6 +9,8 @@ class pve::profiles::logging::forwarder{
       },
     },
   }
+
+  filebeat::prospector { 'syslogs': }
 }
 
 
