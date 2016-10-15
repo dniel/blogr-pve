@@ -29,7 +29,7 @@ for the node roles, the puppet scripts use this to map the role to the container
 * Copy eyaml private and public keys to /etc/puppetlabs/keys to be able to decrypt values
 * Install GIT for cloning this repo,
 * Install ca-certificates for https/ssl when cloning from https.
-* Clone https://github.com/ with puppet scripts as /opt/pve
+* Clone https://github.com/dniel/blogr-pve into /opt/pve
 * run the *apply.sh* script in */opt/pve/apply.sh* to run the puppet and
 depending on the hostname a role in the puppet script will be selected
 for the container and executed.
