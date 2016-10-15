@@ -22,6 +22,7 @@ for the node roles.
 
 ### Then
 #### perform manual steps that must be performed on each virtual container.
+* Copy eyaml private and public keys to /etc/puppetlabs/keys to be able to decrypt values
 * Install GIT for cloning this repo,
 * Install ca-certificates for https/ssl when cloning from https.
 * Clone https://github.com/ with puppet scripts as /opt/pve
