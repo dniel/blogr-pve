@@ -25,8 +25,8 @@ for the node roles, the puppet scripts use this to map the role to the container
 ##### Perform manual steps that must be performed on each virtual container.
 * Log in to the new instance and run apt-get upgrade
 * Copy eyaml private and public keys to /etc/puppetlabs/keys to be able to decrypt values
-* Install GIT for cloning this repo,
-* Install ca-certificates for https/ssl when cloning from https.
+* Install GIT for cloning this repo, *apt-get install git*
+* Install ca-certificates for https/ssl when cloning from https, *apt-get install ca-certificates*
 * Clone https://github.com/dniel/blogr-pve into /opt/pve
 * run the *apply.sh* script in */opt/pve/apply.sh* to run the puppet and
 depending on the hostname a role in the puppet script will be selected
