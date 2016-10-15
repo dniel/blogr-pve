@@ -1,14 +1,52 @@
 pve::profiles::blogr::database::db_name: blogr
 pve::profiles::blogr::database::db_user: blogr
-pve::profiles::blogr::database::db_password:  password1
+pve::profiles::blogr::database::db_password: >
+    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
+    DQYJKoZIhvcNAQEBBQAEggEAXEPoF6uqubPwY3DUBSC+BODSkElHIKgFc6MM
+    ipSqVs6m+tqZfgvkKDlgE3CtnFvNDADJraYzgwQa8xHvzUtFVD+6qvhHrA2R
+    2nL+AdwRiFhHs1mEcTSggJUws+n2oxmvx51Dz+viYVj4dSg57EqtDalty/zX
+    fdX7L2Y7G/KiMb5vNejzXEmkmXf5lqGPCsBvvrhgUWvob0/Le8SzbkqKt0gG
+    hM+QBwsCn4tEWWhEvLVcREl233wLjm/DRmxQqtuKFPokC1Po1HsnkLJNokIA
+    h/C3sHhv0d/dcOFsZ/PAjLIe2aL2WqeEMF0I0VkAdPkzYo6UFv4yisFjwPx6
+    SiZuxDA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCupQp8Byr0mLGXFU/s
+    xURlgBBcUqS8iVdrk0XqS4M+Bm0y]
 
 pve::profiles::database::primary::rep_user: repuser
-pve::profiles::database::primary::rep_password: password1
+pve::profiles::database::primary::rep_password: >
+    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
+    DQYJKoZIhvcNAQEBBQAEggEAXEPoF6uqubPwY3DUBSC+BODSkElHIKgFc6MM
+    ipSqVs6m+tqZfgvkKDlgE3CtnFvNDADJraYzgwQa8xHvzUtFVD+6qvhHrA2R
+    2nL+AdwRiFhHs1mEcTSggJUws+n2oxmvx51Dz+viYVj4dSg57EqtDalty/zX
+    fdX7L2Y7G/KiMb5vNejzXEmkmXf5lqGPCsBvvrhgUWvob0/Le8SzbkqKt0gG
+    hM+QBwsCn4tEWWhEvLVcREl233wLjm/DRmxQqtuKFPokC1Po1HsnkLJNokIA
+    h/C3sHhv0d/dcOFsZ/PAjLIe2aL2WqeEMF0I0VkAdPkzYo6UFv4yisFjwPx6
+    SiZuxDA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCupQp8Byr0mLGXFU/s
+    xURlgBBcUqS8iVdrk0XqS4M+Bm0y]
+
 pve::profiles::database::primary::rep_adress: 10.0.3.6/32
 
 pve::profiles::database::standby::db_name: blogr
 pve::profiles::database::standby::db_user: blogr
-pve::profiles::database::standby::db_password: password1
+pve::profiles::database::standby::db_password: >
+    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
+    DQYJKoZIhvcNAQEBBQAEggEAXEPoF6uqubPwY3DUBSC+BODSkElHIKgFc6MM
+    ipSqVs6m+tqZfgvkKDlgE3CtnFvNDADJraYzgwQa8xHvzUtFVD+6qvhHrA2R
+    2nL+AdwRiFhHs1mEcTSggJUws+n2oxmvx51Dz+viYVj4dSg57EqtDalty/zX
+    fdX7L2Y7G/KiMb5vNejzXEmkmXf5lqGPCsBvvrhgUWvob0/Le8SzbkqKt0gG
+    hM+QBwsCn4tEWWhEvLVcREl233wLjm/DRmxQqtuKFPokC1Po1HsnkLJNokIA
+    h/C3sHhv0d/dcOFsZ/PAjLIe2aL2WqeEMF0I0VkAdPkzYo6UFv4yisFjwPx6
+    SiZuxDA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCupQp8Byr0mLGXFU/s
+    xURlgBBcUqS8iVdrk0XqS4M+Bm0y]
+
 pve::profiles::database::standby::db_host: db-1.dragon.lan
 pve::profiles::database::standby::rep_user: repuser
-pve::profiles::database::standby::rep_password: password1
+pve::profiles::database::standby::rep_password: >
+    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
+    DQYJKoZIhvcNAQEBBQAEggEAXEPoF6uqubPwY3DUBSC+BODSkElHIKgFc6MM
+    ipSqVs6m+tqZfgvkKDlgE3CtnFvNDADJraYzgwQa8xHvzUtFVD+6qvhHrA2R
+    2nL+AdwRiFhHs1mEcTSggJUws+n2oxmvx51Dz+viYVj4dSg57EqtDalty/zX
+    fdX7L2Y7G/KiMb5vNejzXEmkmXf5lqGPCsBvvrhgUWvob0/Le8SzbkqKt0gG
+    hM+QBwsCn4tEWWhEvLVcREl233wLjm/DRmxQqtuKFPokC1Po1HsnkLJNokIA
+    h/C3sHhv0d/dcOFsZ/PAjLIe2aL2WqeEMF0I0VkAdPkzYo6UFv4yisFjwPx6
+    SiZuxDA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCupQp8Byr0mLGXFU/s
+    xURlgBBcUqS8iVdrk0XqS4M+Bm0y]
