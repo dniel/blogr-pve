@@ -1,7 +1,5 @@
-# LXC setup
+# Linux LXC container setup
 I have used standard Debian 8 base images for the LXC containers.
-I have assinged 1gb of ram, 1gb of swap space and 1gb of harddrive space for each container
-and it seems to work pretty well.
 
 #### First, To create a new LXC container
 In proxmox perform the following steps to create a new container.
