@@ -1,4 +1,4 @@
-class pve::profiles::network{
+class pve::profiles::jenkins{
   include ::jenkins
 }
 
