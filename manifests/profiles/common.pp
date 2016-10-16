@@ -24,27 +24,6 @@ class pve::profiles::common{
     locales         => ['en_US.UTF-8 UTF-8', 'nb_NO.UTF-8 UTF-8'],
   }
 
-  package { 'git':
-    ensure => 'installed',
-  }
-
-  package { 'vim':
-    ensure => 'installed',
-  }
-
-  package { 'sudo':
-    ensure => 'installed',
-  }
-
-  # https://tickets.puppetlabs.com/browse/FACT-866
-  package { 'lsb-release':
-    ensure => installed,
-  }
-
-  package { 'ca-certificates':
-    ensure => installed,
-  }
-
   file { "/opt/pve/apply.sh":
     mode => "744",
   }

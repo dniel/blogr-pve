@@ -72,7 +72,7 @@
     <element xsi:type="archimate:AssociationRelationship" id="4559215d" source="12e235e2" target="c1f06238"/>
   </folder>
   <folder name="Views" id="6511b498" type="diagrams">
-    <element xsi:type="archimate:ArchimateDiagramModel" id="08a02935" name="overview">
+    <element xsi:type="archimate:ArchimateDiagramModel" id="08a02935" name="virtual">
       <child xsi:type="archimate:Group" id="c71b8d94" name="DMZ">
         <bounds x="7" y="120" width="1062" height="277"/>
         <child xsi:type="archimate:DiagramObject" id="594c47fb" textAlignment="2" archimateElement="734c9229">
