@@ -11,3 +11,5 @@ be configured to route a set of VLANS.
 | 5             | 10.0.5        | DEV           | the development infrastructure network, where Jenkins and ELK is configured.             |
 | 6             | 10.0.6        | TEST          | the test servers that are used for acceptance tersting.             |
 
+### Diagram
+![network_diagram](networks.png)
