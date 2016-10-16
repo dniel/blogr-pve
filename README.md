@@ -59,7 +59,7 @@ eventually be handled by Jenkins Pipeline.
 #### [Network configuration](doc/setup_network.md)
 #### [Proxmox configuration](doc/setup_proxmox.md)
 #### [Pfsense configuration](doc/setup_pfsense.md)
-#### [lxc configuration](doc/setup_lxc.md)
+#### [Linux LXC container configuration](doc/setup_lxc.md)
 
 ## The Puppet Module
 TODO: add detailed documentation about the puppet scripts, classes etc.
@@ -71,7 +71,7 @@ TODO: add detailed documentation about the puppet scripts, classes etc.
 * A hardware network switch to route the vlans between different hardware nodes.
 * Will not configure proxmox or pfsense, both must be manually installed and configured.
 
-### Future de
+### Future development
 * NAS, Network storage using iSCSI drive with multiple bays for configuring RAID failover on hard drives.
 * Configure proxmox with puppet
 * Configure pfSense with puppet
