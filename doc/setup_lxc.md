@@ -23,11 +23,10 @@ for the node roles, the puppet scripts use this to map the role to the container
 
 #### Then
 ##### Perform manual steps that must be performed on each virtual container.
-###### Log into the login-1 server, 
+Log into the login-1 server, 
 Copy the eyaml private and public keys to /etc/puppetlabs/keys to be able to decrypt values with *scp* command to the new LXC Container.
 
-###### Log into the new LXC container
-Run the following in the console.
+Log into the new LXC containerand run the following commands in the console.
 ```bash
 $ apt-get udpate
 $ apt-get upgrade
