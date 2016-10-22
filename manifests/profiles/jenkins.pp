@@ -8,6 +8,10 @@ class pve::profiles::jenkins{
   jenkins::plugin { 'matrix-project': }
   jenkins::plugin { 'workflow-scm-step': }
   jenkins::plugin { 'scm-api': }
+  jenkins::plugin { 'workflow-step-api': }
+  jenkins::plugin { 'structs': }
+  jenkins::plugin { 'junit': }
+  jenkins::plugin { 'script-security': }
 
 #Pipeline v2.4
 #workflow-cps v2.17 is missing. To fix, install v2.17 or later.
