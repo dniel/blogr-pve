@@ -12,6 +12,7 @@ class pve::profiles::jenkins{
   jenkins::plugin { 'structs': }
   jenkins::plugin { 'junit': }
   jenkins::plugin { 'script-security': }
+  jenkins::plugin { 'display-url-api': }
 
 #Pipeline v2.4
 #workflow-cps v2.17 is missing. To fix, install v2.17 or later.
