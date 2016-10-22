@@ -1,8 +1,8 @@
 class pve::profiles::jenkins{
   include ::jenkins
 
-  jenkins::job { 'test-build-job':
-    config  => template("${templates}/jenkins/blogr-build-job.xml.erb"),
+  jenkins::job { 'blogr-build-job':
+    config  => template("pve/jenkins/blogr-build-job.xml.erb"),
   }
 
   # GIT plugin and all its dependencies.
