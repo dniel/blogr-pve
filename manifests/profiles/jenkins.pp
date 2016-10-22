@@ -11,9 +11,7 @@ class pve::profiles::jenkins{
   jenkins::plugin { 'ssh-credentials': }
   jenkins::plugin { 'git-client': }
   jenkins::plugin { 'matrix-project': }
-  jenkins::plugin { 'workflow-scm-step': }
   jenkins::plugin { 'scm-api': }
-  jenkins::plugin { 'workflow-step-api': }
   jenkins::plugin { 'structs': }
   jenkins::plugin { 'junit': }
   jenkins::plugin { 'script-security': }
@@ -21,20 +19,34 @@ class pve::profiles::jenkins{
 
   #Pipeline v2.4 plugin and all its dependencies.
   jenkins::plugin { 'workflow-aggregator': }
-  #workflow-cps v2.17 is missing. To fix, install v2.17 or later.
-  #workflow-support v2.5 is missing. To fix, install v2.5 or later.
-  #workflow-basic-steps v2.1 is missing. To fix, install v2.1 or later.
-  #pipeline-input-step v2.1 is missing. To fix, install v2.1 or later.
-  #pipeline-milestone-step v1.0 is missing. To fix, install v1.0 or later.
-  #pipeline-build-step v2.2 is missing. To fix, install v2.2 or later.
-  #pipeline-stage-view v2.0 is missing. To fix, install v2.0 or later.
-  #workflow-multibranch v2.8 is missing. To fix, install v2.8 or later.
-  #workflow-durable-task-step v2.4 is missing. To fix, install v2.4 or later.
-  #workflow-api v2.3 is missing. To fix, install v2.3 or later.
-  #pipeline-stage-step v2.2 is missing. To fix, install v2.2 or later.
-  #workflow-scm-step v2.2 is missing. To fix, install v2.2 or later.
-  #workflow-cps-global-lib v2.3 is missing. To fix, install v2.3 or later.
-  #workflow-step-api v2.3 is missing. To fix, install v2.3 or later.
-  #workflow-job v2.6 is missing. To fix, install v2.6 or later.
+
+  jenkins::plugin { 'workflow-cps':}
+  jenkins::plugin { 'workflow-support':}
+  jenkins::plugin { 'workflow-basic-steps':}
+  jenkins::plugin { 'pipeline-input-step':}
+  jenkins::plugin { 'pipeline-milestone-step':}
+  jenkins::plugin { 'pipeline-build-step':}
+  jenkins::plugin { 'pipeline-stage-view':}
+  jenkins::plugin { 'workflow-multibranch':}
+  jenkins::plugin { 'workflow-durable-task-step':}
+  jenkins::plugin { 'workflow-api':}
+  jenkins::plugin { 'pipeline-stage-step':}
+  jenkins::plugin { 'workflow-scm-step':}
+  jenkins::plugin { 'workflow-cps-global-lib':}
+  jenkins::plugin { 'workflow-step-api':}
+  jenkins::plugin { 'workflow-job':}
+
+  jenkins::plugin { 'cloudbees-folder':}
+  jenkins::plugin { 'git-server':}
+  jenkins::plugin { 'ace-editor':}
+  jenkins::plugin { 'jquery-detached':}
+
+  jenkins::plugin { 'handlebars':}
+  jenkins::plugin { 'pipeline-rest-api':}
+  jenkins::plugin { 'momentjs':}
+
+  jenkins::plugin { 'pipeline-graph-analysis':}
+  jenkins::plugin { 'branch-api':}
+  jenkins::plugin { 'durable-task':}
 
 }
