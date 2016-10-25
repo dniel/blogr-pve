@@ -11,6 +11,8 @@ class pve::profiles::jenkins{
     config  => template("pve/jenkins/blogr-build-job.xml.erb"),
   }
 
+  jenkins::plugin { 'ansicolor': }
+
   # GIT plugin and all its dependencies.
   jenkins::plugin { 'git': }
   jenkins::plugin { 'mailer': }
