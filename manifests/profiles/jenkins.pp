@@ -1,6 +1,12 @@
 class pve::profiles::jenkins{
   include ::jenkins
 
+  # install node so that we can build blogr.
+  class { 'nodejs':
+    version      => 'v6.2.0',
+    make_install => false
+  }
+
   jenkins::job { 'blogr-build-job':
     config  => template("pve/jenkins/blogr-build-job.xml.erb"),
   }
