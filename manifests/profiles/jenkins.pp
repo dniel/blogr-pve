@@ -27,7 +27,7 @@ class pve::profiles::jenkins{
 
   #Pipeline v2.4 plugin and all its dependencies.
   jenkins::plugin { 'workflow-aggregator': }
-
+  jenkins::plugin { 'pipeline-utility-steps': }
   jenkins::plugin { 'workflow-cps':}
   jenkins::plugin { 'workflow-support':}
   jenkins::plugin { 'workflow-basic-steps':}
