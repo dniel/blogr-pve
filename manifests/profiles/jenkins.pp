@@ -11,19 +11,6 @@ class pve::profiles::jenkins{
     config  => template("pve/jenkins/blogr-build-job.xml.erb"),
   }
 
-  class { 'accounts':
-    ssh_keys   => hiera_hash('accounts::ssh_keys', {}),
-    users      => hiera_hash('accounts::users', {}),
-    usergroups => hiera_hash('accounts::usergroups', {}),
-    shell      => '/bin/bash'
-  }
-
-  accounts::account { 'jenkins':
-    authorized_keys => ['jenkins'],
-    home            => '/var/lib/jenkins',
-    managehome      => false,
-  }
-
   jenkins::plugin { 'ansicolor': }
 
   # GIT plugin and all its dependencies.
