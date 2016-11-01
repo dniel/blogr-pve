@@ -5,12 +5,6 @@ class pve::profiles::blogr::database(
 ){
   require postgresql::server
 
-  vcsrepo { '/opt/blogr':
-    ensure   => latest,
-    provider => git,
-    source   => 'https://github.com/dniel/blogr-workshop'
-  }
-
   postgresql::server::db { $name:
     user     => $user,
     password => postgresql_password($user, $password),
