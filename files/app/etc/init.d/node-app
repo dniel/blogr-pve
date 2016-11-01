@@ -3,7 +3,7 @@
 USER="root"
 NODE_ENV="production"
 PORT="3000"
-APP_DIR="/opt/blogr"
+APP_DIR="/opt/blogr/server"
 NODE_APP="server.js"
 CONFIG_DIR="$APP_DIR"
 PID_DIR="$APP_DIR/pid"
