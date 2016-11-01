@@ -21,4 +21,8 @@ class pve::profiles::common::packages{
     ensure => installed,
   }
 
+  package { 'zip':
+    ensure => installed,
+  }
+
 }
