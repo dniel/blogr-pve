@@ -75,4 +75,4 @@ TODO: add detailed documentation about the puppet scripts, classes etc.
 * NAS, Network storage using iSCSI drive with multiple bays for configuring RAID failover on hard drives.
 * Configure proxmox with puppet
 * Configure pfSense with puppet
-* Jenkins2 build server with Pipeline for deploying the Node Application to dev, test and production.
+* LDAP with ssh keys for centralized user database for more secure user handling.
