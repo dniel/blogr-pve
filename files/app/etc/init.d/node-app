@@ -1,9 +1,9 @@
 #!/bin/sh
 
-USER="root"
+USER="jenkins"
 NODE_ENV="production"
 PORT="3000"
-APP_DIR="/opt/blogr/server"
+APP_DIR="/opt/blogr/latest/server"
 NODE_APP="server.js"
 CONFIG_DIR="$APP_DIR"
 PID_DIR="$APP_DIR/pid"
