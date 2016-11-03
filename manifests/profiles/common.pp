@@ -29,7 +29,7 @@ class pve::profiles::common{
   }
 
   file { 'post-hook':
-    ensure   => file,
+    ensure   => absent,
     path     => '/opt/pve/.git/hooks/post-merge',
     content  => 'cd /opt/pve ; ./apply.sh',
     mode     => "0755",
@@ -37,7 +37,7 @@ class pve::profiles::common{
     group    => root
   }->
   cron { 'puppet-apply':
-    ensure  => present,
+    ensure  => absent,
     command => "cd /opt/pve ; /usr/bin/git pull",
     user    => root,
     minute  => '*/60',
