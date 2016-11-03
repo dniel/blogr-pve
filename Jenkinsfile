@@ -9,12 +9,7 @@ node('master') {
 
            stage 'Puppet Apply'
                 def servers = ['app-3.dragon.lan',
-                               'app-3.dragon.lan',
-                               'db-2.dragon.lan',
-                               'front-2.dragon.lan',
-                               'ci-1.dragon.lan',
-                               'login-1.dragon.lan',
-                               'logger-1.dragon.lan']
+                               'app-4.dragon.lan']
                 for (server in servers) {
                    puppetApply server
                 }
