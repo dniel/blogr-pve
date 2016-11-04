@@ -11,5 +11,5 @@ class pve::profiles::common::users{
     authorized_keys => ['jenkins'],
   }
 
-  include sudo
+  class { 'sudo': }
 }
