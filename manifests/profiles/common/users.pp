@@ -10,4 +10,8 @@ class pve::profiles::common::users{
   accounts::account { 'jenkins':
     authorized_keys => ['jenkins'],
   }
+
+  include sudo
+  include sudo::configs
+
 }

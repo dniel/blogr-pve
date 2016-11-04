@@ -31,6 +31,6 @@ node('master') {
 
 def puppetApply(server){
     print "Update ${server}"
-    sh "ssh jenkins@${server} 'git --work-tree=/opt/pve --git-dir=/opt/pve/.git pull'"
-    sh "ssh jenkins@${server} 'sudo /opt/pve/apply.sh'"
+    sh "ssh -o StrictHostKeyChecking=no jenkins@${server} 'git --work-tree=/opt/pve --git-dir=/opt/pve/.git pull'"
+    sh "ssh -o StrictHostKeyChecking=no jenkins@${server} 'sudo /opt/pve/apply.sh'"
 }

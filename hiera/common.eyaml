@@ -60,3 +60,11 @@ accounts::users:
   jenkins:
     uid: 1000
     comment: Jenkins
+
+
+sudo::configs:
+    'web':
+        'source'    : 'puppet:///files/etc/sudoers.d/web'
+    'jenkins':
+        'content'   : "%admins ALL=(ALL) NOPASSWD: ALL"
+        'priority'  : 10
