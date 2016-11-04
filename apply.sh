@@ -26,7 +26,7 @@ fi
 environment=$(git symbolic-ref --short HEAD)
 
 # install modules
-./bin/librarian-puppet install --path ./modules --verbose || exit 1
+./bin/librarian-puppet install --path ./modules || exit 1
 
 # Run Puppet
 ./bin/puppet apply apply --color=ansi --log_level=err --logdest=syslog --modulepath="..:./modules" --hiera_config=hiera.yaml manifests "$@"
