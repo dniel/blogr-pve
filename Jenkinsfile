@@ -7,15 +7,15 @@ node('master') {
            stage 'Prepare'
                 checkout scm
 
-           stage 'Puppet Apply'
-                def servers = ['front-2.dragon.lan',
-                               'db-2.dragon.lan',
-                               'ci-1.dragon.lan',
-                               'log-1.dragon.lan',
-                               'login-1.dragon.lan',
-                               'app-3.dragon.lan',
-                               'app-4.dragon.lan']
+                def servers = ['front-2',
+                               'db-2',
+                               'ci-1',
+                               'log-1',
+                               'login-1',
+                               'app-3',
+                               'app-4']
                 for (server in servers) {
+                   stage server
                    puppetApply server
                 }
            stage 'Cleanup'
