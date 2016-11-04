@@ -37,11 +37,6 @@ class pve::profiles::common{
     command => "/bin/chmod -R jenkins.jenkins /opt/pve",
   }
 
-  exec {"chown blogr":
-    require => [File['/opt/blogr'], User['jenkins']],
-    command => "/bin/chmod -R jenkins.jenkins /opt/blogr",
-  }
-
   file { 'post-hook':
     ensure   => absent,
     path     => '/opt/pve/.git/hooks/post-merge',
