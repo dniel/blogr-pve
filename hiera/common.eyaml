@@ -64,4 +64,4 @@ accounts::users:
 
 sudo::configs:
   jenkins:
-    source: puppet:///files/etc/sudoers.d/jenkins
+    source: puppet:///modules/pve/etc/sudoers.d/jenkins
