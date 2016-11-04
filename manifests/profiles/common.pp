@@ -28,6 +28,13 @@ class pve::profiles::common{
     mode => "744",
   }
 
+  file { '/opt/pve' :
+    ensure    => directory,
+    owner     => 'jenkins',
+    group      => 'jenkins',
+    recurse    => true,
+  }
+
   file { 'post-hook':
     ensure   => absent,
     path     => '/opt/pve/.git/hooks/post-merge',
