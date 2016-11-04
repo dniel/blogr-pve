@@ -28,6 +28,10 @@ class pve::profiles::common{
     mode => "744",
   }
 
+  file{"/opt/pve":
+    ensure  =>  directory,
+  }
+
   exec {"chown pve":
     require => [File['/opt/pve'], User['jenkins']],
     command => "/bin/chmod -R jenkins.jenkins /opt/pve",
