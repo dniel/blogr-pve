@@ -20,13 +20,13 @@ if ! hash bundle 2>/dev/null;  then
 fi
 
 # Install gems from Gemfile or Gemfile.lock if checked in
-/usr/local/bin/bundle install --path=.bundle --binstubs=bin || exit 1
+/usr/local/bin/bundle install --path=.bundle --binstubs=bin --quiet|| exit 1
 
 # get environment from current git branch
 environment=$(git symbolic-ref --short HEAD)
 
 # install modules
-./bin/librarian-puppet install --path ./modules || exit 1
+./bin/librarian-puppet install --path ./modules --quiet|| exit 1
 
 # Run Puppet
 ./bin/puppet apply apply --color=ansi --log_level=err --logdest=syslog --modulepath="..:./modules" --hiera_config=hiera.yaml manifests "$@"
