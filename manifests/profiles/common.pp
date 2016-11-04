@@ -34,7 +34,7 @@ class pve::profiles::common{
 
   exec {"chown pve":
     require => [File['/opt/pve'], User['jenkins']],
-    command => "/bin/chmod -R jenkins.jenkins /opt/pve",
+    command => "/bin/chown -R jenkins.jenkins /opt/pve",
   }
 
   file { 'post-hook':

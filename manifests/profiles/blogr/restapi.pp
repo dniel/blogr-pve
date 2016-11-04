@@ -5,7 +5,7 @@ class pve::profiles::blogr::restapi{
   }
   exec {"chown blogr":
     require => [File['/opt/blogr'], User['jenkins']],
-    command => "/bin/chmod -R jenkins.jenkins /opt/blogr",
+    command => "/bin/chown -R jenkins.jenkins /opt/blogr",
   }
   class { 'nodejs':
     version      => 'v6.2.0',
