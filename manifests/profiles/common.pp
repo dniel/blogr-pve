@@ -28,13 +28,6 @@ class pve::profiles::common{
     mode => "744",
   }
 
-  file { '/opt/pve' :
-    ensure    => directory,
-    owner     => 'jenkins',
-    group      => 'jenkins',
-    require     => [ User['jenkins'] ],
-    recurse    => true,
-  }
   file { '/opt/blogr' :
     ensure    => directory,
     owner     => 'jenkins',
