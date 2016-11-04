@@ -21,6 +21,7 @@
     {"name":"saz-locales","version_requirement":">= 2.2.2"},
     {"name":"saz-ssh","version_requirement":">= 2.8.1"},
     {"name":"saz-timezone","version_requirement":">= 3.3.0"},
+    {"name":"saz-sudo","version_requirement":">= 3.1.0"},
     {"name":"puppet-unattended_upgrades","version_requirement":">= 2.0.0"},
     {"name":"lesaux-kibana4","version_requirement":">= 1.0.17"},
     {"name":"elasticsearch-elasticsearch","version_requirement":">= 0.13.2"},

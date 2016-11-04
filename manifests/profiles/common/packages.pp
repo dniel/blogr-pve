@@ -8,10 +8,6 @@ class pve::profiles::common::packages{
     ensure => 'installed',
   }
 
-  package { 'sudo':
-    ensure => 'installed',
-  }
-
   # https://tickets.puppetlabs.com/browse/FACT-866
   package { 'lsb-release':
     ensure => installed,

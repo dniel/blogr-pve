@@ -11,11 +11,5 @@ class pve::profiles::common::users{
     authorized_keys => ['jenkins'],
   }
 
-  file { 'jenkins sudoers':
-    ensure   => present,
-    path     => '/opt/pve/.git/hooks/post-merge',
-    source   => 'puppet:///files/etc/sudoers.d/jenkins',
-    owner    => root,
-    group    => root
-  }
+  include sudo
 }

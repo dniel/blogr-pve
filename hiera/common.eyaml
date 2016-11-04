@@ -61,3 +61,7 @@ accounts::users:
     uid: 1000
     comment: Jenkins
 
+
+sudo::configs:
+  jenkins:
+    source: puppet:///files/etc/sudoers.d/jenkins
