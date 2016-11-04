@@ -26,5 +26,6 @@ node('master') {
 
 def puppetApply(server){
     print "Update ${server}"
-    sh "ssh jenkins@${server} 'sudo git --work-tree=/opt/pve --git-dir=/opt/pve/.git pull && /opt/pve/apply.sh > /dev/null'"
+    sh "ssh jenkins@${server} 'git --work-tree=/opt/pve --git-dir=/opt/pve/.git pull'"
+    sh "ssh jenkins@${server} 'sudo /opt/pve/apply.sh > /dev/null'"
 }
