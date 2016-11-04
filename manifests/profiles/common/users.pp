@@ -12,6 +12,4 @@ class pve::profiles::common::users{
   }
 
   include sudo
-  include sudo::configs
-
 }
