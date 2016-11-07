@@ -11,7 +11,8 @@ node('master') {
                                'db-2',
                                'login-1',
                                'app-3',
-                               'app-4']
+                               'app-4',
+                               'ci-1']
                 for (server in servers) {
                    stage server
                    puppetApply server
