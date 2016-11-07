@@ -17,10 +17,6 @@ node('master') {
                    puppetApply server
                 }
 
-           stage 'ci-1'
-                print "update the jenkins machine itself."
-                sh '/opt/pve/apply.sh'
-
            stage 'Cleanup'
                 print "Clean workspace"
                 deleteDir()
