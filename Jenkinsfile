@@ -11,12 +11,16 @@ node('master') {
                                'db-2',
                                'login-1',
                                'app-3',
-                               'app-4',
-                               'ci-1']
+                               'app-4']
                 for (server in servers) {
                    stage server
                    puppetApply server
                 }
+
+           stage 'ci-1'
+                print "update the jenkins machine itself."
+                sh '/opt/pve/apply.sh'
+
            stage 'Cleanup'
                 print "Clean workspace"
                 deleteDir()
