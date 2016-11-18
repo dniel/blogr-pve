@@ -15,7 +15,6 @@ class pve::profiles::reverseproxy(
     ipaddress        => $::ipaddress,
     ports            => '3000',
     mode             => 'http',
-    options           => 'httpchk HEAD /api/system/ping HTTP/1.1'
   }
 
   haproxy::balancermember { 'app-2':
@@ -32,5 +31,14 @@ class pve::profiles::reverseproxy(
     ipaddresses       => '10.0.3.7',
     ports             => '3000',
     options           => 'check fall 3 rise 2'
+  }
+
+  haproxy::backend { 'puppet11':
+    options => {
+      'option'  => [
+        'httpchk HEAD /api/system/ping HTTP/1.1',
+      ],
+      'balance' => 'roundrobin',
+    },
   }
 }
