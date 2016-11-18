@@ -43,6 +43,7 @@ class pve::profiles::reverseproxy(
   }
 
   haproxy::backend { 'blogr_backend':
+    mode => 'http',
     options => {
       'option'  => [
         'httpchk HEAD /api/system/ping HTTP/1.1',
