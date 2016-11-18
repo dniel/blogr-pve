@@ -15,7 +15,7 @@ class pve::profiles::reverseproxy(
     ipaddress        => $::ipaddress,
     ports            => '3000',
     mode             => 'http',
-    option           => 'httpchk HEAD /api/system/ping HTTP/1.1'
+    options           => 'httpchk HEAD /api/system/ping HTTP/1.1'
   }
 
   haproxy::balancermember { 'app-2':
