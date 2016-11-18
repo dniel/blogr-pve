@@ -19,8 +19,8 @@ class pve::profiles::reverseproxy(
 
   haproxy::balancermember { '':
     listening_service => 'puppet00',
-    server_names      => ['app-2','app-4']
-    ipaddresses       => ['10.0.3.7','10.0.3.9']
+    server_names      => 'app-2',
+    ipaddresses       => '10.0.3.7',
     options           => 'check fall 3 rise 2'
   }
 
