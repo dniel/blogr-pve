@@ -17,19 +17,10 @@ class pve::profiles::reverseproxy(
     mode             => 'http',
   }
 
-  haproxy::balancermember { 'app-2':
+  haproxy::balancermember { 'balance_members_cluster_2':
     listening_service => 'puppet00',
-    server_names      => 'app-2.dragon.lan',
-    ipaddresses       => '10.0.3.9',
-    ports             => '3000',
-    options           => 'check fall 3 rise 2'
-  }
-
-  haproxy::balancermember { 'app-4':
-    listening_service => 'puppet00',
-    server_names      => 'app-4.dragon.lan',
-    ipaddresses       => '10.0.3.7',
-    ports             => '3000',
+    server_names      => ['app-2','app-4']
+    ipaddresses       => ['app-2.dragon.lan','app-4.dragon.lan']
     options           => 'check fall 3 rise 2'
   }
 
