@@ -1,5 +1,6 @@
 class pve::profiles::reverseproxy(
-  $app_hosts
+  $app_hosts,
+  $server_names
 ){
 
   package { 'nginx':
@@ -13,7 +14,7 @@ class pve::profiles::reverseproxy(
 
   haproxy::balancermember { 'haproxy':
     listening_service => 'blogr_frontend',
-    server_names      => ['host1', 'host2'],
+    server_names      => $server_names,
     ipaddresses       => $app_hosts,
     options           => 'check fall 3 rise 2',
     ports             => '3000'
