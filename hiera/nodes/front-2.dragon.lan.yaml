@@ -1,6 +1,6 @@
 pve::profiles::reverseproxy::app_hosts:
-  - app-2.dragon.lan:3000
-  - app-4.dragon.lan:3000
+  - app-2.dragon.lan
+  - app-4.dragon.lan
 
 pve::profiles::reverseproxy::server_names:
   - app-2
