@@ -29,7 +29,8 @@
     {"name":"pcfens-filebeat","version_requirement":">= 0.6.4"},
     {"name":"rtyler-jenkins","version_requirement":">= 1.7.0"},
     {"name":"dhoppe-fail2ban","version_requirement":">= 1.1.1"},
-    {"name":"camptocamp-accounts","version_requirement":">= 1.8.0"}
+    {"name":"camptocamp-accounts","version_requirement":">= 1.8.0"},
+    {"name":"puppetlabs-haproxy'","version_requirement":">= 1.5.0"}
   ]
 }
 
