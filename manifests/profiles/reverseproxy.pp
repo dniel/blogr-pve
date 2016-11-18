@@ -21,7 +21,7 @@ class pve::profiles::reverseproxy(
 
   haproxy::frontend { 'blogr_frontend':
     ipaddress => '0.0.0.0',
-    ports     => '3000',
+    ports     => '80',
     mode      => 'http',
     options   => {
       'use_backend' => 'blogr_backend'
