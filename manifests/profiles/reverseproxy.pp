@@ -2,9 +2,13 @@ class pve::profiles::reverseproxy(
   $app_hosts
 ){
 
-  class { '::nginx':
-    ensure => 'absent'
+  package { 'nginx':
+    ensure => purged,
   }
+  package { 'nginx-common':
+    ensure => purged,
+  }
+
 
   include ::haproxy
   haproxy::listen { 'puppet00':
