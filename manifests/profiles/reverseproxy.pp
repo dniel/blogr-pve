@@ -10,35 +10,23 @@ class pve::profiles::reverseproxy(
   }
 
   include ::haproxy
-  haproxy::listen { 'puppet00':
-    collect_exported => false,
-    ipaddress        => $::ipaddress,
-    ports            => '3000',
-    mode             => 'http',
+
+  haproxy::frontend { 'blogr_frontend':
+    ipaddress       => $::ipaddress,
+    ports           => '3000',
+    mode            => 'http',
+    options         => { 'balance' => 'roundrobin' }
   }
 
-  haproxy::balancermember { 'app-2':
-    listening_service => 'puppet00',
-    server_names      => 'app-2.dragon.lan',
-    ipaddresses       => '10.0.3.9',
+  haproxy::backend { 'blogr_backend':
+    listening_service => 'blogr',
+    server_names      => ['app-2', 'app-4'],
+    ipaddresses       => ['app-2.dragon.lan', 'app-4.dragon.lan'],
     ports             => '3000',
-    options           => 'check fall 3 rise 2'
-  }
-
-  haproxy::balancermember { 'app-4':
-    listening_service => 'puppet00',
-    server_names      => 'app-4.dragon.lan',
-    ipaddresses       => '10.0.3.7',
-    ports             => '3000',
-    options           => 'check fall 3 rise 2'
-  }
-
-  haproxy::backend { 'puppet11':
-    options => {
+    options           => {
       'option'  => [
         'httpchk HEAD /api/system/ping HTTP/1.1',
       ],
-      'balance' => 'roundrobin',
-    },
+    }
   }
 }
