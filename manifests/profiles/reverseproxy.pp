@@ -13,8 +13,8 @@ class pve::profiles::reverseproxy(
 
   haproxy::balancermember { 'haproxy':
     listening_service => 'blogr_frontend',
-    server_names      => ['app-2', 'app-4'],
-    ipaddresses       => ['app-2.dragon.lan', 'app-4.dragon.lan'],
+    server_names      => ['host1', 'host2'],
+    ipaddresses       => $app_hosts,
     options           => 'check fall 3 rise 2',
     ports             => '3000'
   }
