@@ -10,18 +10,13 @@ class pve::profiles::reverseproxy(
   }
 
   include ::haproxy
-  haproxy::listen { 'puppet00':
-    collect_exported => false,
-    ipaddress        => $::ipaddress,
-    ports            => '3000',
-    mode             => 'http',
-  }
 
   haproxy::balancermember { 'app-2':
-    listening_service => 'puppet00',
+    listening_service => 'blogr_frontend',
     server_names      => 'app-2',
     ipaddresses       => 'app-2.dragon.lan',
-    options           => 'check fall 3 rise 2'
+    options           => 'check fall 3 rise 2',
+    ports             => '3000'
   }
 
   haproxy::frontend { 'blogr_frontend':
