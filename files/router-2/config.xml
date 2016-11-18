@@ -113,8 +113,7 @@
 			<subnet>24</subnet>
 		</opt3>
 	</interfaces>
-	<staticroutes>
-	</staticroutes>
+	<staticroutes/>
 	<dhcpd>
 		<lan>
 			<range>
@@ -143,7 +142,13 @@
 			<ipaddr/>
 		</ipv6nat>
 	</diag>
-	<syslog/>
+	<syslog>
+		<nentries>50</nentries>
+		<sourceip/>
+		<ipproto>ipv4</ipproto>
+		<filter/>
+		<relayd/>
+	</syslog>
 	<filter>
 		<rule>
 			<id/>
@@ -490,6 +495,58 @@
 			</updated>
 		</rule>
 		<rule>
+			<source>
+				<any/>
+			</source>
+			<interface>wan</interface>
+			<protocol>tcp</protocol>
+			<destination>
+				<address>LOGIN_SERVER</address>
+				<port>22</port>
+			</destination>
+			<descr><![CDATA[NAT ]]></descr>
+			<associated-rule-id>nat_58023ecc3a2816.59647772</associated-rule-id>
+			<tracker>1476542156</tracker>
+			<created>
+				<time>1476542156</time>
+				<username>NAT Port Forward</username>
+			</created>
+		</rule>
+		<rule>
+			<id/>
+			<tracker>1477136029</tracker>
+			<type>pass</type>
+			<interface>wan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag/>
+			<tagged/>
+			<max/>
+			<max-src-nodes/>
+			<max-src-conn/>
+			<max-src-states/>
+			<statetimeout/>
+			<statetype>keep state</statetype>
+			<os/>
+			<protocol>tcp</protocol>
+			<source>
+				<any/>
+			</source>
+			<destination>
+				<address>CI_SERVER</address>
+				<port>8080</port>
+			</destination>
+			<descr><![CDATA[NAT forward public port 80 to 8080 on build server]]></descr>
+			<associated-rule-id>nat_580b4e9d999c07.00872228</associated-rule-id>
+			<created>
+				<time>1477136029</time>
+				<username>NAT Port Forward</username>
+			</created>
+			<updated>
+				<time>1479155800</time>
+				<username>admin@10.0.1.30</username>
+			</updated>
+		</rule>
+		<rule>
 			<id/>
 			<tracker>1466370520</tracker>
 			<type>pass</type>
@@ -734,6 +791,170 @@
 			</updated>
 			<created>
 				<time>1474665843</time>
+				<username>admin@10.0.1.30</username>
+			</created>
+		</rule>
+		<rule>
+			<id/>
+			<tracker>1474914761</tracker>
+			<type>pass</type>
+			<interface>lan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag/>
+			<tagged/>
+			<max/>
+			<max-src-nodes/>
+			<max-src-conn/>
+			<max-src-states/>
+			<statetimeout/>
+			<statetype>keep state</statetype>
+			<os/>
+			<protocol>tcp</protocol>
+			<source>
+				<network>lan</network>
+			</source>
+			<destination>
+				<address>LOG_SERVER</address>
+				<port>FILEBEAT_PORT</port>
+			</destination>
+			<descr><![CDATA[Easy Rule: Passed from Firewall Log View]]></descr>
+			<created>
+				<time>1474914542</time>
+				<username>Easy Rule</username>
+			</created>
+			<updated>
+				<time>1474914761</time>
+				<username>admin@10.0.1.30</username>
+			</updated>
+		</rule>
+		<rule>
+			<id/>
+			<tracker>1476539965</tracker>
+			<type>pass</type>
+			<interface>lan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag/>
+			<tagged/>
+			<max/>
+			<max-src-nodes/>
+			<max-src-conn/>
+			<max-src-states/>
+			<statetimeout/>
+			<statetype>keep state</statetype>
+			<os/>
+			<protocol>tcp</protocol>
+			<source>
+				<address>LOGIN_SERVER</address>
+			</source>
+			<destination>
+				<any/>
+				<port>22</port>
+			</destination>
+			<descr/>
+			<updated>
+				<time>1476539965</time>
+				<username>admin@10.0.1.30</username>
+			</updated>
+			<created>
+				<time>1476539965</time>
+				<username>admin@10.0.1.30</username>
+			</created>
+		</rule>
+		<rule>
+			<id/>
+			<tracker>1479071644</tracker>
+			<type>pass</type>
+			<interface>lan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag/>
+			<tagged/>
+			<max/>
+			<max-src-nodes/>
+			<max-src-conn/>
+			<max-src-states/>
+			<statetimeout/>
+			<statetype>keep state</statetype>
+			<os/>
+			<protocol>tcp</protocol>
+			<source>
+				<address>LOGIN_SERVER</address>
+			</source>
+			<destination>
+				<address>10.0.3.4</address>
+				<port>3000</port>
+			</destination>
+			<descr/>
+			<updated>
+				<time>1479071644</time>
+				<username>admin@10.0.1.30</username>
+			</updated>
+			<created>
+				<time>1479071644</time>
+				<username>admin@10.0.1.30</username>
+			</created>
+		</rule>
+		<rule>
+			<id/>
+			<tracker>1479071671</tracker>
+			<type>pass</type>
+			<interface>lan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag/>
+			<tagged/>
+			<max/>
+			<max-src-nodes/>
+			<max-src-conn/>
+			<max-src-states/>
+			<statetimeout/>
+			<statetype>keep state</statetype>
+			<os/>
+			<protocol>tcp</protocol>
+			<source>
+				<address>LOGIN_SERVER</address>
+			</source>
+			<destination>
+				<address>10.0.3.7</address>
+				<port>3000</port>
+			</destination>
+			<descr/>
+			<created>
+				<time>1479071671</time>
+				<username>admin@10.0.1.30</username>
+			</created>
+			<updated>
+				<time>1479071700</time>
+				<username>admin@10.0.1.30</username>
+			</updated>
+		</rule>
+		<rule>
+			<id/>
+			<tracker>1479156267</tracker>
+			<type>reject</type>
+			<interface>lan</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag/>
+			<tagged/>
+			<max/>
+			<max-src-nodes/>
+			<max-src-conn/>
+			<max-src-states/>
+			<statetimeout/>
+			<statetype>keep state</statetype>
+			<os/>
+			<protocol>tcp</protocol>
+			<source>
+				<any/>
+			</source>
+			<destination>
+				<any/>
+			</destination>
+			<descr/>
+			<updated>
+				<time>1479156267</time>
+				<username>admin@10.0.1.30</username>
+			</updated>
+			<created>
+				<time>1479156267</time>
 				<username>admin@10.0.1.30</username>
 			</created>
 		</rule>
@@ -996,6 +1217,39 @@
 			</updated>
 			<created>
 				<time>1472231766</time>
+				<username>admin@10.0.1.30</username>
+			</created>
+		</rule>
+		<rule>
+			<id/>
+			<tracker>1474914896</tracker>
+			<type>pass</type>
+			<interface>opt1</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag/>
+			<tagged/>
+			<max/>
+			<max-src-nodes/>
+			<max-src-conn/>
+			<max-src-states/>
+			<statetimeout/>
+			<statetype>keep state</statetype>
+			<os/>
+			<protocol>tcp</protocol>
+			<source>
+				<network>opt1</network>
+			</source>
+			<destination>
+				<address>LOG_SERVER</address>
+				<port>FILEBEAT_PORT</port>
+			</destination>
+			<descr/>
+			<updated>
+				<time>1474914896</time>
+				<username>admin@10.0.1.30</username>
+			</updated>
+			<created>
+				<time>1474914896</time>
 				<username>admin@10.0.1.30</username>
 			</created>
 		</rule>
@@ -1294,11 +1548,46 @@
 				<username>admin@10.0.1.30</username>
 			</updated>
 		</rule>
+		<rule>
+			<id/>
+			<tracker>1474914397</tracker>
+			<type>pass</type>
+			<interface>opt3</interface>
+			<ipprotocol>inet</ipprotocol>
+			<tag/>
+			<tagged/>
+			<max/>
+			<max-src-nodes/>
+			<max-src-conn/>
+			<max-src-states/>
+			<statetimeout/>
+			<statetype>keep state</statetype>
+			<os/>
+			<protocol>tcp</protocol>
+			<source>
+				<network>lan</network>
+			</source>
+			<destination>
+				<any/>
+				<port>5044</port>
+			</destination>
+			<log/>
+			<descr/>
+			<created>
+				<time>1474914397</time>
+				<username>admin@10.0.1.30</username>
+			</created>
+			<updated>
+				<time>1474914409</time>
+				<username>admin@10.0.1.30</username>
+			</updated>
+		</rule>
 		<separator>
 			<wan/>
 			<lan/>
 			<opt1/>
 			<opt3/>
+			<floatingrules/>
 		</separator>
 	</filter>
 	<aliases>
@@ -1312,9 +1601,16 @@
 		<alias>
 			<name>APP_SERVERS</name>
 			<type>host</type>
-			<address>10.0.3.8 10.0.3.9 10.0.3.4 10.0.3.7</address>
+			<address>app-1.dragon.lan app-2.dragon.lan app-3.dragon.lan app-4.dragon.lan</address>
 			<descr><![CDATA[Node servers in INTRA]]></descr>
 			<detail><![CDATA[app-1||app-2||app-3||app-4]]></detail>
+		</alias>
+		<alias>
+			<name>CI_SERVER</name>
+			<type>host</type>
+			<address>ci-1.dragon.lan</address>
+			<descr/>
+			<detail><![CDATA[Entry added Sat, 22 Oct 2016 13:24:10 +0200]]></detail>
 		</alias>
 		<alias>
 			<name>DB_SERVER_PORTS</name>
@@ -1326,9 +1622,16 @@
 		<alias>
 			<name>DB_SERVERS</name>
 			<type>host</type>
-			<address>10.0.3.5 10.0.3.6</address>
+			<address>db-1.dragon.lan db-2.dragon.lan</address>
 			<descr><![CDATA[Postegres servers in INTRA]]></descr>
 			<detail><![CDATA[db-1||db-2]]></detail>
+		</alias>
+		<alias>
+			<name>FILEBEAT_PORT</name>
+			<type>port</type>
+			<address>5044</address>
+			<descr/>
+			<detail><![CDATA[Entry added Mon, 26 Sep 2016 20:31:22 +0200]]></detail>
 		</alias>
 		<alias>
 			<name>FRONT_LB</name>
@@ -1357,6 +1660,20 @@
 			<address>10.0.5.4</address>
 			<descr/>
 			<detail><![CDATA[Entry added Sat, 24 Sep 2016 22:45:00 +0200]]></detail>
+		</alias>
+		<alias>
+			<name>LOG_SERVER</name>
+			<type>host</type>
+			<address>log-1.dragon.lan</address>
+			<descr/>
+			<detail><![CDATA[Entry added Mon, 26 Sep 2016 20:30:58 +0200]]></detail>
+		</alias>
+		<alias>
+			<name>LOGIN_SERVER</name>
+			<type>host</type>
+			<address>login-1.dragon.lan</address>
+			<descr/>
+			<detail><![CDATA[login/jumpserver]]></detail>
 		</alias>
 		<alias>
 			<name>PVE_LB</name>
@@ -1596,9 +1913,9 @@
 	</unbound>
 	<vlans/>
 	<revision>
-		<time>1474750257</time>
-		<description><![CDATA[(system)@10.0.4.1: Merged in config (staticroutes,gateways,virtualip,system,authserver,dnsmasq,unbound,ipsec,aliases,wol,load_balancer,openvpn,cert,ca,crl,schedules,filter,nat sections) from XMLRPC client.]]></description>
-		<username>(system)@10.0.4.1</username>
+		<time>1479497959</time>
+		<description><![CDATA[admin@10.0.1.30: /firewall_rules.php made unknown change]]></description>
+		<username>admin@10.0.1.30</username>
 	</revision>
 	<shaper/>
 	<cert>
@@ -1670,6 +1987,13 @@
 			<aliases/>
 		</hosts>
 		<hosts>
+			<host>ci-1</host>
+			<domain>dragon.lan</domain>
+			<ip>10.0.5.5</ip>
+			<descr/>
+			<aliases/>
+		</hosts>
+		<hosts>
 			<host>db-1</host>
 			<domain>dragon.lan</domain>
 			<ip>10.0.3.5</ip>
@@ -1701,6 +2025,13 @@
 			<host>log-1</host>
 			<domain>dragon.lan</domain>
 			<ip>10.0.5.4</ip>
+			<descr/>
+			<aliases/>
+		</hosts>
+		<hosts>
+			<host>login-1</host>
+			<domain>dragon.lan</domain>
+			<ip>10.0.2.6</ip>
 			<descr/>
 			<aliases/>
 		</hosts>
@@ -1898,6 +2229,52 @@
 			<mode>advanced</mode>
 		</outbound>
 		<separator/>
+		<rule>
+			<source>
+				<any/>
+			</source>
+			<destination>
+				<address>10.0.1.202</address>
+				<port>22</port>
+			</destination>
+			<protocol>tcp</protocol>
+			<target>LOGIN_SERVER</target>
+			<local-port>22</local-port>
+			<interface>wan</interface>
+			<descr/>
+			<associated-rule-id>nat_58023ecc3a2816.59647772</associated-rule-id>
+			<updated>
+				<time>1476542156</time>
+				<username>admin@10.0.1.30</username>
+			</updated>
+			<created>
+				<time>1476542156</time>
+				<username>admin@10.0.1.30</username>
+			</created>
+		</rule>
+		<rule>
+			<source>
+				<any/>
+			</source>
+			<destination>
+				<address>10.0.1.203</address>
+				<port>80</port>
+			</destination>
+			<protocol>tcp</protocol>
+			<target>CI_SERVER</target>
+			<local-port>8080</local-port>
+			<interface>wan</interface>
+			<descr><![CDATA[forward public port 80 to 8080 on build server]]></descr>
+			<associated-rule-id>nat_580b4e9d999c07.00872228</associated-rule-id>
+			<updated>
+				<time>1477136029</time>
+				<username>admin@10.0.1.30</username>
+			</updated>
+			<created>
+				<time>1477136029</time>
+				<username>admin@10.0.1.30</username>
+			</created>
+		</rule>
 	</nat>
 	<virtualip>
 		<vip>
@@ -1952,6 +2329,54 @@
 			<subnet_bits>32</subnet_bits>
 			<subnet>10.0.5.3</subnet>
 		</vip>
+		<vip>
+			<mode>ipalias</mode>
+			<interface>wan</interface>
+			<uniqid>57e96aace736d</uniqid>
+			<descr><![CDATA[kibana website virtual ip.]]></descr>
+			<type>single</type>
+			<subnet_bits>32</subnet_bits>
+			<subnet>10.0.1.201</subnet>
+		</vip>
+		<vip>
+			<mode>ipalias</mode>
+			<interface>wan</interface>
+			<uniqid>57ffd14eba756</uniqid>
+			<descr><![CDATA[ blogr website virtual ip.]]></descr>
+			<type>single</type>
+			<subnet_bits>32</subnet_bits>
+			<subnet>10.0.1.200</subnet>
+		</vip>
+		<vip>
+			<mode>ipalias</mode>
+			<interface>wan</interface>
+			<uniqid>58023e5954d70</uniqid>
+			<descr><![CDATA[login ssh virtual ip.]]></descr>
+			<type>single</type>
+			<subnet_bits>32</subnet_bits>
+			<subnet>10.0.1.202</subnet>
+		</vip>
+		<vip>
+			<mode>ipalias</mode>
+			<interface>wan</interface>
+			<uniqid>580b4e3765b71</uniqid>
+			<descr><![CDATA[build server website virtual ip]]></descr>
+			<type>single</type>
+			<subnet_bits>32</subnet_bits>
+			<subnet>10.0.1.203</subnet>
+		</vip>
 	</virtualip>
 	<authserver/>
+	<sysctl>
+		<item>
+			<tunable>net.inet.tcp.blackhole</tunable>
+			<value>0</value>
+			<descr><![CDATA[Do not send RST on segments to closed ports]]></descr>
+		</item>
+		<item>
+			<tunable>net.inet.udp.blackhole</tunable>
+			<value>1</value>
+			<descr><![CDATA[Do not send port unreachables for refused connects]]></descr>
+		</item>
+	</sysctl>
 </pfsense>
