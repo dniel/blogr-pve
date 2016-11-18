@@ -33,8 +33,16 @@ class pve::profiles::reverseproxy(
     options           => 'check fall 3 rise 2'
   }
 
+  haproxy::frontend { 'blogr_frontend':
+    ipaddress => '0.0.0.0',
+    ports     => '80',
+    mode      => 'http',
+    options   => {
+      'use_backend' => 'blogr_backend'
+    }
+  }
 
-  haproxy::backend { 'blogr-backend':
+  haproxy::backend { 'blogr_backend':
     options => {
       'option'  => [
         'httpchk HEAD /api/system/ping HTTP/1.1',
