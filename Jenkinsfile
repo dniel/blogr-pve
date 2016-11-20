@@ -7,16 +7,14 @@ node('master') {
            stage 'Prepare'
                 checkout scm
 
-            stage 'Puppet Apply'
                 def servers = ['front-2',
                                'db-2',
                                'login-1',
                                'app-3',
                                'app-4']
                 for (server in servers) {
-                   node{
-                     puppetApply server
-                   }
+                   stage server
+                   puppetApply server
                 }
 
            stage 'Cleanup'
