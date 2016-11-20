@@ -2,7 +2,11 @@
 <org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject plugin="workflow-multibranch@2.9">
   <actions/>
   <description>A multibranch build job for the sample Blogr application.</description>
-  <properties/>
+  <properties>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.config.FolderConfig plugin="pipeline-model-definition@0.5">
+      <dockerLabel></dockerLabel>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.config.FolderConfig>
+  </properties>
   <views>
     <hudson.model.AllView>
       <owner class="org.jenkinsci.plugins.workflow.multibranch.WorkflowMultiBranchProject" reference="../../.."/>
@@ -22,7 +26,12 @@
     <daysToKeep>0</daysToKeep>
     <numToKeep>0</numToKeep>
   </orphanedItemStrategy>
-  <triggers/>
+  <triggers>
+    <com.cloudbees.hudson.plugins.folder.computed.PeriodicFolderTrigger plugin="cloudbees-folder@5.13">
+      <spec>*/12 * * * *</spec>
+      <interval>300000</interval>
+    </com.cloudbees.hudson.plugins.folder.computed.PeriodicFolderTrigger>
+  </triggers>
   <sources class="jenkins.branch.MultiBranchProject$BranchSourceList" plugin="branch-api@1.11">
     <data>
       <jenkins.branch.BranchSource>
