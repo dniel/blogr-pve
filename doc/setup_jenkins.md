@@ -15,3 +15,5 @@ The blogr-pve-job is a scheduled job that run puppet apply on all servers.
 It will update all servers every two hours, regardless if the puppet scripts has any changes or not.
 
 ![The Puppet Apply pipeline](blogr-pve-job.png)
+
+The UI in the screenshots are from the really nice looking [Blue Ocean](https://jenkins.io/projects/blueocean/) 
