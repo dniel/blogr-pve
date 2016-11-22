@@ -60,9 +60,10 @@ eventually be handled by Jenkins Pipeline.
 #### [Proxmox configuration](doc/setup_proxmox.md)
 #### [Pfsense configuration](doc/setup_pfsense.md)
 #### [Linux LXC container configuration](doc/setup_lxc.md)
+#### [The Continuous Development Process](doc/setup_jenkins.md)
 
 ## The Puppet Module
-TODO: add detailed documentation about the puppet scripts, classes etc.
+#### [Description of the puppet scripts](doc/setup_puppet.md)
 
 ## Limitations
 * Tested with Proxmox Virtual Environment 4.2-2/725d76f0.
@@ -75,4 +76,3 @@ TODO: add detailed documentation about the puppet scripts, classes etc.
 * NAS, Network storage using iSCSI drive with multiple bays for configuring RAID failover on hard drives.
 * Configure proxmox with puppet
 * Configure pfSense with puppet
-* LDAP with ssh keys for centralized user database for more secure user handling.
