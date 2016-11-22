@@ -1,6 +1,7 @@
 # Continuous delivery
+One major feature of the architecture is the ability to perform continuous delivery, easy deployment all the way to production with just a click in Jenkins.
 Three main components in the architecture enable us to perform continuous delivery, deployment and integration.
-The Jenkins build server, Git version control system and automated tests of application.
+The Jenkins build server, Git version control system and automated tests of application. With does three tools we are able to develop all the needed tasks that we need to deploy code into production with confidence that the release works as intended.
 
 ### The deploy pipeline for the sample application
 Jenkins is used both as a job scheduler to provide a central place to monitor if scheduled processes run as planned and to build and test the software. 
