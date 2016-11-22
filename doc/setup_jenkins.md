@@ -1,5 +1,4 @@
-# Continuous integration
-### continuous integration and deployment.
+# Continuous delivery
 Three main components in the architecture enable us to perform continuous delivery, deployment and integration.
 The Jenkins build server, Git version control system and automated tests of application.
 
