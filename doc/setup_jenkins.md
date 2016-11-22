@@ -16,4 +16,4 @@ It will update all servers every two hours, regardless if the puppet scripts has
 
 ![The Puppet Apply pipeline](blogr-pve-job.png)
 
-The UI in the screenshots are from the really nice looking [Blue Ocean](https://jenkins.io/projects/blueocean/) 
+The really nice looking UI in the screenshots are from the Jenkins project [Blue Ocean](https://jenkins.io/projects/blueocean/) 
