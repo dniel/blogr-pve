@@ -17,6 +17,9 @@ node('master') {
                    puppetApply server
                 }
 
+            stage 'ci-1'
+                sh 'cd /opt/pve && git pull && ./apply.sh'
+
            stage 'Cleanup'
                 print "Clean workspace"
                 deleteDir()
