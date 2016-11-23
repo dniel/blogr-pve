@@ -18,7 +18,8 @@ node('master') {
                 }
 
             stage 'ci-1'
-                sh 'cd /opt/pve && git pull && ./apply.sh'
+                sh 'git --work-tree=/opt/pve --git-dir=/opt/pve/.git pull'
+                sh '/opt/pve/apply.sh'
 
            stage 'Cleanup'
                 print "Clean workspace"
