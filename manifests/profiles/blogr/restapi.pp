@@ -8,7 +8,7 @@ class pve::profiles::blogr::restapi{
     command => "/bin/chown -R jenkins.jenkins /opt/blogr",
   }
   class { 'nodejs':
-    version      => 'v6.2.0',
+    version      => 'latest',
     make_install => false
   }
   file { '/etc/init.d/node-app':
