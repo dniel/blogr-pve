@@ -5,7 +5,7 @@ class pve::profiles::jenkins{
 
   # install node so that we can build blogr.
   class { 'nodejs':
-    version      => 'v6.2.0',
+    version      => 'latest',
     make_install => false
   }
 
