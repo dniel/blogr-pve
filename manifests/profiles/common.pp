@@ -1,7 +1,8 @@
 class pve::profiles::common{
 
   include unattended_upgrades
-  
+  include sudo
+
   class { 'timezone':
     timezone => 'Europe/Oslo',
   }
