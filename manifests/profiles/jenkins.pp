@@ -17,8 +17,6 @@ class pve::profiles::jenkins{
     config  => template("pve/jenkins/blogr-pve-job.xml.erb"),
   }
 
-  jenkins::plugin { 'ansicolor': }
-
   include pve::profiles::jenkins::ansicolor
   include pve::profiles::jenkins::git
   include pve::profiles::jenkins::blueocean
