@@ -5,6 +5,7 @@ node('master') {
 
         try {
            stage 'Prepare'
+                mattermostSend "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER}  ()"
                 checkout scm
 
                 def servers = ['front-2',
@@ -24,6 +25,7 @@ node('master') {
            stage 'Cleanup'
                 print "Clean workspace"
                 deleteDir()
+                mattermostSend "Build finished - ${env.JOB_NAME} ${env.BUILD_NUMBER}  ()"
 
         }catch (err) {
             currentBuild.result = "FAILURE"
