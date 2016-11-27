@@ -1,7 +1,7 @@
 node('master') {
     currentBuild.result = "SUCCESS"
-    def messageHeader = """"| Server | Updated |\n
-                            |:-------|:-------:|\n"""
+    def messageHeader = """"| Server | Updated |
+                            |:-------|:-------:|"""
     def messageBody = ""
     def messageFooter = ""
 
@@ -20,7 +20,7 @@ node('master') {
                 for (server in servers) {
                    stage server
                    puppetApply server
-                   messageBody += "| ${server} | :white_check_mark: |\n"
+                   messageBody += "| ${server} | :white_check_mark: |"
                 }
 
             stage 'ci-1'
