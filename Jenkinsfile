@@ -2,10 +2,9 @@ node('master') {
     currentBuild.result = "SUCCESS"
 
     wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm', 'defaultFg': 1, 'defaultBg': 2]) {
-
         try {
            stage 'Prepare'
-                mattermostSend "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER}  ()"
+                mattermostSend "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} started."
                 checkout scm
 
                 def servers = ['front-2',
@@ -25,9 +24,9 @@ node('master') {
            stage 'Cleanup'
                 print "Clean workspace"
                 deleteDir()
-                mattermostSend "Build finished - ${env.JOB_NAME} ${env.BUILD_NUMBER}  ()"
-
+                mattermostSend color: "good", message: "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} SUCCESS."
         }catch (err) {
+            mattermostSend color: "bad", message: "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} FAILED."
             currentBuild.result = "FAILURE"
             throw err
         }
