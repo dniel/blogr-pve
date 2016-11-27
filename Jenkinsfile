@@ -1,9 +1,5 @@
 node('master') {
     currentBuild.result = "SUCCESS"
-    def messageHeader = """"| Server | Updated |
-                            |:-------|:-------:|"""
-    def messageBody = ""
-    def messageFooter = ""
 
     def servers = ['front-2',
                    'db-2',
@@ -20,7 +16,6 @@ node('master') {
                 for (server in servers) {
                    stage server
                    puppetApply server
-                   messageBody += "| ${server} | :white_check_mark: |"
                 }
 
             stage 'ci-1'
@@ -30,11 +25,11 @@ node('master') {
            stage 'Cleanup'
                 print "Clean workspace"
                 deleteDir()
+                mattermostSend color: "good", message: "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} finished."
 
-                mattermostSend color: "good", message: (messageHeader + messageBody + messageFooter)
         }catch (err) {
             currentBuild.result = "FAILURE"
-            mattermostSend color: "bad", message: (messageHeader + messageBody + messageFooter)
+            mattermostSend color: "bad", message: "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} FAILED."
             throw err
         }
     }
