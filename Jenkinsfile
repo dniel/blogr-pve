@@ -2,7 +2,7 @@ node('master') {
     currentBuild.result = "SUCCESS"
     def messageHeader = """"${env.JOB_NAME} - Build ${env.BUILD_NUMBER} ${currentBuild.result}.\n
                            | Server | Updated |\n
-                           |:-------|:-------:|\n""".stripMargin()
+                           |:-------|:-------:|\n"""
     def messageBody = ""
     def messageFooter = ""
 
