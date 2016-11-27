@@ -32,10 +32,10 @@ node('master') {
                 print "Clean workspace"
                 deleteDir()
 
-                mattermostSend color: "good", message: (messageHeader + messageHeader + messageHeader)
+                mattermostSend color: "good", message: (messageHeader + messageBody + messageFooter)
         }catch (err) {
             currentBuild.result = "FAILURE"
-            mattermostSend color: "bad", message: (messageHeader + messageHeader + messageHeader)
+            mattermostSend color: "bad", message: (messageHeader + messageBody + messageFooter)
             throw err
         }
     }
