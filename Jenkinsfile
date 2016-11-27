@@ -1,5 +1,16 @@
 node('master') {
     currentBuild.result = "SUCCESS"
+    def messageHeader = """"${env.JOB_NAME} - Build ${env.BUILD_NUMBER} ${currentBuild.result}.\n
+                           | Server | Updated |\n
+                           |:-------|:-------:|\n""".stripMargin()
+    def messageBody = ""
+    def messageFooter = ""
+
+    def servers = ['front-2',
+                   'db-2',
+                   'login-1',
+                   'app-3',
+                   'app-4']
 
     wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm', 'defaultFg': 1, 'defaultBg': 2]) {
         try {
@@ -7,14 +18,10 @@ node('master') {
                 mattermostSend "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} started."
                 checkout scm
 
-                def servers = ['front-2',
-                               'db-2',
-                               'login-1',
-                               'app-3',
-                               'app-4']
                 for (server in servers) {
                    stage server
                    puppetApply server
+                   messageBody += "| ${server} | :white_check_mark: |\n"
                 }
 
             stage 'ci-1'
@@ -24,10 +31,11 @@ node('master') {
            stage 'Cleanup'
                 print "Clean workspace"
                 deleteDir()
-                mattermostSend color: "good", message: "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} SUCCESS."
+
+                mattermostSend color: "good", message: (messageHeader + messageHeader + messageHeader)
         }catch (err) {
-            mattermostSend color: "bad", message: "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} FAILED."
             currentBuild.result = "FAILURE"
+            mattermostSend color: "bad", message: (messageHeader + messageHeader + messageHeader)
             throw err
         }
     }
