@@ -27,7 +27,8 @@ class pve::profiles::database::standby(
     standby_mode                   => 'on',
     primary_conninfo               => "host=${db_host} port=5432 user=${db_user} password=${db_password}",
     trigger_file                   => '/var/lib/postgresql/9.4/main/trigger',
-    require                        => Exec["pg_basebackup"]
+    require                        => Exec["pg_basebackup"],
+    notify                         => Service['postgresqld']
   }
 
   postgresql::server::pg_hba_rule { "allow ${db_user} to access ${db_name} database":
@@ -45,7 +46,7 @@ class pve::profiles::database::standby(
     command     => "/usr/bin/pg_basebackup -X stream -D /var/lib/postgresql/9.4/main -h ${db_host} -U ${rep_user} -w",
     user        => 'postgres',
     unless      => "/usr/bin/test -f /var/lib/postgresql/9.4/main/PG_VERSION",
-    logoutput => true,
+    logoutput   => true,
   }
 
 }
