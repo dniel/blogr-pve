@@ -26,6 +26,7 @@ class pve::profiles::database::standby(
     archive_cleanup_command        => 'pg_archivecleanup /var/lib/postgresql/9.4/main/mnt/server/archivedir %r',
     standby_mode                   => 'on',
     primary_conninfo               => "host=${db_host} port=5432 user=${db_user} password=${db_password}",
+    trigger_file                   => '/var/lib/postgresql/9.4/main/trigger',
     require                        => Exec["pg_basebackup"]
   }
 
