@@ -22,7 +22,7 @@ class pve::profiles::database::standby(
   }
 
   postgresql::server::recovery{ 'Create a recovery.conf file with the following defined parameters':
-    restore_command                => 'cp /var/lib/postgresql/9.4/main/mnt/server/archivedir%f %p',
+    restore_command                => 'cp /var/lib/postgresql/9.4/main/mnt/server/archivedir/%f %p',
     archive_cleanup_command        => 'pg_archivecleanup /var/lib/postgresql/9.4/main/mnt/server/archivedir %r',
     standby_mode                   => 'on',
     primary_conninfo               => "host=${db_host} port=5432 user=${db_user} password=${db_password}",
