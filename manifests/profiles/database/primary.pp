@@ -19,10 +19,10 @@ class pve::profiles::database::primary(
     value => 'hot_standby',
   }
   postgresql::server::config_entry { 'archive_mode':
-    value => 'on',
+    value => 'off',
   }
   postgresql::server::config_entry { 'archive_command':
-    value => 'test ! -f /mnt/server/archivedir/%f && cp %p /mnt/server/archivedir/%f',
+    value => 'rsync -aq %p postgres@db-2.dragon.lan:/var/lib/postgresql/9.4/main/archive/%f',
   }
   postgresql::server::config_entry { 'max_wal_senders':
     value => '3',

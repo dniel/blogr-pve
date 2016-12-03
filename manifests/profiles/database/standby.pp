@@ -18,13 +18,13 @@ class pve::profiles::database::standby(
   }
 
   postgresql::server::config_entry { 'hot_standby':
-    value => 'on',
+    value => 'off',
   }
 
   postgresql::server::recovery{ 'Create a recovery.conf file with the following defined parameters':
-    restore_command                => 'cp /var/lib/postgresql/9.4/main/mnt/server/archivedir/%f %p',
-    archive_cleanup_command        => 'pg_archivecleanup /var/lib/postgresql/9.4/main/mnt/server/archivedir %r',
-    standby_mode                   => 'on',
+    restore_command                => 'cp /var/lib/postgresql/9.4/main/archive/%f %p',
+    archive_cleanup_command        => 'pg_archivecleanup /archive/ %r',
+    standby_mode                   => 'off',
     primary_conninfo               => "host=${db_host} port=5432 user=${db_user} password=${db_password}",
     trigger_file                   => '/var/lib/postgresql/9.4/main/trigger',
     require                        => Exec["pg_basebackup"],
