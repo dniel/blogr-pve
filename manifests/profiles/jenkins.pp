@@ -22,5 +22,6 @@ class pve::profiles::jenkins{
   include pve::profiles::jenkins::git
   include pve::profiles::jenkins::blueocean
   include pve::profiles::jenkins::pipeline
+  include pve::profiles::jenkins::mattermost
 
 }
