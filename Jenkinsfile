@@ -7,7 +7,7 @@ node('master') {
                    'app-3',
                    'app-4']
 
-    wrap([$class: 'AnsiColorBuildWrapper', 'colorMapName': 'XTerm', 'defaultFg': 1, 'defaultBg': 2]) {
+    ansiColor('xterm'){
         try {
            stage 'Prepare'
                 mattermostSend "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} started."
