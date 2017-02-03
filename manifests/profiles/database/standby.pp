@@ -7,14 +7,8 @@ class pve::profiles::database::standby(
   $rep_password,
 ){
 
-  class { 'postgresql::globals':
-    manage_package_repo => true,
-    version             => '9.4',
-    encoding            => 'UTF-8',
-    locale              => 'nb_NO.UTF-8',
-  }-> class { 'postgresql::server':
-    manage_recovery_conf       => true,
-    listen_addresses           => '*',
+  class { 'postgresql::server':
+    manage_recovery_conf       => true
   }
 
   postgresql::server::config_entry { 'hot_standby':

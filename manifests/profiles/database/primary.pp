@@ -3,16 +3,6 @@ class pve::profiles::database::primary(
   $rep_password,
   $rep_adress,
 ){
-
-  class { 'postgresql::globals':
-    manage_package_repo => true,
-    version             => '9.4',
-    encoding            => 'UTF-8',
-    locale              => 'nb_NO.UTF-8',
-  }-> class { 'postgresql::server':
-    listen_addresses           => '*',
-  }
-
   ### Standby configuration for primary db server.
   # configure postgres with hot standby as described here: https://cloud.google.com/solutions/setup-postgres-hot-standby
   postgresql::server::config_entry { 'wal_level':
@@ -22,7 +12,7 @@ class pve::profiles::database::primary(
     value => 'off',
   }
   postgresql::server::config_entry { 'archive_command':
-    value => 'rsync -aq %p postgres@db-2.dragon.lan:/var/lib/postgresql/9.4/main/archive/%f',
+    value => "rsync -aq %p ${rep_user}@${rep_adress}:/var/lib/postgresql/9.4/main/archive/%f",
   }
   postgresql::server::config_entry { 'max_wal_senders':
     value => '3',
@@ -42,14 +32,4 @@ class pve::profiles::database::primary(
     address     => $rep_adress,
     auth_method => 'md5',
   }
-
-  postgresql::server::pg_hba_rule { "allow all to access all database":
-    description => "Open up PostgreSQL for access from network",
-    type        => 'host',
-    database    => "all",
-    user        => "all",
-    address     => '0.0.0.0/0',
-    auth_method => 'md5',
-  }
-
 }
