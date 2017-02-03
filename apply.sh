@@ -25,10 +25,10 @@ fi
 environment=$(git symbolic-ref --short HEAD)
 
 # install modules
-./bin/librarian-puppet install --path ./modules --quiet|| exit 1
+./bin/librarian-puppet install --path .. --quiet|| exit 1
 
 # Run Puppet
-./bin/puppet apply --log_level=warning --color=ansi --modulepath=..:./modules --hiera_config=hiera.yaml manifests "$@"
+./bin/puppet apply --log_level=warning --color=ansi --modulepath=.. --hiera_config=hiera.yaml manifests "$@"
 
 ## Log status of the Puppet run
 if [ $? -eq 0 ]

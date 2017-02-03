@@ -1,5 +1,5 @@
 # https://puppet.com/presentations/designing-puppet-rolesprofiles-pattern
 
-node /^chat-\d+$/ {
+node /([tdp])-(chat)-(\d{2})$/ {
   include pve::roles::chatserver
 }

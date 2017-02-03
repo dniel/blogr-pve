@@ -19,8 +19,8 @@ node('master') {
                 }
 
             stage 'ci-1'
-                sh 'git --work-tree=/opt/pve --git-dir=/opt/pve/.git pull'
-                sh 'sudo /opt/pve/apply.sh'
+                sh 'git --work-tree=/opt/puppet/pve --git-dir=/opt/puppet/pve/.git pull'
+                sh 'sudo /opt/puppet/pve/apply.sh'
 
            stage 'Cleanup'
                 print "Clean workspace"
@@ -37,6 +37,6 @@ node('master') {
 
 def puppetApply(server){
     print "Update ${server}"
-    sh "ssh -o StrictHostKeyChecking=no jenkins@${server} 'git --work-tree=/opt/pve --git-dir=/opt/pve/.git pull'"
-    sh "ssh -o StrictHostKeyChecking=no jenkins@${server} 'sudo /opt/pve/apply.sh'"
+    sh "ssh -o StrictHostKeyChecking=no jenkins@${server} 'git --work-tree=/opt/puppet/pve --git-dir=/opt/puppet/pve/.git pull'"
+    sh "ssh -o StrictHostKeyChecking=no jenkins@${server} 'sudo /opt/puppet/pve/apply.sh'"
 }

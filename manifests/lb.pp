@@ -1,5 +1,5 @@
 # https://puppet.com/presentations/designing-puppet-rolesprofiles-pattern
 
-node /^login-\d+$/ {
-  include pve::roles::loginserver
+node /([tdp])-(lb)-(\d{2})/ {
+  include pve::roles::loadbalancer
 }
