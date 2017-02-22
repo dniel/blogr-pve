@@ -2,9 +2,9 @@
   - yaml
   - eyaml
 :yaml:
-  :datadir: "/opt/pve/hiera"
+  :datadir: "/opt/puppet/pve/hiera"
 :eyaml:
-  :datadir: "/opt/pve/hiera"
+  :datadir: "/opt/puppet/pve/hiera"
   :pkcs7_private_key: /etc/puppetlabs/keys/private_key.pkcs7.pem
   :pkcs7_public_key: /etc/puppetlabs/keys/public_key.pkcs7.pem
 :hierarchy:
