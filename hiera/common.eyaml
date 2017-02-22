@@ -38,7 +38,7 @@ pve::profiles::database::standby::db_password: >
     SiZuxDA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCupQp8Byr0mLGXFU/s
     xURlgBBcUqS8iVdrk0XqS4M+Bm0y]
 
-pve::profiles::database::standby::db_host: db-1.dragon.lan
+pve::profiles::database::standby::db_host: p-db-1.dragon.lan
 pve::profiles::database::standby::rep_user: repuser
 pve::profiles::database::standby::rep_password: >
     ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw

@@ -1,7 +1,7 @@
 pve::profiles::reverseproxy::app_hosts:
-  - app-2.dragon.lan
-  - app-4.dragon.lan
+  - p-app-01.dragon.lan
+  - p-app-03.dragon.lan
 
 pve::profiles::reverseproxy::server_names:
-  - app-2
-  - app-4
+  - p-app-01
+  - p-app-03
