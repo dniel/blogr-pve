@@ -3,13 +3,13 @@ class pve::profiles::blogr::database(
   $db_user,
   $db_password
 ){
-  postgresql::server::db { $name:
-    user     => $user,
-    password => postgresql_password($user, $password),
+  postgresql::server::db { $db_name:
+    user     => $db_user,
+    password => postgresql_password($db_user, $db_password),
   }->
-  postgresql::server::database_grant { "GRANT ALL ${user} - ${name}:":
+  postgresql::server::database_grant { "GRANT ALL ${db_user} - ${db_name}:":
     privilege => 'ALL',
-    db        => $name,
-    role      => $user,
+    db        => $db_name,
+    role      => $db_user,
   }
 }
