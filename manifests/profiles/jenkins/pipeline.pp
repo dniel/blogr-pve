@@ -17,6 +17,7 @@ class pve::profiles::jenkins::pipeline{
   jenkins::plugin { 'workflow-cps-global-lib': }
   jenkins::plugin { 'workflow-step-api': }
   jenkins::plugin { 'workflow-job': }
+  jenkins::plugin { 'pipeline-model-definition': }
 
   jenkins::plugin { 'cloudbees-folder': }
   jenkins::plugin { 'git-server': }
