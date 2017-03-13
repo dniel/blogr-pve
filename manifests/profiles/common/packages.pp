@@ -8,6 +8,10 @@ class pve::profiles::common::packages{
     ensure => 'installed',
   }
 
+  package { 'curl':
+    ensure => 'installed',
+  }
+
   # https://tickets.puppetlabs.com/browse/FACT-866
   package { 'lsb-release':
     ensure => installed,
