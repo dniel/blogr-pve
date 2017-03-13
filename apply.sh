@@ -4,7 +4,7 @@ dir="$(dirname $(readlink -f $0))"
 cd $dir
 
 # first run, no bundle commmand
-if ! hash bundle 2>/dev/null;  then
+if ! hash /usr/local/bin/bundle 2>/dev/null;  then
   if [ -f /etc/redhat-release ]; then
     yum clean all
     yum install -y ruby ruby-dev make gcc ca-certificates lsb_release libaugeas-ruby
