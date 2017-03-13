@@ -25,33 +25,17 @@ class pve::profiles::common{
     locales         => ['en_US.UTF-8 UTF-8', 'nb_NO.UTF-8 UTF-8'],
   }
 
-  file { "/opt/pve/apply.sh":
+  file { "/opt/puppet/pve/apply.sh":
     mode => "744",
   }
 
-  file{"/opt/pve":
+  file{"/opt/puppet/pve":
     ensure  =>  directory,
   }
 
   exec {"chown pve":
-    require => [File['/opt/pve'], User['jenkins']],
-    command => "/bin/chown -R jenkins.jenkins /opt/pve",
-  }
-
-  file { 'post-hook':
-    ensure   => absent,
-    path     => '/opt/pve/.git/hooks/post-merge',
-    content  => 'cd /opt/pve ; ./apply.sh',
-    mode     => "0755",
-    owner    => root,
-    group    => root
-  }->
-  cron { 'puppet-apply':
-    ensure  => absent,
-    command => "cd /opt/pve ; /usr/bin/git pull",
-    user    => root,
-    minute  => '*/60',
-    require => File['post-hook']
+    require => [File['/opt/puppet/pve'], User['jenkins']],
+    command => "/bin/chown -R jenkins.jenkins /opt/puppet/pve",
   }
 
 }
