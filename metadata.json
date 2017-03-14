@@ -18,7 +18,6 @@
     {"name":"willdurand-nodejs","version_requirement":">= 1.9.5"},
     {"name":"example42-stdmod","version_requirement":">= 0.0.3"},
     {"name":"example42-network","version_requirement":">= 3.3.1"},
-    {"name":"jfryman-nginx","version_requirement":">= 0.3.0"},
     {"name":"saz-locales","version_requirement":">= 2.2.2"},
     {"name":"saz-ssh","version_requirement":">= 2.8.1"},
     {"name":"saz-timezone","version_requirement":">= 3.3.0"},
@@ -29,7 +28,6 @@
     {"name":"elastic-kibana","version_requirement":">= 0.1.1"},
     {"name":"pcfens-filebeat","version_requirement":">= 0.6.4"},
     {"name":"rtyler-jenkins","version_requirement":">= 1.7.0"},
-    {"name":"dhoppe-fail2ban","version_requirement":">= 1.1.1"},
     {"name":"camptocamp-accounts","version_requirement":">= 1.8.0"},
     {"name":"liger1978-mattermost","version_requirement":">= 1.6.1"}
   ]
