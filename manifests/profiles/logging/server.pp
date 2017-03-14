@@ -5,6 +5,7 @@ class pve::profiles::logging::server{
     java_install => true,
     manage_repo  => true,
     repo_version => '5.x',
+    autoupgrade => true
   }
 
   elasticsearch::instance { 'es-01': }
