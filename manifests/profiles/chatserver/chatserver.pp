@@ -12,6 +12,10 @@ class pve::profiles::chatserver{
     role      => 'mattermost',
   } ->
   class { 'mattermost':
+    service_template => 'mattermost/sysvinit_debian.erb',
+    service_path     => '/etc/init.d/mattermost',
+    service_provider => '',
+    service_mode     => '0755',
     override_options => {
       'SqlSettings' => {
         'DriverName' => 'postgres',
