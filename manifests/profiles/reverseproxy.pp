@@ -3,12 +3,6 @@ class pve::profiles::reverseproxy(
   $server_names
 ){
 
-  package { 'nginx':
-    ensure => purged,
-  }
-  package { 'nginx-common':
-    ensure => purged,
-  }
 
   include ::haproxy
 
