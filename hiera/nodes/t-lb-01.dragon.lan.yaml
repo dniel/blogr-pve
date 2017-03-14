@@ -1,0 +1,3 @@
+pve::profiles::reverseproxy::app_hosts:
+  - t-app-01.dragon.lan
+  - t-app-02.dragon.lan
