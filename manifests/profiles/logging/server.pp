@@ -7,6 +7,8 @@ class pve::profiles::logging::server{
     repo_version => '5.x',
   }
 
+  elasticsearch::instance { 'es-01': }
+
   # elasticsearch need it
   package { 'systemd-sysv':
     ensure => 'installed',
