@@ -1,6 +1,10 @@
 class pve::profiles::logging::server{
   class { 'kibana':
-    ensure => latest
+    ensure => latest,
+    config => {
+      'server.port' => '80',
+      'server.host' => '0.0.0.0',
+    }
   }
 
   class { 'elasticsearch':
