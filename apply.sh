@@ -3,6 +3,11 @@ set -x
 dir="$(dirname $(readlink -f $0))"
 cd $dir
 
+# skip set kernel parameters
+# workaround for
+# https://github.com/elastic/elasticsearch/issues/22340
+export ES_SKIP_SET_KERNEL_PARAMETERS=true
+
 # first run, no bundle commmand
 if ! hash /usr/local/bin/bundle 2>/dev/null;  then
   if [ -f /etc/redhat-release ]; then
