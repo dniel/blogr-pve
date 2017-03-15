@@ -2,7 +2,7 @@ class pve::profiles::logging::server{
   class { 'kibana':
     ensure => latest,
     config => {
-      'server.port' => '80',
+      'server.port' => '5601',
       'server.host' => '0.0.0.0',
       'server.name' => 'Dragon Central Logging'
     }
