@@ -8,11 +8,18 @@ class pve::profiles::logging::server{
     }
   }
 
+  # skip set kernel parameters https://github.com/elastic/elasticsearch/issues/22340
+  # when installing elasticsearch.
+  Exec { 'skip-set-kernel-param':
+    environment => [ "ES_SKIP_SET_KERNEL_PARAMETERS=true" ]
+  }
+
   class { 'elasticsearch':
     java_install => true,
     manage_repo  => true,
     repo_version => '5.x',
-    autoupgrade => true
+    autoupgrade => true,
+    require      => Exec['skip-set-kernel-param']
   }
 
   elasticsearch::instance { 'es-01': }
