@@ -2,8 +2,12 @@ node('master') {
     currentBuild.result = "SUCCESS"
 
     def servers = ['p-lb-01',
+                   'p-lb-02',
                    'p-app-01',
                    'p-app-02',
+                   'p-app-03',
+                   'p-app-04',
+                   'p-db-01',
                    'p-db-02',
                    'p-chat-01',
                    'p-log-01',
