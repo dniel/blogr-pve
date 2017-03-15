@@ -1,10 +1,13 @@
-class pve::profiles::logging::forwarder{
+class pve::profiles::logging::forwarder(
+  $log_server,
+  $log_port
+){
 
   class { 'filebeat':
     outputs => {
       'logstash'     => {
         'hosts' => [
-          'log-1.dragon.lan:5044'
+          "${log_server}:${log_port}"
         ]
       },
     },
@@ -23,21 +26,21 @@ class pve::profiles::logging::forwarder{
 class pve::profiles::logging::forwarder::nginx{
 
   filebeat::prospector { 'nginx':
-    paths    => [
+    paths         => [
       '/var/log/nginx/*',
     ],
     exclude_files => ['.gz$','.[0-9]$'],
-    doc_type => 'nginx',
+    doc_type      => 'nginx',
   }
 }
 
 class pve::profiles::logging::forwarder::blogr{
 
   filebeat::prospector { 'blogr':
-    paths    => [
+    paths         => [
       '/opt/blogr/log/*',
     ],
     exclude_files => ['.gz$','.[0-9]$'],
-    doc_type => 'blogr',
+    doc_type      => 'blogr',
   }
 }
