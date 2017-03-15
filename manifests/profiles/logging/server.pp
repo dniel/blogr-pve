@@ -10,7 +10,7 @@ class pve::profiles::logging::server{
   }
 
   class { 'elasticsearch':
-    java_install => true,
+    java_install => false,
     manage_repo  => true,
     repo_version => '5.x',
     autoupgrade => true,
