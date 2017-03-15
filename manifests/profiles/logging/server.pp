@@ -4,6 +4,7 @@ class pve::profiles::logging::server{
     config => {
       'server.port' => '80',
       'server.host' => '0.0.0.0',
+      'server.name' => 'Dragon Central Logging'
     }
   }
 
