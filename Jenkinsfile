@@ -1,11 +1,18 @@
 node('master') {
     currentBuild.result = "SUCCESS"
 
-    def servers = ['front-2',
-                   'db-2',
-                   'login-1',
-                   'app-3',
-                   'app-4']
+    def servers = ['p-lb-01',
+                   'p-app-01',
+                   'p-app-02',
+                   'p-db-02',
+                   'p-chat-01',
+                   'p-log-01',
+                   't-lb-01',
+                   't-app-01',
+                   't-app-02',
+                   't-db-01',
+                   'd-app-01',
+                   'd-db-01']
 
     ansiColor('xterm'){
         try {
