@@ -1,3 +1,6 @@
+pve::profiles::logging::forwarder::log_server: log.dragon.lan
+pve::profiles::logging::forwarder::log_port: 5044
+
 pve::profiles::blogr::database::db_name: blogr
 pve::profiles::blogr::database::db_user: blogr
 pve::profiles::blogr::database::db_password: >
