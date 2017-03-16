@@ -1,2 +1,2 @@
 jenkins ALL = (jenkins) NOPASSWD: /bin/bash, /usr/sbin/service node-app restart
-jenkins ALL = (root) NOPASSWD: /opt/pve/apply.sh
+jenkins ALL = (root) NOPASSWD: /opt/puppet/pve/apply.sh
