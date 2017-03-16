@@ -11,7 +11,7 @@ node('master') {
                    'p-db-02',
                    'p-chat-01',
                    'p-log-01',
-                   't-lb-01',
+//                   't-lb-01',
                    't-app-01',
                    't-app-02',
                    't-db-01',
