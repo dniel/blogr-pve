@@ -30,7 +30,7 @@ fi
 environment=$(git symbolic-ref --short HEAD)
 
 # install modules
-./bin/librarian-puppet install --path /etc/puppetlabs/code/modules --quiet|| exit 1
+./bin/librarian-puppet install --path /opt/puppetlabs/puppet/modules --quiet|| exit 1
 
 # Run Puppet
 ./bin/puppet apply --log_level=warning --color=ansi --modulepath=.. manifests "$@"
