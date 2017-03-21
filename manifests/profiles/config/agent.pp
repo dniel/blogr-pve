@@ -1,5 +1,6 @@
 class pve::profiles::config::agent{
   class { '::consul':
+    init_style => 'debian',
     config_hash => {
       'data_dir'   => '/opt/consul',
       'datacenter' => 'pve',
