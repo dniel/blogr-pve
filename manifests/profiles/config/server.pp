@@ -4,7 +4,7 @@ class pve::profiles::config::server{
       'bootstrap_expect' => 1,
       'client_addr'      => '0.0.0.0',
       'data_dir'         => '/opt/consul',
-      'datacenter'       => 'east-aws',
+      'datacenter'       => 'pve',
       'log_level'        => 'INFO',
       'node_name'        => 'server',
       'server'           => true,
