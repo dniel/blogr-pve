@@ -33,7 +33,7 @@ environment=$(git symbolic-ref --short HEAD)
 ./bin/librarian-puppet install --path .. --quiet|| exit 1
 
 # Run Puppet
-./bin/puppet apply --log_level=warning --color=ansi --modulepath=.. manifests "$@"
+./bin/puppet apply --environment production --log_level=warning --color=ansi --modulepath=.. manifests "$@"
 
 ## Log status of the Puppet run
 if [ $? -eq 0 ]
