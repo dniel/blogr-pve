@@ -6,4 +6,5 @@ class pve::roles::loadbalancer{
   include pve::profiles::network
   include pve::profiles::logging::forwarder
   include pve::profiles::logging::forwarder::nginx
+  include pve::profiles::config::agent
 }
