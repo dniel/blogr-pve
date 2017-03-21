@@ -4,6 +4,10 @@ class pve::profiles::common::packages{
     ensure => 'installed',
   }
 
+  package { 'monitoring-plugins':
+    ensure => 'installed',
+  }
+
   package { 'vim':
     ensure => 'installed',
   }
