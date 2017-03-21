@@ -30,10 +30,10 @@ fi
 environment=$(git symbolic-ref --short HEAD)
 
 # install modules
-./bin/librarian-puppet install --path .. --quiet|| exit 1
+./bin/librarian-puppet install --path /etc/puppetlabs/code/modules --quiet|| exit 1
 
 # Run Puppet
-./bin/puppet apply --environment production --log_level=warning --color=ansi --modulepath=.. manifests "$@"
+./bin/puppet apply --log_level=warning --color=ansi --modulepath=.. manifests "$@"
 
 ## Log status of the Puppet run
 if [ $? -eq 0 ]
