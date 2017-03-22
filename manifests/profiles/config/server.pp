@@ -13,13 +13,15 @@ class pve::profiles::config::server{
     }
   }
 
-  ::consul::service { 'lb1':
+  ::consul::service { 'prod-lb-1':
+    service_name => "lb",
     address => "10.0.10.100",
     port    => 80,
     tags    => ['prod']
   }
 
-  ::consul::service { 'lb2':
+  ::consul::service { 'prod-lb-2':
+    service_name => "lb",
     address => "10.0.10.101",
     port    => 80,
     tags    => ['prod']
