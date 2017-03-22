@@ -2,8 +2,6 @@ class pve::profiles::reverseproxy(
   $app_hosts,
   $server_names
 ){
-
-
   include ::haproxy
 
   haproxy::balancermember { 'haproxy':

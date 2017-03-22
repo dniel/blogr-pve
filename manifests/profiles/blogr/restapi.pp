@@ -23,4 +23,10 @@ class pve::profiles::blogr::restapi{
   }
 
 
+  ::consul::service { "${::hostname}-lb":
+    service_name => "lb",
+    address => "${::ipaddress}",
+    port    => 80,
+  }
+
 }
