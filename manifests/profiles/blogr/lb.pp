@@ -39,6 +39,12 @@ class pve::profiles::blogr::lb(
   }
 
   ::consul::service { "${::hostname}-lb":
+    checks  => [
+      {
+        http   => 'http://localhost:80',
+        interval => '5s'
+      }
+    ],
     service_name => "lb",
     address      => "${::ipaddress}",
     port         => 80,
