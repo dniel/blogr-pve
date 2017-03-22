@@ -44,10 +44,5 @@ class pve::profiles::logging::server{
     /^d-/ => ['dev'],
     default  => []
   }
-  ::consul::service { "${::hostname}-log":
-    service_name => "log",
-    address      => "${::ipaddress}",
-    port         => 5601,
-    tags         => $tags
-  }
+
 }
