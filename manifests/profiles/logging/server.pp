@@ -38,4 +38,16 @@ class pve::profiles::logging::server{
     content => template("pve/logstash/config.erb"),
   }
 
+  $tags = $::hostname ? {
+    /^t-/ => ['test'],
+    /^p-/ => ['prod'],
+    /^d-/ => ['dev'],
+    default  => []
+  }
+  ::consul::service { "${::hostname}-log":
+    service_name => "log",
+    address      => "${::ipaddress}",
+    port         => 5601,
+    tags         => $tags
+  }
 }
