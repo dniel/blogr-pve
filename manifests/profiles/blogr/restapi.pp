@@ -22,9 +22,7 @@ class pve::profiles::blogr::restapi{
     require => [File['/etc/init.d/node-app']]
   }
 
-
-
-  $tags = $hostname ? {
+  $tags = $::hostname ? {
     /(t-\.)/ => ['test'],
     /(p-\.)/ => ['prod'],
     default  => []
@@ -34,7 +32,7 @@ class pve::profiles::blogr::restapi{
     service_name => "app",
     address      => "${::ipaddress}",
     port         => 3000,
-    tags          => $tags
+    tags         => $tags
   }
 
 }

@@ -31,7 +31,7 @@ class pve::profiles::reverseproxy(
     },
   }
 
-  $tags = $hostname ? {
+  $tags = $::hostname ? {
     /(t-\.)/ => ['test'],
     /(p-\.)/ => ['prod'],
     default  => []
