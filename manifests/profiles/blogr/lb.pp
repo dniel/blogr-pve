@@ -1,4 +1,4 @@
-class pve::profiles::reverseproxy(
+class pve::profiles::blogr::lb(
   $app_hosts,
   $server_names
 ){
