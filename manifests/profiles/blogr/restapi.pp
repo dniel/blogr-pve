@@ -25,6 +25,7 @@ class pve::profiles::blogr::restapi{
   $tags = $::hostname ? {
     /^t-/ => ['test'],
     /^p-/ => ['prod'],
+    /^d-/ => ['dev'],
     default  => []
   }
 

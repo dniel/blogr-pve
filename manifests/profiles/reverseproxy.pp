@@ -34,6 +34,7 @@ class pve::profiles::reverseproxy(
   $tags = $::hostname ? {
     /^t-/ => ['test'],
     /^p-/ => ['prod'],
+    /^d-/ => ['dev'],
     default  => []
   }
 
