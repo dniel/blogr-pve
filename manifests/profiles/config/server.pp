@@ -12,4 +12,17 @@ class pve::profiles::config::server{
       'ui_dir'           => '/opt/consul/ui',
     }
   }
+
+  ::consul::service { 'lb1':
+    address => "10.0.10.100",
+    port    => 80,
+    tags    => ['prod']
+  }
+
+  ::consul::service { 'lb2':
+    address => "10.0.10.101",
+    port    => 80,
+    tags    => ['prod']
+  }
+
 }
