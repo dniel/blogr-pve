@@ -23,10 +23,18 @@ class pve::profiles::blogr::restapi{
   }
 
 
-  ::consul::service { "${::hostname}-lb":
-    service_name => "lb",
-    address => "${::ipaddress}",
-    port    => 80,
+
+  $tags = $hostname ? {
+    /(t-\.)/ => ['test'],
+    /(p-\.)/ => ['prod'],
+    default  => []
+  }
+
+  ::consul::service { "${::hostname}-app":
+    service_name => "app",
+    address      => "${::ipaddress}",
+    port         => 3000,
+    tags          => $tags
   }
 
 }

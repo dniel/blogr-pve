@@ -22,12 +22,25 @@ class pve::profiles::reverseproxy(
   }
 
   haproxy::backend { 'blogr_backend':
-    mode => 'http',
+    mode    => 'http',
     options => {
       'option'  => [
         'httpchk HEAD /api/system/ping HTTP/1.1',
       ],
       'balance' => 'roundrobin',
     },
+  }
+
+  $tags = $hostname ? {
+    /(t-\.)/ => ['test'],
+    /(p-\.)/ => ['prod'],
+    default  => []
+  }
+
+  ::consul::service { "${::hostname}-lb":
+    service_name => "lb",
+    address      => "${::ipaddress}",
+    port         => 80,
+    tags          => $tags
   }
 }
