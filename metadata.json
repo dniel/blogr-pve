@@ -30,7 +30,8 @@
     {"name":"rtyler-jenkins","version_requirement":">= 1.7.0"},
     {"name":"camptocamp-accounts","version_requirement":">= 1.8.0"},
     {"name":"liger1978-mattermost","version_requirement":">= 1.6.1"},
-    {"name":"KyleAnderson-consul","version_requirement":">= 2.1.1"}
+    {"name":"KyleAnderson-consul","version_requirement":">= 2.1.1"},
+    {"name":"gdhbashton-consul_template","version_requirement":">= 0.2.8"}
   ]
 }
 
