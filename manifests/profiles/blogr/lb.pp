@@ -50,4 +50,15 @@ class pve::profiles::blogr::lb(
     port         => 80,
     tags          => $tags
   }
+
+  # create a directory
+  file { '/opt/traefik':
+    ensure => 'directory',
+  }
+
+  file { '/opt/traefik/traefik_linux-amd64':
+    source => 'puppet:///modules/pve/opt/traefik/traefik_linux-amd64',
+    mode => "700",
+    require => [File['/opt/traefik']]
+  }
 }
