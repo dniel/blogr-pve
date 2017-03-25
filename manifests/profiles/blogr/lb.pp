@@ -7,9 +7,9 @@ class pve::profiles::blogr::lb(
   }
 
   $tags = $::hostname ? {
-    /^t-/    => ['test',"traefik.enable=true"],
-    /^p-/    => ['prod',"traefik.enable=true"],
-    /^d-/    => ['dev',"traefik.enable=true"],
+    /^t-/    => ['test'],
+    /^p-/    => ['prod'],
+    /^d-/    => ['dev'],
     default  => []
   }
 
