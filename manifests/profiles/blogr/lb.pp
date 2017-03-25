@@ -32,22 +32,22 @@ class pve::profiles::blogr::lb(
   }
 
   $tags = $::hostname ? {
-    /^t-/ => ['test'],
-    /^p-/ => ['prod'],
-    /^d-/ => ['dev'],
+    /^t-/    => ['test'],
+    /^p-/    => ['prod'],
+    /^d-/    => ['dev'],
     default  => []
   }
 
   ::consul::service { "${::hostname}-lb":
-    checks  => [
+    checks        => [
       {
-        http   => 'http://localhost:80',
+        http     => 'http://localhost:80',
         interval => '5s'
       }
     ],
-    service_name => "lb",
-    address      => "${::ipaddress}",
-    port         => 80,
+    service_name  => "lb",
+    address       => "${::ipaddress}",
+    port          => 80,
     tags          => $tags
   }
 
@@ -67,13 +67,30 @@ class pve::profiles::blogr::lb(
   }
 
   file { '/etc/traefik/traefik.toml':
-    source => 'puppet:///modules/pve/etc/traefik/traefik.toml',
+    source  => 'puppet:///modules/pve/etc/traefik/traefik.toml',
     require => [File['/etc/traefik']]
   }
 
+  file { '/etc/init.d/traefik':
+    source  => 'puppet:///modules/pve/etc/init.d/traefik',
+    mode => "755",
+    notify => Service['traefik-service'],
+    require => [File['/etc/init.d']]
+  }
+
+  service { 'traefik-service':
+    ensure  => running,
+    enable  => true,
+    require => [File['/etc/init.d/traefik']]
+  }
+
   file { '/opt/traefik/traefik_linux-amd64':
-    source => 'puppet:///modules/pve/opt/traefik/traefik_linux-amd64',
-    mode => "700",
-    require => [File['/opt/traefik'],File['/etc/traefik'],File['/var/log/traefik']]
+    source  => 'puppet:///modules/pve/opt/traefik/traefik_linux-amd64',
+    mode    => "700",
+    require => [
+      File['/opt/traefik'],
+      File['/etc/traefik'],
+      File['/var/log/traefik'],
+      File['/etc/init.d/traefik']]
   }
 }
