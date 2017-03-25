@@ -143,6 +143,6 @@ class pve::profiles::blogr::lb(
 
   exec { 'setcap-traefik':
     noop => true,
-    command => 'setcap \'cap_net_bind_service=ep\' /opt/traefik/traefik_linux-amd64'
+    command => '/sbin/setcap \'cap_net_bind_service=ep\' /opt/traefik/traefik_linux-amd64'
   }
 }
