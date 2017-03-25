@@ -1,0 +1,12 @@
+################################################################
+            # Global configuration
+            ################################################################
+            traefikLogsFile = "/var/log/traefik/traefik.log"
+            accessLogsFile = "/var/log/traefik/access.log"
+
+            [consulCatalog]
+            endpoint = "127.0.0.1:8500"
+            domain = "dragon.lan"
+            prefix = "traefik"
+            constraints = ["tag==prod"]
+            watch = true

@@ -73,7 +73,7 @@ class pve::profiles::blogr::lb(
   }
 
   file { '/etc/traefik/traefik.toml':
-    source  => 'puppet:///modules/pve/etc/traefik/traefik.toml',
+    content => template('pve/traefik/traefik.toml.erb'),
     owner   => $traefikUser,
     group   => $traefikGroup,
     require => [
