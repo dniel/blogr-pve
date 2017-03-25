@@ -4,7 +4,7 @@ class pve::profiles::blogr::lb(
 ){
   class { 'haproxy':
     package_ensure => 'absent',
-    service_ensure => 'absent'
+    service_ensure => 'stopped'
   }
 
   $tags = $::hostname ? {
