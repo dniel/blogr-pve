@@ -88,14 +88,15 @@ class pve::profiles::blogr::lb(
 
   file { '/etc/init.d/traefik':
     source  => 'puppet:///modules/pve/etc/init.d/traefik',
-    mode => "755",
-    notify => Service['traefik-service']
+    mode => "755"
   }
 
-  service { 'traefik-service':
+  service { 'traefik':
     ensure  => running,
     enable  => true,
-    require => [File['/etc/init.d/traefik']]
+    hasrestart => true,
+    hasstatus => true,
+    require => File['/etc/init.d/traefik']
   }
 
   file { '/opt/traefik/traefik_linux-amd64':
