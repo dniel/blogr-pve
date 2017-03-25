@@ -7,9 +7,9 @@ class pve::profiles::blogr::lb(
   }
 
   $tags = $::hostname ? {
-    /^t-/    => ['test'],
-    /^p-/    => ['prod'],
-    /^d-/    => ['dev'],
+    /^t-/    => ['test','traefik.tags=test'],
+    /^p-/    => ['prod','traefik.tags=prod'],
+    /^d-/    => ['dev', 'traefik.tags=dev'],
     default  => []
   }
 
