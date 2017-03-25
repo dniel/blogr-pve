@@ -128,6 +128,8 @@ class pve::profiles::blogr::lb(
 
   file { '/opt/traefik/traefik_linux-amd64':
     source  => 'puppet:///modules/pve/opt/traefik/traefik_linux-amd64',
+    owner   => $traefikUser,
+    group   => $traefikGroup,
     mode    => "700",
     require => [
       User[$traefikUser],
