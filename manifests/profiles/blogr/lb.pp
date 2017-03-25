@@ -56,9 +56,24 @@ class pve::profiles::blogr::lb(
     ensure => 'directory',
   }
 
+  # create a directory
+  file { '/var/log/traefik':
+    ensure => 'directory'
+  }
+
+  # create a directory
+  file { '/etc/traefik':
+    ensure => 'directory'
+  }
+
+  file { '/etc/traefik/traefik.toml':
+    source => 'puppet:///modules/pve/etc/traefik/traefik.toml',
+    require => [File['/etc/traefik']]
+  }
+
   file { '/opt/traefik/traefik_linux-amd64':
     source => 'puppet:///modules/pve/opt/traefik/traefik_linux-amd64',
     mode => "700",
-    require => [File['/opt/traefik']]
+    require => [File['/opt/traefik'],File['/etc/traefik'],File['/var/log/traefik']]
   }
 }
