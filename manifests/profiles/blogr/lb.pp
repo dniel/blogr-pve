@@ -131,6 +131,7 @@ class pve::profiles::blogr::lb(
     owner   => $traefikUser,
     group   => $traefikGroup,
     mode    => "700",
+    notify  => Exec['setcap-traefik'],
     require => [
       User[$traefikUser],
       Group[$traefikGroup],
@@ -138,5 +139,10 @@ class pve::profiles::blogr::lb(
       File['/etc/traefik'],
       File['/var/log/traefik'],
       File['/etc/init.d/traefik']]
+  }
+
+  exec { 'setcap-traefik':
+    noop => true,
+    command => 'setcap \'cap_net_bind_service=ep\' /opt/traefik/traefik_linux-amd64'
   }
 }
