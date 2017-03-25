@@ -30,12 +30,6 @@ class pve::profiles::blogr::restapi{
   }
 
   ::consul::service { "${::hostname}-app":
-    checks  => [
-      {
-        http   => 'http://localhost:3000/api/system/ping',
-        interval => '5s'
-      }
-    ],
     service_name => "app",
     address      => "${::ipaddress}",
     port         => 3000,
