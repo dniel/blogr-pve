@@ -751,25 +751,25 @@ endpoint = "127.0.0.1:8500"
 #
 # Optional
 #
-# [consulCatalog]
+[consulCatalog]
 
 # Consul server endpoint
 #
 # Required
 #
-# endpoint = "127.0.0.1:8500"
+endpoint = "127.0.0.1:8500"
 
 # Default domain used.
 #
 # Optional
 #
-# domain = "consul.localhost"
+domain = "dragon.lan"
 
 # Prefix for Consul catalog tags
 #
 # Optional
 #
-# prefix = "traefik"
+prefix = "traefik"
 
 # Constraints
 #
