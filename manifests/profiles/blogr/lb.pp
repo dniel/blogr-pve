@@ -2,6 +2,9 @@ class pve::profiles::blogr::lb(
   $app_hosts,
   $server_names
 ){
+  package { 'haproxy':
+    ensure => 'purged'
+  }
 
   $tags = $::hostname ? {
     /^t-/    => ['test'],
