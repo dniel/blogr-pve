@@ -7,9 +7,9 @@ class pve::profiles::blogr::lb(
   }
 
   $tags = $::hostname ? {
-    /^t-/    => ['test',"traefik.frontend.rule=PrefixPath:/lb"],
-    /^p-/    => ['prod',"traefik.frontend.rule=PrefixPath:/lb"],
-    /^d-/    => ['dev',"traefik.frontend.rule=PrefixPath:/lb"],
+    /^t-/    => ['test',"traefik.enable=true"],
+    /^p-/    => ['prod',"traefik.enable=true"],
+    /^d-/    => ['dev',"traefik.enable=true"],
     default  => []
   }
 
