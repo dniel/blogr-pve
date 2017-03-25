@@ -724,7 +724,7 @@ traefikLogsFile = "/var/log/traefik/traefik.log"
 #
 # Optional
 #
-# [consul]
+[consul]
 
 # Consul server endpoint
 #
