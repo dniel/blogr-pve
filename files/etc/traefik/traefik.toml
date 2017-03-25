@@ -725,10 +725,7 @@ traefikLogsFile = "/var/log/traefik/traefik.log"
 # Optional
 #
 [consul]
-
 endpoint = "127.0.0.1:8500"
-watch = true
-prefix = "traefik"
 
 # Override default configuration template. For advanced users :)
 #
