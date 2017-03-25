@@ -3,7 +3,8 @@ class pve::profiles::blogr::lb(
   $server_names
 ){
   class { 'haproxy':
-    package_ensure => 'absent'
+    package_ensure => 'absent',
+    service_ensure => 'absent'
   }
 
   $tags = $::hostname ? {
