@@ -51,24 +51,67 @@ class pve::profiles::blogr::lb(
     tags          => $tags
   }
 
-  # create a directory
-  file { '/opt/traefik':
-    ensure => 'directory',
+
+  ###
+  ## INSTALL traefik
+  #
+  $traefikDir = '/opt/traefik'
+  $traefikUser = 'traefik'
+  $traefikGroup = 'traefik'
+  $traefikUid = 1500
+  $traefikGid = 1500
+
+  user { $traefikUser:
+    home =>  $traefikDir,
+    uid  =>  $traefikUid,
+    gid  =>  $traefikGid,
+  }
+
+  group { $traefikGroup:
+    gid  =>  $traefikGid
+  }
+
+  file { $traefikDir:
+    ensure  => 'directory',
+    owner   => $traefikUser,
+    group   => $traefikGroup,
+    require => [
+      User[$traefikUser],
+      Group[$traefikGroup]
+    ]
   }
 
   # create a directory
   file { '/var/log/traefik':
-    ensure => 'directory'
+    ensure => 'directory',
+    owner   => $traefikUser,
+    group   => $traefikGroup,
+    require => [
+      User[$traefikUser],
+      Group[$traefikGroup]
+    ]
   }
 
   # create a directory
   file { '/etc/traefik':
-    ensure => 'directory'
+    ensure => 'directory',
+    owner   => $traefikUser,
+    group   => $traefikGroup,
+    require => [
+      User[$traefikUser],
+      Group[$traefikGroup]
+    ]
   }
 
   file { '/etc/traefik/traefik.toml':
     source  => 'puppet:///modules/pve/etc/traefik/traefik.toml',
-    require => [File['/etc/traefik']]
+    owner   => $traefikUser,
+    group   => $traefikGroup,
+    require => [
+      File['/etc/traefik'],
+      User[$traefikUser],
+      Group[$traefikGroup]
+    ]
   }
 
   file { '/etc/init.d/traefik':
@@ -87,6 +130,8 @@ class pve::profiles::blogr::lb(
     source  => 'puppet:///modules/pve/opt/traefik/traefik_linux-amd64',
     mode    => "700",
     require => [
+      User[$traefikUser],
+      Group[$traefikGroup],
       File['/opt/traefik'],
       File['/etc/traefik'],
       File['/var/log/traefik'],
