@@ -752,31 +752,11 @@ endpoint = "127.0.0.1:8500"
 # Optional
 #
 [consulCatalog]
-
-# Consul server endpoint
-#
-# Required
-#
 endpoint = "127.0.0.1:8500"
-
-# Default domain used.
-#
-# Optional
-#
 domain = "dragon.lan"
-
-# Prefix for Consul catalog tags
-#
-# Optional
-#
 prefix = "traefik"
-
-# Constraints
-#
-# Optional
-#
-# constraints = ["tag==api", "tag==he*ld"]
-# Matching with containers having this tag: "traefik.tags=api,helloworld"
+constraints = ["tag==prod"]
+watch = true
 
 ################################################################
 # Etcd configuration backend
