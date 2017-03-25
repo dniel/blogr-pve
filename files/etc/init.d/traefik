@@ -1,4 +1,4 @@
- #! /bin/sh
+#!/usr/bin/env bash
 ### BEGIN INIT INFO
 # Provides:          Træfɪk
 # Required-Start:    $network $syslog
@@ -10,7 +10,7 @@
 ### END INIT INFO
 
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
-DESC="Træfɪk"
+DESC="Træfɪk reverse proxy and load balancer"
 NAME=traefik
 TRAEFIK_ROOT=/opt/traefik
 TRAEFIK_GROUP=traefik
