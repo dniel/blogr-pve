@@ -726,22 +726,8 @@ traefikLogsFile = "/var/log/traefik/traefik.log"
 #
 [consul]
 
-# Consul server endpoint
-#
-# Required
-#
 endpoint = "127.0.0.1:8500"
-
-# Enable watch Consul changes
-#
-# Optional
-#
 watch = true
-
-# Prefix used for KV store.
-#
-# Optional
-#
 prefix = "traefik"
 
 # Override default configuration template. For advanced users :)
