@@ -6,20 +6,13 @@ class pve::profiles::blogr::lb(
     ensure => 'purged'
   }
 
-  $tags = $::hostname ? {
-    /^t-/    => ['test','traefik.tags=test'],
-    /^p-/    => ['prod','traefik.tags=prod'],
-    /^d-/    => ['dev', 'traefik.tags=dev'],
-    default  => []
-  }
-
+  $tags = [$::environment,"traefik.tags=${::environment}"]
   ::consul::service { "${::hostname}-lb":
     service_name  => "lb",
     address       => "${::ipaddress}",
     port          => 80,
     tags          => $tags
   }
-
 
   ###
   ## INSTALL traefik

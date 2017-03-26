@@ -22,13 +22,7 @@ class pve::profiles::blogr::restapi{
     require => [File['/etc/init.d/node-app']]
   }
 
-  $tags = $::hostname ? {
-    /^t-/ => ['test'],
-    /^p-/ => ['prod'],
-    /^d-/ => ['dev'],
-    default  => []
-  }
-
+  $tags = [$::environment,"traefik.tags=${::environment}"]
   ::consul::service { "${::hostname}-app":
     service_name => "app",
     address      => "${::ipaddress}",

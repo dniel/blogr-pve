@@ -38,11 +38,4 @@ class pve::profiles::logging::server{
     content => template("pve/logstash/config.erb"),
   }
 
-  $tags = $::hostname ? {
-    /^t-/ => ['test'],
-    /^p-/ => ['prod'],
-    /^d-/ => ['dev'],
-    default  => []
-  }
-
 }
