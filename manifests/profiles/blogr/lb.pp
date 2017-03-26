@@ -69,6 +69,7 @@ class pve::profiles::blogr::lb(
     content => template('pve/traefik/traefik.toml.erb'),
     owner   => $traefikUser,
     group   => $traefikGroup,
+    notify => Service['traefik'],
     require => [
       File['/etc/traefik'],
       User[$traefikUser],
@@ -87,7 +88,6 @@ class pve::profiles::blogr::lb(
     enable  => true,
     hasrestart => true,
     hasstatus => true,
-    require => File['/etc/init.d/traefik']
   }
 
   file { '/opt/traefik/traefik_linux-amd64':
