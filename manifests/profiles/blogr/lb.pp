@@ -6,7 +6,7 @@ class pve::profiles::blogr::lb(
     ensure => 'purged'
   }
 
-  $tags = [$::environment,"traefik.tags=${::environment}"]
+  $tags = [$::environment]
   ::consul::service { "${::hostname}-lb":
     service_name  => "lb",
     address       => "${::ipaddress}",
