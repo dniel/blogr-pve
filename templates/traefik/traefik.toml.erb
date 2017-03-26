@@ -6,5 +6,5 @@ prefix = "traefik"
 endpoint = "127.0.0.1:8500"
 domain = "dragon.lan"
 prefix = "traefik"
-constraints = ["tag==<%=@tags[0]%>"]
+constraints = ["tag==<%=@environment%>"]
 watch = true
