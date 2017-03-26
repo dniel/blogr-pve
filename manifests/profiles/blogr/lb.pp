@@ -1,7 +1,4 @@
-class pve::profiles::blogr::lb(
-  $app_hosts,
-  $server_names
-){
+class pve::profiles::blogr::lb{
   package { 'haproxy':
     ensure => 'purged'
   }

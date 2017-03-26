@@ -1,7 +1,0 @@
-pve::profiles::blogr::lb::app_hosts:
-  - p-app-01.dragon.lan
-  - p-app-03.dragon.lan
-
-pve::profiles::blogr::lb::server_names:
-  - p-app-01
-  - p-app-03
