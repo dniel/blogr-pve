@@ -26,14 +26,21 @@ fi
 # Install gems from Gemfile or Gemfile.lock if checked in
 /usr/local/bin/bundle install --path=.bundle --binstubs=bin --quiet|| exit 1
 
-# get environment from current git branch
-environment=$(git symbolic-ref --short HEAD)
+# Get current environment from hostname
+HOST=$(hostname)
+srv=`expr "$HOST" : '^\(d\|t\|p\)-'`
+case $srv in
+  t) ENVIRONMENT="test" ;;
+  d) ENVIRONMENT="development";;
+  p) ENVIRONMENT="production";;
+  *) echo "Unknown server !!!"exit 1;
+esac
 
 # install modules
 ./bin/librarian-puppet install --path /opt/puppetlabs/puppet/modules --quiet|| exit 1
 
 # Run Puppet
-./bin/puppet apply --log_level=warning --color=ansi --modulepath=..:/opt/puppetlabs/puppet/modules manifests "$@"
+./bin/puppet apply --environment=$ENVIRONMENT --log_level=warning --color=ansi --modulepath=..:/opt/puppetlabs/puppet/modules manifests "$@"
 
 ## Log status of the Puppet run
 if [ $? -eq 0 ]
