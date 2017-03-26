@@ -1,7 +1,4 @@
 class pve::profiles::blogr::lb{
-  package { 'haproxy':
-    ensure => 'purged'
-  }
 
   $tags = [$::environment]
   ::consul::service { "${::hostname}-lb":
