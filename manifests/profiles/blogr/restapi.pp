@@ -12,7 +12,7 @@ class pve::profiles::blogr::restapi{
     make_install => false
   }
   file { '/etc/init.d/node-app':
-    source => 'puppet:///modules/pve/etc/init.d/node-app',
+    content => template('pve/blogr/node-app.erb'),
     notify => Service['node-app'],
     mode => "755"
   }

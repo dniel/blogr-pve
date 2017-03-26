@@ -1,7 +1,7 @@
 #!/bin/sh
 
 USER="jenkins"
-NODE_ENV="production"
+NODE_ENV="<%=@environment%>"
 PORT="3000"
 APP_DIR="/opt/blogr/latest/server"
 NODE_APP="dist/server.js"
