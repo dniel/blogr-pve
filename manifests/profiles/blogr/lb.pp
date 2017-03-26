@@ -78,7 +78,8 @@ class pve::profiles::blogr::lb(
 
   file { '/etc/init.d/traefik':
     source  => 'puppet:///modules/pve/etc/init.d/traefik',
-    mode => "755"
+    mode => "755",
+    notify => Service['traefik']
   }
 
   service { 'traefik':
