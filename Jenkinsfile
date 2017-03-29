@@ -8,13 +8,13 @@ node('master') {
                 checkout scm
 
 
+            stage "Puppet Apply"
                 def response = httpRequest acceptType: 'APPLICATION_JSON',
                         contentType: 'APPLICATION_JSON', url: "http://consul.service.consul:8500/v1/catalog/nodes"
 
                 def nodes = parseJsonText response.content
                 for (node in nodes) {
                     mattermostSend color: "good", message: "Update ${node.Node} , ${node.Address}"
-                    stage node.Node
                     puppetApply node.Address
                 }
 
