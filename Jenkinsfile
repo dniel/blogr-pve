@@ -2,20 +2,27 @@ node('master') {
     currentBuild.result = "SUCCESS"
 
     ansiColor('xterm') {
-        try {
             stage 'Prepare'
                 mattermostSend "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} started."
                 checkout scm
 
 
             stage "Puppet Apply"
-                def response = httpRequest acceptType: 'APPLICATION_JSON',
-                        contentType: 'APPLICATION_JSON', url: "http://consul.service.consul:8500/v1/catalog/nodes"
+                try {
+                    def response = httpRequest acceptType: 'APPLICATION_JSON',
+                            contentType: 'APPLICATION_JSON', url: "http://consul.service.consul:8500/v1/catalog/nodes"
 
-                def nodes = parseJsonText response.content
-                for (node in nodes) {
-                    mattermostSend color: "good", message: "Update ${node.Node} , ${node.Address}"
-                    puppetApply node.Address
+                    def nodes = parseJsonText response.content
+                    for (node in nodes) {
+                        if(!node.Node.contains('p-ci-01')) {
+                            mattermostSend color: "good", message: "Update ${node.Node} , ${node.Address}"
+                            puppetApply node.Address
+                        }
+                    }
+                } catch (err) {
+                    currentBuild.result = "FAILURE"
+                    mattermostSend color: "bad", message: "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} FAILED."
+                    throw err
                 }
 
             stage 'ci-1'
@@ -27,11 +34,6 @@ node('master') {
                 deleteDir()
                 mattermostSend color: "good", message: "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} finished."
 
-        } catch (err) {
-            currentBuild.result = "FAILURE"
-            mattermostSend color: "bad", message: "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} FAILED."
-            throw err
-        }
     }
 }
 
