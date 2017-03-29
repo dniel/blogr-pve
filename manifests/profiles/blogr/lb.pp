@@ -1,11 +1,11 @@
-class pve::profiles::blogr::lb{
+class pve::profiles::blogr::lb {
 
   $tags = [$::environment]
   ::consul::service { "${::hostname}-lb":
-    service_name  => "lb",
-    address       => "${::ipaddress}",
-    port          => 80,
-    tags          => $tags
+    service_name => 'lb',
+    address      => $::ipaddress,
+    port         => 80,
+    tags         => $tags
   }
 
   ###
@@ -18,13 +18,13 @@ class pve::profiles::blogr::lb{
   $traefikGid = 1500
 
   user { $traefikUser:
-    home =>  $traefikDir,
-    uid  =>  $traefikUid,
-    gid  =>  $traefikGid,
+    home => $traefikDir,
+    uid  => $traefikUid,
+    gid  => $traefikGid,
   }
 
   group { $traefikGroup:
-    gid  =>  $traefikGid
+    gid => $traefikGid
   }
 
   file { $traefikDir:
@@ -39,7 +39,7 @@ class pve::profiles::blogr::lb{
 
   # create a directory
   file { '/var/log/traefik':
-    ensure => 'directory',
+    ensure  => 'directory',
     owner   => $traefikUser,
     group   => $traefikGroup,
     require => [
@@ -50,7 +50,7 @@ class pve::profiles::blogr::lb{
 
   # create a directory
   file { '/etc/traefik':
-    ensure => 'directory',
+    ensure  => 'directory',
     owner   => $traefikUser,
     group   => $traefikGroup,
     require => [
@@ -63,7 +63,7 @@ class pve::profiles::blogr::lb{
     content => template('pve/traefik/traefik.toml.erb'),
     owner   => $traefikUser,
     group   => $traefikGroup,
-    notify => Service['traefik'],
+    notify  => Service['traefik'],
     require => [
       File['/etc/traefik'],
       User[$traefikUser],
@@ -72,16 +72,16 @@ class pve::profiles::blogr::lb{
   }
 
   file { '/etc/init.d/traefik':
-    source  => 'puppet:///modules/pve/etc/init.d/traefik',
-    mode => "755",
+    source => 'puppet:///modules/pve/etc/init.d/traefik',
+    mode   => "755",
     notify => Service['traefik']
   }
 
   service { 'traefik':
-    ensure  => running,
-    enable  => true,
+    ensure     => running,
+    enable     => true,
     hasrestart => true,
-    hasstatus => true,
+    hasstatus  => true,
   }
 
   file { '/opt/traefik/traefik_linux-amd64':
