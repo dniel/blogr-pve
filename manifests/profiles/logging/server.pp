@@ -1,4 +1,4 @@
-class pve::profiles::logging::server{
+class pve::profiles::logging::server {
 
   class { 'kibana':
     ensure => latest,
@@ -9,7 +9,10 @@ class pve::profiles::logging::server{
     }
   }
 
-  $tags = [$::environment,"traefik.tags=${::environment}"]
+  $tags = [$::environment,
+    "traefik.tags=${::environment}",
+    "traefik.frontend.rule=Host:log.dragon.lan,log",
+    "traefik.frontend.passHostHeader=true"]
   ::consul::service { "${::hostname}-log":
     service_name => "log",
     address      => "${::ipaddress}",
@@ -21,7 +24,7 @@ class pve::profiles::logging::server{
     java_install => false,
     manage_repo  => true,
     repo_version => '5.x',
-    autoupgrade => true,
+    autoupgrade  => true,
   }
 
   elasticsearch::instance { 'es-01': }
@@ -37,10 +40,10 @@ class pve::profiles::logging::server{
   }
 
   class { 'logstash':
-    auto_upgrade  => true,
+    auto_upgrade => true,
   }
 
-#  logstash::plugin { 'logstash-input-beats': }
+  #  logstash::plugin { 'logstash-input-beats': }
 
   logstash::configfile { 'beats_logstash_config':
     content => template("pve/logstash/config.erb"),

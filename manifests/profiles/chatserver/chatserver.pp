@@ -1,5 +1,9 @@
-class pve::profiles::chatserver{
-  $tags = [$::environment,"traefik.tags=${::environment}"]
+class pve::profiles::chatserver {
+  $tags = [$::environment,
+    "traefik.tags=${::environment}",
+    "traefik.frontend.rule=Host:chat.dragon.lan,chat",
+    "traefik.frontend.passHostHeader=true"]
+
   ::consul::service { "${::hostname}-chat":
     service_name => 'chat',
     address      => $::ipaddress,
@@ -23,7 +27,7 @@ class pve::profiles::chatserver{
     service_template => 'mattermost/sysvinit_debian.erb',
     service_path     => '/etc/init.d/mattermost',
     override_options => {
-      'SqlSettings' => {
+      'SqlSettings'  => {
         'DriverName' => 'postgres',
         'DataSource' => "postgres://mattermost:mattermost@127.0.0.1:5432/mattermost?sslmode=disable&connect_timeout=10",
       },
