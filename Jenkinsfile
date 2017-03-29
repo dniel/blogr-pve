@@ -11,7 +11,7 @@ node('master') {
                 def response = httpRequest acceptType: 'APPLICATION_JSON',
                         contentType: 'APPLICATION_JSON', url: "http://consul.service.consul:8500/v1/catalog/nodes"
 
-                def nodes = new groovy.json.JsonSlurper().parseText(response.content)
+                def nodes = parseJsonText response.content
                 for (node in nodes) {
                     mattermostSend color: "good", message: "Update ${node.Node} , ${node.Address}"
                     def server = node.Address
@@ -34,6 +34,16 @@ node('master') {
             throw err
         }
     }
+}
+
+
+@NonCPS
+def parseJsonText(String json) {
+    def object = new JsonSlurper().parseText(json)
+    if(object instanceof groovy.json.internal.LazyMap) {
+        return new HashMap<>(object)
+    }
+    return object
 }
 
 def puppetApply(server) {
