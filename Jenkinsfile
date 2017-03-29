@@ -14,9 +14,8 @@ node('master') {
                 def nodes = parseJsonText response.content
                 for (node in nodes) {
                     mattermostSend color: "good", message: "Update ${node.Node} , ${node.Address}"
-                    def server = node.Address
-                    stage server
-                    puppetApply server
+                    stage node.Node
+                    puppetApply node.Address
                 }
 
             stage 'ci-1'
