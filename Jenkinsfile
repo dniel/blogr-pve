@@ -1,34 +1,23 @@
 node('master') {
     currentBuild.result = "SUCCESS"
 
-    def servers = ['p-lb-01',
-                   'p-lb-02',
-                   'p-app-01',
-                   'p-app-02',
-                   'p-app-03',
-                   'p-app-04',
-                   'p-db-01',
-                   'p-db-02',
-                   'p-chat-01',
-                   'p-log-01',
-                   'p-cfg-01',
-                   't-lb-01',
-                   't-app-01',
-                   't-app-02',
-                   't-db-01',
-                   'd-app-01',
-                   'd-db-01']
-
     ansiColor('xterm'){
         try {
            stage 'Prepare'
                 mattermostSend "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} started."
                 checkout scm
 
-                for (server in servers) {
-                   stage server
-                   puppetApply server
-                }
+
+            def response = httpRequest acceptType: 'APPLICATION_JSON',
+                    contentType: 'APPLICATION_JSON', url: "http://consul.service.consul:8500/v1/catalog/nodes"
+
+            def nodes = new groovy.json.JsonSlurper().parseText(response.content)
+            for (node in nodes) {
+                mattermostSend color: "good", message: "Update ${node.Node} , ${node.Address}"
+                def server = node.Address
+                stage server
+                puppetApply server
+            }
 
             stage 'ci-1'
                 sh 'git --work-tree=/opt/puppet/pve --git-dir=/opt/puppet/pve/.git pull'
