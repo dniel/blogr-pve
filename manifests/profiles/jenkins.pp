@@ -1,5 +1,9 @@
-class pve::profiles::jenkins{
-  $tags = [$::environment,"traefik.tags=${::environment}"]
+class pve::profiles::jenkins {
+  $tags = [$::environment,
+    "traefik.tags=${::environment}",
+    "traefik.frontend.rule=Host:ci.dragon.lan,ci",
+    "traefik.frontend.passHostHeader=true"]
+
   ::consul::service { "${::hostname}-ci":
     service_name => 'ci',
     address      => $::ipaddress,
@@ -19,11 +23,11 @@ class pve::profiles::jenkins{
   }
 
   jenkins::job { 'blogr-build-job':
-    config  => template("pve/jenkins/blogr-build-job.xml.erb"),
+    config => template("pve/jenkins/blogr-build-job.xml.erb"),
   }
 
   jenkins::job { 'blogr-pve-job':
-    config  => template("pve/jenkins/blogr-pve-job.xml.erb"),
+    config => template("pve/jenkins/blogr-pve-job.xml.erb"),
   }
 
   include pve::profiles::jenkins::ansicolor
