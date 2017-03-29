@@ -39,11 +39,7 @@ node('master') {
 
 @NonCPS
 def parseJsonText(String json) {
-    def object = new groovy.json.JsonSlurper().parseText(json)
-    if(object instanceof groovy.json.internal.LazyMap) {
-        return new HashMap<>(object)
-    }
-    return object
+    new groovy.json.JsonSlurperClassic().parseText(json)
 }
 
 def puppetApply(server) {
