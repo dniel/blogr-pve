@@ -9,6 +9,14 @@ class pve::profiles::logging::server{
     }
   }
 
+  $tags = [$::environment,"traefik.tags=${::environment}"]
+  ::consul::service { "${::hostname}-log":
+    service_name => "log",
+    address      => "${::ipaddress}",
+    port         => 5601,
+    tags         => $tags
+  }
+
   class { 'elasticsearch':
     java_install => false,
     manage_repo  => true,
