@@ -1,4 +1,12 @@
 class pve::profiles::chatserver{
+  $tags = [$::environment,"traefik.tags=${::environment}"]
+  ::consul::service { "${::hostname}-chat":
+    service_name => 'chat',
+    address      => $::ipaddress,
+    port         => 8065,
+    tags         => $tags
+  }
+
   class { 'postgresql::server':
     ipv4acls => ['host all all 127.0.0.1/32 md5'],
   }

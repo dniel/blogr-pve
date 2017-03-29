@@ -1,4 +1,12 @@
 class pve::profiles::jenkins{
+  $tags = [$::environment,"traefik.tags=${::environment}"]
+  ::consul::service { "${::hostname}-ci":
+    service_name => 'ci',
+    address      => $::ipaddress,
+    port         => 8080,
+    tags         => $tags
+  }
+
   class { 'jenkins':
     version => 'latest',
     lts     => false
