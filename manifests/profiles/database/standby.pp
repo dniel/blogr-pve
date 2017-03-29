@@ -7,6 +7,14 @@ class pve::profiles::database::standby(
   $rep_password,
 ){
 
+  $tags = [$::environment, "standby"]
+  ::consul::service { "${::hostname}-postgres":
+    service_name => 'postgres',
+    address      => $::ipaddress,
+    port         => 5432,
+    tags         => $tags
+  }
+
   class { 'postgresql::server':
     manage_recovery_conf       => true
   }

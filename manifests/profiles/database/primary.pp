@@ -3,6 +3,15 @@ class pve::profiles::database::primary(
   $rep_password,
   $rep_adress,
 ){
+
+  $tags = [$::environment, "primary"]
+  ::consul::service { "${::hostname}-postgres":
+    service_name => 'postgres',
+    address      => $::ipaddress,
+    port         => 5432,
+    tags         => $tags
+  }
+
   ### Standby configuration for primary db server.
   # configure postgres with hot standby as described here: https://cloud.google.com/solutions/setup-postgres-hot-standby
   postgresql::server::config_entry { 'wal_level':
