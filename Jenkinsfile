@@ -17,11 +17,11 @@ node('master') {
                     def nodes = parseJsonText response.content
                     for (node in nodes) {
                         if(!node.Node.contains('p-ci-01')) {
-                            mattermostSend color: "good", message: "Update ${node.Node} , ${node.Address}"
+                            mattermostSend color: "good", message: "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} Update ${node.Node} , ${node.Address}"
                             puppetApply node.Address
                         }
                     }
-                    mattermostSend color: "good", message: "${nodes.size} nodes was updated."
+                    mattermostSend color: "good", message: "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} ${nodes.size} nodes was updated."
                 } catch (err) {
                     currentBuild.result = "FAILURE"
                     mattermostSend color: "bad", message: "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} FAILED."
