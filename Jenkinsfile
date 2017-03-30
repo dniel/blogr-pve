@@ -11,10 +11,7 @@ node('master') {
                     /**
                      * Retrieve Nodes from Consul HTTP API.
                      */
-                    def response = httpRequest
-                            acceptType: 'APPLICATION_JSON',
-                            contentType: 'APPLICATION_JSON',
-                            url: "http://consul.service.consul:8500/v1/catalog/nodes"
+                    def response = httpRequest "http://consul.service.consul:8500/v1/catalog/nodes"
 
                     def nodes = parseJsonText response.content
                     for (node in nodes) {
