@@ -10,6 +10,7 @@ node('master') {
                 try {
                     /**
                      * Retrieve Nodes from Consul HTTP API.
+                     * https://www.consul.io/docs/agent/http.html
                      */
                     def response = httpRequest "http://consul.service.consul:8500/v1/catalog/nodes"
 
@@ -20,7 +21,7 @@ node('master') {
                             puppetApply node.Address
                         }
                     }
-                    mattermostSend color: "good", message: "${nodes.length} nodes was updated."
+                    mattermostSend color: "good", message: "${nodes.size} nodes was updated."
                 } catch (err) {
                     currentBuild.result = "FAILURE"
                     mattermostSend color: "bad", message: "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} FAILED."
