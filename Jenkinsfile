@@ -23,7 +23,7 @@ node('master') {
                             puppetApply node.Address
                         }
                     }
-                    mattermostSend color: "good", message: "${nodes.length} was updated."
+                    mattermostSend color: "good", message: "${nodes.length} nodes was updated."
                 } catch (err) {
                     currentBuild.result = "FAILURE"
                     mattermostSend color: "bad", message: "${env.JOB_NAME} - Build ${env.BUILD_NUMBER} FAILED."
