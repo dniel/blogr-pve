@@ -1,4 +1,13 @@
 # Network setup
+
+### network segmentation
+The network has been segmented into different segments depending on the service they provide and the security they need.
+
+From [Network Segmentation, Wikipedia](https://en.wikipedia.org/wiki/Network_segmentation)  
+> Network segmentation in computer networking is the act or profession of splitting a computer 
+> network into subnetworks, each being a network segment. Advantages of such splitting are primarily 
+> for boosting performance and improving security.
+
 ### Create the VLANS and assign to the correct ports on your switch.
 Prepare communication between the laptops your switch/router
 be configured to route a set of VLANS.
