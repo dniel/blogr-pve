@@ -66,12 +66,8 @@ eventually be handled by Jenkins Pipeline.
 #### [Pfsense configuration](doc/setup_pfsense.md)
 #### [Linux LXC container configuration](doc/setup_lxc.md)
 #### [Continuous Development with Jenkins2](doc/setup_jenkins.md)
-#### Service Discovery with Consul, TODO
+#### [Service Discovery with Consul](doc/setup_consul.md)
 #### Provisioning with Puppet, TODO
-
-
-## The Puppet Module
-#### [Description of the puppet scripts](doc/setup_puppet.md)
 
 ## Limitations
 * Tested with Proxmox Virtual Environment 4.2-2/725d76f0.
