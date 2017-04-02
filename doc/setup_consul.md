@@ -89,7 +89,9 @@ The first version of my home lab was using Nginx, then replaced by HAProxy, now 
 [Traefik](http://www.traefik.io) has [native support for Consul](https://docs.traefik.io/toml/#consul-catalog-backend).
 
 
+
+#### Fully automatic
 This give me the possibility to add a new LXC container, bootstrap the container and run the puppet apply.sh 
 script, and if the role of the new container matches a service then it will be included in Consul, it will be 
-added to the load balancer, found by the Jenkins pipeline Puppet Apply script used by Jenkins and the Jenkins 
-Pipeline.
+added to the load balancer, found by the pipeline that run scheduled Puppet Apply and the 
+Pipeline for deploying the Sample Application. All of this without any manual input after the initial bootstrap.
