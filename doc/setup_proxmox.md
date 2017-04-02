@@ -2,8 +2,8 @@
 ### Download and install proxmox
 Install Proxmox on all three laptops.
 * Proxmox version > 4.2
-* Create four virtual ethernet devices in proxmox.
-* Tag the virtual ethernet devices with vlan tag 2,3,4 and 5
+* Create virtual ethernet devices in proxmox for all VLANS.
+* Tag the virtual ethernet devices with vlan tags.
 
 ![network in proxmox](network_proxmox.png)
 

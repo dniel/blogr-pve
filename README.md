@@ -16,21 +16,20 @@ separated into network zones for dmz and a internal corporate
 network + more to emulate a production like environment.
 
 #### Features
-* clustered proxmox virtual environment on three machines.
-* hardware failover with virtualized linux containers deployed on the proxmox cluster.
-* firewall with failover.
-* segmented network, divided into subnets using subnets and vlans
-* database with failover.
-* load balanced frontend servers.
-* load balanced node backend server.
-* immutable virtual servers.
-* a sample web application.
-* immutable lightweight lxc containers with one dedicated task each. (debian8)
-* service discovery with consul, health check of nodes and services with consul
-* provisioning with puppet scripts for configuration and containers
-* centralized logging from all nodes to ELK stack
-* notifications of events to mattermost
-* continous Deployment, a build pipeline with jenkins2
+* Clustered proxmox virtual environment on three machines.
+* Hardware failover with virtualized linux containers deployed on the proxmox cluster.
+* Firewall with failover.
+* Segmented network, divided into subnets using subnets and vlans
+* Database with failover.
+* Load balanced frontend servers.
+* Load balanced node backend server.
+* A sample web application.
+* Immutable lightweight lxc containers with one dedicated task each. (debian8)
+* Service discovery with consul, health check of nodes and services with consul
+* Provisioning with puppet scripts for configuration and containers
+* Centralized logging from all nodes to ELK stack
+* Notifications of events to mattermost
+* Continuous deployment, a build pipeline with Jenkins2
 
 ## Hardware
 Three retired work laptops, Lenovo W520 and W530 with 16GB ram
