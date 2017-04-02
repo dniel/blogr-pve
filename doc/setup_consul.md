@@ -1,6 +1,6 @@
 # Service Discovery
 
-To implement Service Discovery im using a product called Consul by HashiCorp.
+To implement Service Discovery I'm using a product called Consul by HashiCorp.
 
 As quoted from their [GitHub repo](https://github.com/hashicorp/consul)
 > Consul is a tool for service discovery and configuration. Consul is distributed, highly available, and extremely scalable.
