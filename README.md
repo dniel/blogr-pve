@@ -19,12 +19,18 @@ network + more to emulate a production like environment.
 * clustered proxmox virtual environment on three machines.
 * hardware failover with virtualized linux containers deployed on the proxmox cluster.
 * firewall with failover.
-* secured network, divided into separate vlan zones.
+* segmented network, divided into subnets using subnets and vlans
 * database with failover.
 * load balanced frontend servers.
 * load balanced node backend server.
 * immutable virtual servers.
 * a sample web application.
+* immutable lightweight lxc containers with one dedicated task each. (debian8)
+* service discovery with consul, health check of nodes and services with consul
+* provisioning with puppet scripts for configuration and containers
+* centralized logging from all nodes to ELK stack
+* notifications of events to mattermost
+* continous Deployment, a build pipeline with jenkins2
 
 ## Hardware
 Three retired work laptops, Lenovo W520 and W530 with 16GB ram
@@ -60,7 +66,10 @@ eventually be handled by Jenkins Pipeline.
 #### [Proxmox configuration](doc/setup_proxmox.md)
 #### [Pfsense configuration](doc/setup_pfsense.md)
 #### [Linux LXC container configuration](doc/setup_lxc.md)
-#### [The Continuous Development Process](doc/setup_jenkins.md)
+#### [Continuous Development with Jenkins2](doc/setup_jenkins.md)
+#### Service Discovery with Consul, TODO
+#### Provisioning with Puppet, TODO
+
 
 ## The Puppet Module
 #### [Description of the puppet scripts](doc/setup_puppet.md)
