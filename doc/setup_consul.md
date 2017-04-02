@@ -1,6 +1,26 @@
 # Service Discovery
+When implemented a distributed and clustered architecture that at the same time is as automated as possible, then 
+a service discovery technology is a important part of the architecture. It enable us to scale up the number of 
+instances running of a microservice across cluster nodes and as well the number running on each node in a 
+dynamic way without manual configuration of new instances.
 
-To implement Service Discovery I'm using a product called Consul by HashiCorp.
+Two pieces of software must be installed for this to work
+* Agents
+* Central registry
+
+The agents report status on the container they are installed on, and if any services are
+defined on the node they also report back status on to the central catalog.
+
+The central registry contain the status of all nodes and services that are defined.
+Several products exists that provide this functionality
+* Zookeeper used by Hadoop
+* Etcd used by Kubernetes, together with registrator and confd.
+* Consul
+
+To enable Service Discovery in my home lab I'm using a product called Consul by HashiCorp.
+One of the reasons that I chose Consul was that it is one of the products from [HashiCorp](https://www.hashicorp.com)
+and I'm have a feeling that I'm going to explore more products from them in the future, like [Vault](https://www.vaultproject.io) and 
+[Rancher](https://www.rancher.com).
 
 As quoted from their [GitHub repo](https://github.com/hashicorp/consul)
 > Consul is a tool for service discovery and configuration. Consul is distributed, highly available, and extremely scalable.
