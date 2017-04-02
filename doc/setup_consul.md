@@ -86,8 +86,11 @@ $ dig @127.0.0.1 +short -p 8600 development.app.service.consul. ANY
 
 #### Traefik, the load-balancer.
 The first version of my home lab was using Nginx, then replaced by HAProxy, now recently replaced by 
-[Traefik](http://www.traefik.io) has [native support for Consul](https://docs.traefik.io/toml/#consul-catalog-backend).
+[Traefik](http://www.traefik.io) because it has [native support for Consul](https://docs.traefik.io/toml/#consul-catalog-backend).
 
+Both HAProxy and Nginx could have been used in combination with [consule-template](https://github.com/hashicorp/consul-template) 
+but would have had trouble implementing reloads of the load balance members without breaking connections and giving connection
+to clients. Traefik is a young project but seems promising. Still, I have to verify this by running Apache benchmarks to get real evidence about how the system behaves but in theory it should work.
 
 
 #### Fully automatic
