@@ -25,7 +25,7 @@ the same HTTP API for Consul to find all hosts that run the [Sample Application]
 and update them when running deploy.
  
 #### Multiple environments 
-When running the puppet scripts, depending on the hostname of the virtual container the [Puppet Apply](/apply.sh) 
+When running the puppet scripts, depending on the hostname of the virtual container the [Puppet Apply](/apply.sh#L29) 
 selects and set the puppet environment to be production, test or development. This is also used by the puppet scripts
 to tag the Nodes and the Services with their environment.  
 
