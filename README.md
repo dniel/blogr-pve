@@ -77,6 +77,8 @@ eventually be handled by Jenkins Pipeline.
 * Will not configure proxmox or pfsense, both must be manually installed and configured.
 
 ### Future development
-* NAS, Network storage using iSCSI drive with multiple bays for configuring RAID failover on hard drives.
+* SNMP monitoring of all hosts and services, graphing.
+* Central user store, LDAP? 
+* Automatic backup
 * Configure proxmox with puppet
 * Configure pfSense with puppet
