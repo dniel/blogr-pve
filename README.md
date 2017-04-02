@@ -51,7 +51,7 @@ This is how is looks like if modelled with Archimate and Archi.
 I have modelled just the virtual machines, the networks and firewalls
 that connect them.
 
-![alt tag](doc/overview.png)
+![alt tag](doc/overview.svg)
 
 ## The sample application that is deployed
 Is a very simple React application [Blogr](https://github.com/dniel/blogr-workshop)
