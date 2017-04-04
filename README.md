@@ -11,16 +11,13 @@ pair of reverse proxies that load balance in front of four backend
 servers that has been divided in two clusters and using a primary
 and hot-standby for stored state.
 
-The network has been
-separated into network zones for dmz and a internal corporate
-network + more to emulate a production like environment.
+The network has been segmented into subnetworks for dmz and a internal
+corporate network + more to emulate a production like environment.
 
 #### Features
 * Clustered proxmox virtual environment on three machines.
 * Hardware failover with virtualized linux containers deployed on the proxmox cluster.
-* Firewall with failover.
-* Segmented network, divided into subnets using subnets and vlans
-* Database with failover.
+* Segmented network, divided into subnets and vlans for security
 * Load balanced frontend servers.
 * Load balanced node backend server.
 * A sample web application.
@@ -79,6 +76,8 @@ eventually be handled by Jenkins Pipeline.
 ### Future development
 * SNMP monitoring of all hosts and services, graphing.
 * Central user store, LDAP? 
-* Automatic backup
-* Configure proxmox with puppet
-* Configure pfSense with puppet
+* Automatic backup of whole cluster.
+* Store secrets in HashiCorp Vault
+* Reimplement - Firewall with failover. (removed, will be re-added when other stuff has been finished)
+* Reimplement - Database with failover. (removed, will be re-added when other stuff has been finished)
+
