@@ -1,5 +1,6 @@
 class pve::profiles::common{
 
+  include git
   include docker
   include unattended_upgrades
   include sudo
