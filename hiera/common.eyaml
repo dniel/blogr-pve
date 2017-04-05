@@ -1,6 +1,8 @@
 git::configs:
   user.name: 'Daniel'
-  user.email: 'daniel@engfeldt.net
+  user.email: 'daniel@engfeldt.net'
+git::configs_defaults:
+  scope: system
 
 pve::profiles::logging::forwarder::log_server: log.dragon.lan
 pve::profiles::logging::forwarder::log_port: 5044
