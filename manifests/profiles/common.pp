@@ -1,6 +1,14 @@
 class pve::profiles::common{
 
   include git
+  git::config { 'user.name':
+    value => 'Daniel',
+  }
+
+  git::config { 'user.email':
+    value => 'daniel@engfeldt.net',
+  }
+
   include docker
   include unattended_upgrades
   include sudo
