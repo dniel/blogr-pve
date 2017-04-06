@@ -5,4 +5,5 @@ class pve::roles::rancherserver{
   include pve::profiles::network
   include pve::profiles::logging::forwarder
   include pve::profiles::config::agent
+  include pve::profiles::rancher
 }
