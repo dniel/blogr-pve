@@ -9,12 +9,6 @@ class pve::profiles::common{
     timezone => 'Europe/Oslo',
   }
 
-  class { 'apt':
-    update => {
-      frequency => 'daily',
-    }
-  }
-
   class { 'ssh::server':
     storeconfigs_enabled => false,
     options              => {
