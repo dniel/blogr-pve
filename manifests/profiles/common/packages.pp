@@ -1,9 +1,5 @@
 class pve::profiles::common::packages{
 
-  package { 'git':
-    ensure => 'installed',
-  }
-
   package { 'monitoring-plugins':
     ensure => 'installed',
   }
