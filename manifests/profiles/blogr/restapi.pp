@@ -1,4 +1,7 @@
 class pve::profiles::blogr::restapi{
+  class { 'docker':
+    manage_service => false
+  }
 
   file{"/opt/blogr":
     ensure  =>  directory,
