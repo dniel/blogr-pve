@@ -1,5 +1,5 @@
 class pve::profiles::rancher {
-  class {'docker':
-    manage_service  => false
+  class { 'docker':
+    manage_service => false
   }
 }
