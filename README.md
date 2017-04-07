@@ -80,4 +80,4 @@ eventually be handled by Jenkins Pipeline.
 * Store secrets in HashiCorp Vault
 * Reimplement - Firewall with failover. (removed, will be re-added when other stuff has been finished)
 * Reimplement - Database with failover. (removed, will be re-added when other stuff has been finished)
-
+* Create base default image for LXC containers containing bootstrap code for faster creation of new containers.
