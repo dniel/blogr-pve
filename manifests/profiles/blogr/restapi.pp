@@ -3,6 +3,10 @@ class pve::profiles::blogr::restapi{
     manage_service => false
   }
 
+  class { 'rancher':
+    registration_url => 'http://10.0.60.100:8080/v1/scripts/443B929165E879B9F533:1483142400000:7C5YD5HkhiDu4foMN6V1XzFo6IY'
+  }
+
   file{"/opt/blogr":
     ensure  =>  directory,
   }
