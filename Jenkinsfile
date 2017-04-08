@@ -50,6 +50,6 @@ def parseJsonText(String json) {
 
 def puppetApply(server) {
     print "Update ${server}"
-    sh "rsync -azP --delete -e \"ssh -o StrictHostKeyChecking=no\" jenkins@${server}:/opt/puppet/ /opt/puppet"
+    sh "rsync -az --delete -e \"ssh -o StrictHostKeyChecking=no\" jenkins@${server}:/opt/puppet/ /opt/puppet"
     sh "ssh -o StrictHostKeyChecking=no jenkins@${server} 'sudo /opt/puppet/pve/apply.sh'"
 }
