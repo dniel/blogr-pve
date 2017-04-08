@@ -20,10 +20,9 @@ node('master') {
                 for (node in nodes) {
                     // retrieve status of serfHealth to check if node is online.
                     response = httpRequest "http://consul.service.consul:8500/v1/health/node/${node.Node}"
-                    health = parseJsonText response.content
-                    serfHealth = health.find { it.CheckID == 'serfHealth' }
+                    status = parseHealthCheck response
 
-                    if (!node.Node.contains('p-ci-01') && serfHealth.Status == "passing") {
+                    if (!node.Node.contains('p-ci-01') && status == "passing") {
                         mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Update ${node.Node} , ${node.Address}"
                         puppetApply node.Address
                     }else{
@@ -38,6 +37,13 @@ node('master') {
             }
         }
     }
+}
+
+@NonCPS
+private void parseHealthCheck(response) {
+    def health = parseJsonText response.content
+    def serfHealth = health.find { it.CheckID == 'serfHealth' }
+    serfHealth.Status
 }
 
 /**
