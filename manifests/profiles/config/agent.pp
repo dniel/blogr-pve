@@ -11,7 +11,7 @@ class pve::profiles::config::agent {
   }
 
   ::consul::check { 'check_disk_usage':
-    script   => '/usr/lib/nagios/plugins/check_disk -w 50% -c 20%',
+    script   => '/usr/lib/nagios/plugins/check_disk -M / -w 50% -c 20%',
     interval => '30s'
   }
 
