@@ -7,6 +7,12 @@ class pve::profiles::config::agent{
       'log_level'  => 'INFO',
       'node_name'  => "${::hostname}-agent",
       'retry_join' => ['10.0.50.106'],
-    }
+    },
+    checks  => [
+      {
+        script   => '/usr/lib/nagios/plugin/check_disk -w 50% -c 20%',
+        interval => '30s'
+      }
+    ],
   }
 }
