@@ -1,6 +1,6 @@
 class pve::profiles::blogr::restapi{
-  class { 'docker':
-    manage_service => false
+  package { 'docker':
+    ensure => 'installed',
   }
 
   class { 'rancher':
