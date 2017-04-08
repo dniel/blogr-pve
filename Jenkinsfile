@@ -43,7 +43,7 @@ node('master') {
 def parseHealthCheck(response) {
     def health = parseJsonText response.content
     for (int i = 0; i < health.size; i++) {
-        if (health[i].CheckId == 'serfHealth') return health[i].Status;
+        if (health[i].CheckID == 'serfHealth') return health[i].Status;
     }
 }
 
