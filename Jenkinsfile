@@ -5,6 +5,8 @@ node('master') {
         stage('Prepare') {
             mattermostSend "${env.JOB_NAME} - ${env.BUILD_NUMBER} started."
             checkout scm
+            sh 'sudo /opt/puppet/pve/apply.sh'
+            mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Build server was updated."
         }
 
         stage("Puppet Apply") {
@@ -14,12 +16,18 @@ node('master') {
                  * https://www.consul.io/docs/agent/http.html
                  */
                 def response = httpRequest "http://consul.service.consul:8500/v1/catalog/nodes"
-
                 def nodes = parseJsonText response.content
                 for (node in nodes) {
-                    if (!node.Node.contains('p-ci-01')) {
+                    // retrieve status of serfHealth to check if node is online.
+                    response = httpRequest "http://consul.service.consul:8500/v1/health/node/${node.Node}"
+                    health = parseJsonText response.content
+                    serfHealth = health.find { it.CheckID == 'serfHealth' }
+
+                    if (!node.Node.contains('p-ci-01') && serfHealth.Status == "passing") {
                         mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Update ${node.Node} , ${node.Address}"
                         puppetApply node.Address
+                    }else{
+                        mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Ignore update ${node.Node} , ${node.Address}"
                     }
                 }
                 mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} ${nodes.size} nodes was updated."
@@ -28,11 +36,6 @@ node('master') {
                 mattermostSend color: "bad", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} FAILED."
                 throw err
             }
-        }
-        stage('Jenkins') {
-            sh 'git --work-tree=/opt/puppet/pve --git-dir=/opt/puppet/pve/.git pull'
-            sh 'sudo /opt/puppet/pve/apply.sh'
-            mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Build server was updated."
         }
     }
 }
