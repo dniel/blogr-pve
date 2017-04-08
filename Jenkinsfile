@@ -25,7 +25,7 @@ node('master') {
                     if (!node.Node.contains('p-ci-01') && status == "passing") {
                         mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Update ${node.Node} , ${node.Address}"
                         puppetApply node.Address
-                    }else{
+                    } else {
                         mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Ignore update ${node.Node} , ${node.Address}"
                     }
                 }
@@ -40,10 +40,11 @@ node('master') {
 }
 
 @NonCPS
-private void parseHealthCheck(response) {
+def parseHealthCheck(response) {
     def health = parseJsonText response.content
-    def serfHealth = health.find { it.CheckID == 'serfHealth' }
-    serfHealth.Status
+    for (int i = 0; i < health.length; i++) {
+        if (health[i].CheckId == 'serfHealth') return health[i].Status;
+    }
 }
 
 /**
