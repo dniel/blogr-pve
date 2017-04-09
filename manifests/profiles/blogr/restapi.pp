@@ -4,7 +4,8 @@ class pve::profiles::blogr::restapi{
   }
 
   class { 'rancher':
-    registration_url => 'http://10.0.60.100:8080/v1/scripts/443B929165E879B9F533:1483142400000:7C5YD5HkhiDu4foMN6V1XzFo6IY'
+    registration_url => 'http://10.0.60.100:8080/v1/scripts/443B929165E879B9F533:1483142400000:7C5YD5HkhiDu4foMN6V1XzFo6IY',
+    agent_address    => $::ipaddress_eth0
   }
 
   file{"/opt/blogr":
@@ -32,7 +33,7 @@ class pve::profiles::blogr::restapi{
   $tags = [$::environment,"traefik.tags=${::environment}"]
   ::consul::service { "${::hostname}-app":
     service_name => "app",
-    address      => "${::ipaddress}",
+    address      => $::ipaddress_eth0,
     port         => 3000,
     tags         => $tags
   }
