@@ -5,7 +5,7 @@ node('master') {
         stage('Prepare') {
             mattermostSend "${env.JOB_NAME} - ${env.BUILD_NUMBER} started."
             checkout scm
-            sh 'sudo /opt/puppet/pve/apply.sh'
+            sh 'sudo ./apply.sh'
             mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Build server was updated."
         }
 
@@ -60,6 +60,6 @@ def parseJsonText(String json) {
 
 def puppetApply(server) {
     print "Update ${server}"
-    sh "rsync -rz --delete -e \"ssh -o StrictHostKeyChecking=no\" jenkins@${server}:/opt/puppet/pve/ /opt/puppet/pve"
+    sh "rsync -rz --delete -e 'ssh -o StrictHostKeyChecking=no' --exclude '.git' . jenkins@${server}:/opt/puppet/pve"
     sh "ssh -o StrictHostKeyChecking=no jenkins@${server} 'sudo /opt/puppet/pve/apply.sh'"
 }
