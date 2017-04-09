@@ -8,7 +8,7 @@ class pve::profiles::rancher {
   ::consul::service { "${::hostname}-rancher":
     service_name => "rancher",
     address      => $::ipaddress_eth0,
-    port         => 3000,
+    port         => 8080,
     tags         => $tags
   }
 }
