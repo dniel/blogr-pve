@@ -4,7 +4,7 @@ dir="$(dirname $(readlink -f $0))"
 cd $dir
 
 # trouble with packet fragmentation in my network
-ifconfig eth0 mtu 1400
+/sbin/ifconfig eth0 mtu 1400
 
 # skip set kernel parameters
 # workaround for
