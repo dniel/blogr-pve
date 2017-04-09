@@ -5,8 +5,8 @@ node('master') {
         stage('Prepare') {
             mattermostSend "${env.JOB_NAME} - ${env.BUILD_NUMBER} started."
             checkout scm
-            sh './apply.sh'
-            mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Build server was updated."
+            // sh './apply.sh'
+            // mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Build server was updated."
         }
 
         stage("Puppet Apply") {
