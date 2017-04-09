@@ -5,7 +5,7 @@ node('master') {
         stage('Prepare') {
             mattermostSend "${env.JOB_NAME} - ${env.BUILD_NUMBER} started."
             checkout scm
-            sh 'sudo ./apply.sh'
+            sh './apply.sh'
             mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Build server was updated."
         }
 
