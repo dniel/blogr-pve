@@ -6,7 +6,7 @@ class pve::profiles::database () {
     encoding            => 'UTF-8',
     locale              => 'nb_NO.UTF-8',
   } -> class { 'postgresql::server':
-    listen_addresses => '*',
+    listen_addresses          => '*',
     service_restart_on_change => true
   }
 
@@ -24,6 +24,7 @@ class pve::profiles::database () {
     service_name => 'postgres',
     address      => $::ipaddress,
     port         => 5432,
-    tags         => $tags
+    tags         => $tags,
+    require      => [Class['consul']]
   }
 }
