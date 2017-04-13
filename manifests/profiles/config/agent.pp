@@ -1,7 +1,5 @@
 class pve::profiles::config::agent {
 
-  anchor { 'agent::begin': } ->
-
   class { '::consul':
     init_style  => 'debian',
     config_hash => {
@@ -21,8 +19,7 @@ class pve::profiles::config::agent {
   ::consul::check { 'check_cpuload':
     script   => '/usr/lib/nagios/plugins/check_load -r -w 0.7 -c 1',
     interval => '30s'
-  } ->
+  }
 
-  anchor { 'agent::end': }
 
 }
