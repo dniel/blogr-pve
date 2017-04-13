@@ -25,6 +25,6 @@ class pve::profiles::database () {
     address      => $::ipaddress,
     port         => 5432,
     tags         => $tags,
-    require      => [Class['consul']]
+    require      => [Class['pve::profiles::config::agent']]
   }
 }
