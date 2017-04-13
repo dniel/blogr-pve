@@ -3,10 +3,10 @@ class pve::roles::dbserver{
   include pve::profiles::common::packages
   include pve::profiles::common::users
   include pve::profiles::logging::forwarder
+  include pve::profiles::config::agent
   include pve::profiles::database
   include pve::profiles::blogr::database
   include pve::profiles::network
-  include pve::profiles::config::agent
 }
 
 class pve::roles::dbserver::primary inherits pve::roles::dbserver{
