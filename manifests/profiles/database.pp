@@ -19,4 +19,12 @@ class pve::profiles::database () {
     auth_method => 'md5',
   }
 
+  $tags = [$::environment]
+  ::consul::service { "${::hostname}-postgres":
+    service_name => "postgres",
+    address      => $::ipaddress_eth0,
+    port         => 5432,
+    tags         => $tags
+  }
+
 }
