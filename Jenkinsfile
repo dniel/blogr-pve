@@ -58,9 +58,13 @@ def parseJsonText(String json) {
     new groovy.json.JsonSlurperClassic().parseText(json)
 }
 
+/**
+ * Checkout latest version of puppet scripts from GITHUB and run apply.sh
+ * @param server
+ * @return
+ */
 def puppetApply(server) {
     print "Update ${server}"
-    def workspace = pwd()
-    sh "rsync -rz -e 'ssh -o StrictHostKeyChecking=no' --exclude '.git' ${workspace}/ jenkins@${server}:/opt/puppet/pve"
+    sh "ssh -o StrictHostKeyChecking=no jenkins@${server} 'git --work-tree=/opt/puppet/pve --git-dir=/opt/puppet/pve/.git pull'"
     sh "ssh -o StrictHostKeyChecking=no jenkins@${server} 'sudo /opt/puppet/pve/apply.sh'"
 }
