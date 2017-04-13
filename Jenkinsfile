@@ -5,8 +5,9 @@ node('master') {
         stage('Prepare') {
             mattermostSend "${env.JOB_NAME} - ${env.BUILD_NUMBER} started."
             checkout scm
-            // sh './apply.sh'
-            // mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Build server was updated."
+            sh 'git --work-tree=/opt/puppet/pve --git-dir=/opt/puppet/pve/.git pull'
+            sh 'sudo /opt/puppet/pve/apply.sh'
+            mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Build server was updated."
         }
 
         stage("Puppet Apply") {
