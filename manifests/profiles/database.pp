@@ -24,7 +24,6 @@ class pve::profiles::database () {
     service_name => 'postgres',
     address      => $::ipaddress,
     port         => 5432,
-    tags         => $tags,
-    require      => [Class['Consul']]
+    tags         => $tags
   }
 }
