@@ -1,5 +1,7 @@
 class pve::profiles::logging::server {
 
+  include pve::profiles::common::packages::java8
+
   class { 'kibana':
     ensure => latest,
     config => {
