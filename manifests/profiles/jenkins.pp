@@ -38,9 +38,9 @@ class pve::profiles::jenkins {
   }
 
   class { 'jenkins':
-    version => 'latest',
-    lts     => false,
-    java_install => false
+    version      => 'latest',
+    lts          => false,
+    install_java => false
   }
 
   # install node so that we can build blogr.
