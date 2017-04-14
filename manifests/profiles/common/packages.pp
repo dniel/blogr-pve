@@ -1,6 +1,9 @@
 class pve::profiles::common::packages {
 
 
+  package { 'openjdk-7-jdk':
+    ensure => 'purge'
+  }
 
   package { 'monitoring-plugins':
     ensure => 'installed',

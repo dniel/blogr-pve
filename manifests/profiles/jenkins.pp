@@ -37,10 +37,6 @@ class pve::profiles::jenkins {
     ensure => 'installed',
   }
 
-  package { 'openjdk-7-jdk':
-    ensure => 'purge'
-  }
-
   class { 'jenkins':
     version => 'latest',
     lts     => false,
