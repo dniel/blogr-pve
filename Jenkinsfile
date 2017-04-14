@@ -20,7 +20,7 @@ ansiColor('xterm') {
                 def nodes = [:]
                 for (int i = 0; i < nodesJson.size(); i++) {
                     def node = nodesJson[i];
-                    nodes["node${i}"] = {
+                    nodes[node.Node] = {
                         // retrieve status of serfHealth to check if node is online.
                         response = httpRequest "http://consul.service.consul:8500/v1/health/node/${node.Node}"
                         status = parseHealthCheck response
