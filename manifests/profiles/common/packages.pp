@@ -21,15 +21,15 @@ class pve::profiles::common::packages {
   package { 'oracle-java8-installer':
     ensure  => 'installed',
     require => [Apt::Source['webupd8team'], Exec['set-licence-selected'], Exec['set-licence-seen']],
-  }
-
-  package { 'openjdk-7-jdk':
-    ensure  => 'purge'
-  }
-
+  } ->
   package { 'oracle-java8-set-default':
     ensure => 'installed',
   }
+
+  package { 'openjdk-7-jdk':
+    ensure => 'purge'
+  }
+
 
   package { 'monitoring-plugins':
     ensure => 'installed',
