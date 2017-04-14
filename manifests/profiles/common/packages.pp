@@ -8,7 +8,7 @@ class pve::profiles::common::packages {
       'server' => 'keyserver.ubuntu.com',
     },
     notify   => Exec["apt_update"]
-  } -> Exec['sed -i \'s/jessie/trusty/g\' /etc/apt/sources.list.d/webupd8team.list']
+  }
 
   exec {
     'set-licence-selected':
