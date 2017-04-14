@@ -3,13 +3,11 @@ currentBuild.result = "SUCCESS"
 ansiColor('xterm') {
     stage("Puppet Apply") {
         node('master') {
-            stage('Prepare') {
-                mattermostSend "${env.JOB_NAME} - ${env.BUILD_NUMBER} started."
-                checkout scm
-                sh 'git --work-tree=/opt/puppet/pve --git-dir=/opt/puppet/pve/.git pull'
-                sh 'sudo /opt/puppet/pve/apply.sh'
-                mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Build server was updated."
-            }
+            mattermostSend "${env.JOB_NAME} - ${env.BUILD_NUMBER} started."
+            checkout scm
+            sh 'git --work-tree=/opt/puppet/pve --git-dir=/opt/puppet/pve/.git pull'
+            sh 'sudo /opt/puppet/pve/apply.sh'
+            mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Build server was updated."
         }
         node('master') {
             try {
