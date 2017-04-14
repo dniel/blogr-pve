@@ -1,8 +1,14 @@
 class pve::profiles::common{
 
-  include git
   include unattended_upgrades
   include sudo
+
+  class { 'apt':
+    update => {
+      frequency => 'daily',
+    },
+  }
+
 
   class { 'timezone':
     timezone => 'Europe/Oslo',
