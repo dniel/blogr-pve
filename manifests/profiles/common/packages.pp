@@ -16,8 +16,6 @@ class pve::profiles::common::packages {
 
     'set-licence-seen':
       command => '/bin/echo debconf shared/accepted-oracle-license-v1-1 seen true | /usr/bin/debconf-set-selections';
-
-    unless => "test \"$(debconf-get-selections | grep 'oracle-java7-installer\\s\\+shared/accepted-oracle-license-v1-1' | awk '{print \$4}')\" = 'true'";
   }
 
   package { 'oracle-java8-installer':
