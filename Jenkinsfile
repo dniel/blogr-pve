@@ -17,19 +17,24 @@ node('master') {
                  * https://www.consul.io/docs/agent/http.html
                  */
                 def response = httpRequest "http://consul.service.consul:8500/v1/catalog/nodes"
-                def nodes = parseJsonText response.content
-                for (node in nodes) {
-                    // retrieve status of serfHealth to check if node is online.
-                    response = httpRequest "http://consul.service.consul:8500/v1/health/node/${node.Node}"
-                    status = parseHealthCheck response
+                def nodesJson = parseJsonText response.content
+                def nodes = [:]
+                for (int i = 0; i < nodesJson.size(); i++) {
+                    def node = nodesJson[i];
+                    nodes["node${i}"] = {
+                        // retrieve status of serfHealth to check if node is online.
+                        response = httpRequest "http://consul.service.consul:8500/v1/health/node/${node.Node}"
+                        status = parseHealthCheck response
 
-                    if (!node.Node.contains('p-ci-01') && status == "passing") {
-                        mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Update ${node.Node} , ${node.Address}"
-                        puppetApply node.Address
-                    } else {
-                        mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Ignore update ${node.Node} , ${node.Address}"
+                        if (!node.Node.contains('p-ci-01') && status == "passing") {
+                            mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Update ${node.Node} , ${node.Address}"
+                            puppetApply node.Address
+                        } else {
+                            mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Ignore update ${node.Node} , ${node.Address}"
+                        }
                     }
                 }
+                parallel nodes
                 mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} ${nodes.size} nodes was updated."
             } catch (err) {
                 currentBuild.result = "FAILURE"
