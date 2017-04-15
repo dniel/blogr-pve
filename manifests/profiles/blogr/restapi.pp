@@ -1,12 +1,12 @@
-class pve::profiles::blogr::restapi{
+class pve::profiles::blogr::restapi {
   package { 'docker':
     ensure => 'purged',
   }
 
-  file{"/opt/blogr":
-    ensure  =>  directory,
+  file { "/opt/blogr":
+    ensure => directory,
   }
-  exec {"chown blogr":
+  exec { "chown blogr":
     require => [File['/opt/blogr'], User['jenkins']],
     command => "/bin/chown -R jenkins.jenkins /opt/blogr",
   }
@@ -16,8 +16,8 @@ class pve::profiles::blogr::restapi{
   }
   file { '/etc/init.d/node-app':
     content => template('pve/blogr/node-app.erb'),
-    notify => Service['node-app'],
-    mode => "755"
+    notify  => Service['node-app'],
+    mode    => "755"
   }
   service { 'node-app':
     ensure  => running,
@@ -25,7 +25,7 @@ class pve::profiles::blogr::restapi{
     require => [File['/etc/init.d/node-app']]
   }
 
-  $tags = [$::environment,"traefik.tags=${::environment}"]
+  $tags = [$::environment, "traefik.tags=${::environment}"]
   ::consul::service { "${::hostname}-app":
     service_name => "app",
     address      => $::ipaddress_eth0,
