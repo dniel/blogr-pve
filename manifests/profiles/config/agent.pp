@@ -1,7 +1,12 @@
 class pve::profiles::config::agent {
 
+  $init_style = $::initsystem ? {
+    /systemd/ => 'systemd',
+    default  => 'debian'
+  }
+
   class { '::consul':
-    init_style  => 'debian',
+    init_style  => $init_style,
     config_hash => {
       'data_dir'   => '/opt/consul',
       'datacenter' => 'pve',
