@@ -1,10 +1,11 @@
-class pve::profiles::rancher {
-  class { 'docker':
-    manage_service => false
+class pve::profiles::rancher::server {
+  package { 'docker':
+    ensure => 'installed',
   }
+
   class { 'rancher::server': }
 
-  $tags = [$::environment,"traefik.tags=${::environment}"]
+  $tags = [$::environment, "traefik.tags=${::environment}"]
   ::consul::service { "${::hostname}-rancher":
     service_name => "rancher",
     address      => $::ipaddress_eth0,
