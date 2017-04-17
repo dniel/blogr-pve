@@ -2,17 +2,18 @@ class pve::profiles::config::agent {
 
   $init_style = $::initsystem ? {
     /systemd/ => 'systemd',
-    default  => 'debian'
+    default   => 'debian'
   }
 
   class { '::consul':
     init_style  => $init_style,
     config_hash => {
-      'data_dir'   => '/opt/consul',
-      'datacenter' => 'pve',
-      'log_level'  => 'INFO',
-      'node_name'  => "${::hostname}-agent",
-      'retry_join' => ['10.0.50.106'],
+      'data_dir'    => '/opt/consul',
+      'datacenter'  => 'pve',
+      'log_level'   => 'INFO',
+      'node_name'   => "${::hostname}-agent",
+      'retry_join'  => ['10.0.50.106'],
+      'client_addr' => '127.0.0.1',
     }
   }
 
