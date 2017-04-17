@@ -1,4 +1,4 @@
-class pve::profiles::config::agent(
+class pve::profiles::config::agent (
   $consul_server
 ) {
 
@@ -10,12 +10,12 @@ class pve::profiles::config::agent(
   class { '::consul':
     init_style  => $init_style,
     config_hash => {
-      'data_dir'    => '/opt/consul',
-      'datacenter'  => 'pve',
-      'log_level'   => 'INFO',
-      'node_name'   => "${::hostname}-agent",
-      'retry_join'  => [$consul_server],
-      'client_addr' => '127.0.0.1',
+      'data_dir'      => '/opt/consul',
+      'datacenter'    => 'pve',
+      'log_level'     => 'INFO',
+      'node_name'     => "${::hostname}-agent",
+      'retry_join'    => [$consul_server],
+      'extra_options' => '-bind 0.0.0.0'
     }
   }
 
