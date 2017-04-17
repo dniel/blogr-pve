@@ -25,11 +25,4 @@ class pve::profiles::common::packages::java8 {
     ensure => 'installed',
   }
 
-  package { 'openjdk-7-jre':
-    ensure => 'purged',
-  }
-  package { 'openjdk-7-jdk':
-    ensure => 'purged',
-  }
-
 }
