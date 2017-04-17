@@ -31,12 +31,13 @@ class pve::profiles::logging::forwarder::blogr{
     doc_type      => 'blogr',
   }
 
-  class pve::profiles::logging::forwarder::jenkins{
+  class pve::profiles::logging::forwarder::jenkins {
     filebeat::prospector { 'jenkins':
       paths         => [
         '/var/log/jenkins/*',
       ],
-      exclude_files => ['.gz$','.[0-9]$'],
+      exclude_files => ['.gz$', '.[0-9]$'],
       doc_type      => 'jenkins',
     }
+  }
 }
