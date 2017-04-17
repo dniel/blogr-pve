@@ -1,4 +1,6 @@
-class pve::profiles::config::agent {
+class pve::profiles::config::agent(
+  $consul_server
+) {
 
   $init_style = $::initsystem ? {
     /systemd/ => 'systemd',
@@ -12,7 +14,7 @@ class pve::profiles::config::agent {
       'datacenter'  => 'pve',
       'log_level'   => 'INFO',
       'node_name'   => "${::hostname}-agent",
-      'retry_join'  => ['10.0.50.106'],
+      'retry_join'  => [$consul_server],
       'client_addr' => '127.0.0.1',
     }
   }
