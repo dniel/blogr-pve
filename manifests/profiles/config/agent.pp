@@ -9,7 +9,7 @@ class pve::profiles::config::agent (
 
   class { '::consul':
     init_style    => $init_style,
-    extra_options => '-bind 0.0.0.0'
+    extra_options => '-bind 0.0.0.0',
     config_hash => {
     'data_dir' => '/opt/consul',
     'datacenter' => 'pve',
