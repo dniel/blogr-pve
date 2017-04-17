@@ -1,4 +1,4 @@
-class pve::roles::rancherserver{
+class pve::roles::rancherhost{
   include pve::profiles::common
   include pve::profiles::common::packages
   include pve::profiles::common::users
