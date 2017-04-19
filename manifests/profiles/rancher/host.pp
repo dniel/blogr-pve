@@ -1,8 +1,6 @@
 class pve::profiles::rancher::host (
   $rancher_url
 ) {
-  class { 'rancher::server': }
-
   package { 'docker':
     ensure => 'installed',
   }
