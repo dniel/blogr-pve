@@ -12,6 +12,11 @@
     }
   }
   filter {
+    if [type] == "traefik_access" {
+      grok {
+          match => { "message" => "%{COMBINEDAPACHELOG}" }
+      }
+    }
     if [type] == "blogr" {
       grok {
           match => { "message" => "%{COMBINEDAPACHELOG}" }
