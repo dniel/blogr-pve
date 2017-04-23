@@ -5,5 +5,7 @@ class pve::roles::loadbalancer{
   include pve::profiles::blogr::lb
   include pve::profiles::network
   include pve::profiles::logging::forwarder
+  include pve::profiles::logging::forwarder::traefik_access
+  include pve::profiles::logging::forwarder::traefik_app
   include pve::profiles::config::agent
 }

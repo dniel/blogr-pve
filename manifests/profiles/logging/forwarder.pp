@@ -41,3 +41,23 @@ class pve::profiles::logging::forwarder::jenkins {
     doc_type      => 'jenkins',
   }
 }
+
+class pve::profiles::logging::forwarder::traefik_access {
+  filebeat::prospector { 'traefik':
+    paths         => [
+      '/var/log/traefik/access*',
+    ],
+    exclude_files => ['.gz$', '.[0-9]$'],
+    doc_type      => 'traefik_access',
+  }
+}
+
+class pve::profiles::logging::forwarder::traefik_app {
+  filebeat::prospector { 'traefik':
+    paths         => [
+      '/var/log/traefik/traefik*',
+    ],
+    exclude_files => ['.gz$', '.[0-9]$'],
+    doc_type      => 'traefik_application',
+  }
+}
