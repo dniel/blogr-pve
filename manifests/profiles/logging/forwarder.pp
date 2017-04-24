@@ -43,7 +43,7 @@ class pve::profiles::logging::forwarder::jenkins {
 }
 
 class pve::profiles::logging::forwarder::traefik_access {
-  filebeat::prospector { 'traefik':
+  filebeat::prospector { 'traefik_access':
     paths         => [
       '/var/log/traefik/access*',
     ],
@@ -53,7 +53,7 @@ class pve::profiles::logging::forwarder::traefik_access {
 }
 
 class pve::profiles::logging::forwarder::traefik_app {
-  filebeat::prospector { 'traefik':
+  filebeat::prospector { 'traefik_app':
     paths         => [
       '/var/log/traefik/traefik*',
     ],
