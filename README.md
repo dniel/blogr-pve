@@ -74,7 +74,7 @@ eventually be handled by Jenkins Pipeline.
 * Will not configure proxmox or pfsense, both must be manually installed and configured.
 
 ### Future development
-* SNMP monitoring of all hosts and services, graphing.
+* SNMP monitoring of all hosts and services, Grafana.
 * Central user store, LDAP? 
 * Automatic backup of whole cluster.
 * Store secrets in HashiCorp Vault
