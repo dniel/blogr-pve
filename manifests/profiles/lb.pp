@@ -8,6 +8,13 @@ class pve::profiles::lb {
     tags         => $tags
   }
 
+  ::consul::check { 'check_http_ping':
+    http     => "http://127.0.0.1:8080/ping",
+    port     => "8080",
+    interval => '5s',
+    timeout  => "1s"
+  }
+
   ###
   ## INSTALL traefik
   #
