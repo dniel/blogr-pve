@@ -1,4 +1,4 @@
-class pve::profiles::blogr::lb {
+class pve::profiles::lb {
 
   $tags = [$::environment]
   ::consul::service { "${::hostname}-lb":
