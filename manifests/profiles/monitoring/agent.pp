@@ -1,6 +1,3 @@
-class pve::profiles::monitoring::agent (
-  $monitoring_server
-) {
-
-
+class pve::profiles::monitoring::agent {
+  include ::prometheus::node_exporter
 }
