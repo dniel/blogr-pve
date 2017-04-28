@@ -12,12 +12,8 @@ cd $dir
 export ES_SKIP_SET_KERNEL_PARAMETERS=true
 
 # first run, no bundle commmand
-if ! hash /usr/local/bin/bundle 2>/dev/null;  then
-  if [ -f /etc/redhat-release ]; then
-    yum clean all
-    yum install -y ruby ruby-dev make gcc ca-certificates lsb_release libaugeas-ruby
-    gem install bundler --no-ri --no-rdoc --quiet
-  elif [ -f /etc/debian_version ]; then
+if ! hash bundle 2>/dev/null;  then
+  if [ -f /etc/debian_version ]; then
     apt-get update
     apt-get install -y ruby ruby-dev make git ca-certificates lsb-release libaugeas-ruby apt-transport-https
     gem install bundler --no-ri --no-rdoc --quiet
@@ -27,7 +23,7 @@ if ! hash /usr/local/bin/bundle 2>/dev/null;  then
 fi
 
 # Install gems from Gemfile or Gemfile.lock if checked in
-/usr/local/bin/bundle install --path=.bundle --binstubs=bin --quiet|| exit 1
+bundle install --path=.bundle --binstubs=bin --quiet|| exit 1
 
 # Get current environment from hostname
 HOST=$(hostname)
