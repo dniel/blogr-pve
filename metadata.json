@@ -34,7 +34,8 @@
     {"name":"camptocamp-accounts","version_requirement":">= 1.8.0"},
     {"name":"liger1978-mattermost","version_requirement":">= 1.6.1"},
     {"name":"KyleAnderson-consul","version_requirement":">= 2.1.1"},
-    {"name":"jsok-vault","version_requirement":">= 1.2.0"}
+    {"name":"jsok-vault","version_requirement":">= 1.2.0"},
+    {"name":"brutus777-prometheus","version_requirement":">= 999.999.999"}
   ]
 }
 
