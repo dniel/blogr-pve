@@ -1,10 +1,9 @@
-class pve::roles::ciserver{
+class pve::roles::monitoringserver{
   include pve::profiles::common
   include pve::profiles::common::packages
+  include pve::profiles::common::users
   include pve::profiles::network
-  include pve::profiles::jenkins
   include pve::profiles::logging::forwarder
-  include pve::profiles::logging::forwarder::jenkins
   include pve::profiles::config::agent
-  include pve::profiles::monitoring::agent
+  include pve::profiles::monitoring::server
 }

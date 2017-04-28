@@ -7,4 +7,5 @@ class pve::roles::appserver{
   include pve::profiles::logging::forwarder
   include pve::profiles::logging::forwarder::blogr
   include pve::profiles::config::agent
+  include pve::profiles::monitoring::agent
 }

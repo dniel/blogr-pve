@@ -5,4 +5,5 @@ class pve::roles::logserver{
   include pve::profiles::network
   include pve::profiles::logging::server
   include pve::profiles::config::agent
+  include pve::profiles::monitoring::agent
 }

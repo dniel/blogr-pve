@@ -7,6 +7,7 @@ class pve::roles::dbserver{
   include pve::profiles::logging::forwarder
   include pve::profiles::network
   include pve::profiles::config::agent
+  include pve::profiles::monitoring::agent
 }
 
 class pve::roles::dbserver::primary inherits pve::roles::dbserver{

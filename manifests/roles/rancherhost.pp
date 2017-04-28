@@ -6,5 +6,6 @@ class pve::roles::rancherhost{
   include pve::profiles::logging::forwarder
   include pve::profiles::config::agent
   include pve::profiles::rancher::host
+  include pve::profiles::monitoring::agent
 
 }

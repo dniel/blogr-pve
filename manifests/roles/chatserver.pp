@@ -6,4 +6,5 @@ class pve::roles::chatserver{
   include pve::profiles::logging::forwarder
   include pve::profiles::chatserver
   include pve::profiles::config::agent
+  include pve::profiles::monitoring::agent
 }
