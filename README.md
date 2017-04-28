@@ -57,13 +57,14 @@ persistence. Right now its deployed using the same puppet script
 that install the configuration and system software but this
 eventually be handled by Jenkins Pipeline.
 
-## Installation
-#### [Network configuration](doc/setup_network.md)
-#### [Proxmox configuration](doc/setup_proxmox.md)
-#### [Pfsense configuration](doc/setup_pfsense.md)
-#### [Linux LXC container configuration](doc/setup_lxc.md)
-#### [Continuous Development with Jenkins2](doc/setup_jenkins.md)
+## Configuration
+#### [Network configuration](doc/setup_network.md) with [Pfsense](doc/setup_pfsense.md)
+#### Container virtualization with [Linux LXC](doc/setup_lxc.md) and [Proxmox](doc/setup_proxmox.md) 
+#### [Continuous Delivery with Jenkins Pipeline](doc/setup_jenkins.md)
 #### [Service Discovery with Consul](doc/setup_consul.md)
+#### Application orchestration with Rancher, TODO
+#### Centralized logging with ELK, TODO
+#### Centralized monitoring with Prometheus and Grafana, TODO
 #### Provisioning with Puppet, TODO
 
 ## Limitations
