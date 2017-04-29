@@ -1,8 +1,8 @@
 class pve::profiles::monitoring::agent {
-  
+
   $init_style = $::initsystem ? {
     /systemd/ => 'systemd',
-    default   => 'sysv'
+    default   => 'debian'
   }
 
   class { 'prometheus::node_exporter':
