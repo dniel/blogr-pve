@@ -1,4 +1,4 @@
-class pve::profiles::monitoring::agent {
+class pve::profiles::monitoring::agent{
 
   $init_style = $::initsystem ? {
     /systemd/ => 'systemd',

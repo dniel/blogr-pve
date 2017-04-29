@@ -7,4 +7,6 @@ class pve::profiles::monitoring::server {
       }
     }]
   }
+
+  class { 'grafana': }
 }
