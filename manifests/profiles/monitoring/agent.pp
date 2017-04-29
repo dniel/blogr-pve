@@ -1,3 +1,12 @@
 class pve::profiles::monitoring::agent {
-  include ::prometheus::node_exporter
+  
+  $init_style = $::initsystem ? {
+    /systemd/ => 'systemd',
+    default   => 'sysv'
+  }
+
+  class { 'prometheus::node_exporter':
+    init_style => $init_style
+  }
+
 }
