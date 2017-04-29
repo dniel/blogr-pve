@@ -65,7 +65,5 @@ fabric.properties
 .idea/
 .librarian/
 .tmp/
-Gemfile.lock
-Puppetfile.lock
 bin/
 modules/
