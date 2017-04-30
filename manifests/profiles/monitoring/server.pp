@@ -1,11 +1,11 @@
 class pve::profiles::monitoring::server {
 
   class { 'prometheus':
-    init_style => $init_style,
+    init_style     => $init_style,
     scrape_configs => [{
       job_name          => "overwritten-default",
       consul_sd_configs => [{
-        server   => "127.0.0.1:8500"
+        server => "127.0.0.1:8500"
       }]
     }]
   }
@@ -13,9 +13,9 @@ class pve::profiles::monitoring::server {
   class { 'grafana':
   }
 
-#  grafana_datasource { 'prometheus':
-#    type              => 'prometheus',
-#    url               => 'http://localhost:9090',
-#    is_default        => true
-#  }
+  #  grafana_datasource { 'prometheus':
+  #    type              => 'prometheus',
+  #    url               => 'http://localhost:9090',
+  #    is_default        => true
+  #  }
 }
