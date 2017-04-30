@@ -1,0 +1,30 @@
+<% require 'yaml' -%>
+<% global_config = scope.lookupvar('::prometheus::global_config') -%>
+<% rule_files = scope.lookupvar('::prometheus::rule_files') -%>
+<% full_config = { 'global'=>global_config, 'rule_files'=>rule_files} -%>
+<%= full_config.to_yaml -%>
+
+scrape_configs:
+- job_name: 'overwritten-default'
+
+  consul_sd_configs:
+  - server:   '127.0.0.1:8500'
+
+  relabel_configs:
+  - source_labels: ['__meta_consul_service']
+    regex:         '(.*)'
+    target_label:  'service'
+    replacement:   '$1'
+  - source_labels: ['__meta_consul_node']
+    regex:         '(.*)'
+    target_label:  'node'
+    replacement:   '$1'
+  - source_labels: ['__meta_consul_tags']
+    regex:         ',(production|test|development),'
+    target_label:  'environment'
+    replacement:   '$1'
+  - source_labels: ['__address__']
+    separator:     ':'
+    regex:         '(.*):(.*)'
+    target_label:  '__address__'
+    replacement:   '${1}:9100'

@@ -2,12 +2,7 @@ class pve::profiles::monitoring::server {
 
   class { 'prometheus':
     init_style     => $init_style,
-    scrape_configs => [{
-      job_name          => "overwritten-default",
-      consul_sd_configs => [{
-        server => "127.0.0.1:8500"
-      }]
-    }]
+    config_template => 'pve/prometheus/prometheus.yaml.erb'
   }
 
   class { 'grafana':
