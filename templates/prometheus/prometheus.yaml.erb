@@ -20,11 +20,6 @@ scrape_configs:
     target_label:  'instance'
     replacement:   '$1'
   - source_labels: ['__meta_consul_tags']
-    regex:         '(production|test|development)'
-    target_label:  'group'
-    replacement:   '$1'
-  - source_labels: ['__address__']
-    separator:     ':'
-    regex:         '(.*):(.*)'
-    target_label:  '__address__'
-    replacement:   '${1}:9100'
+    regex: '(.*),monitor,(.*)'
+    action: keep
+
