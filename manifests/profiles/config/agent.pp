@@ -14,7 +14,7 @@ class pve::profiles::config::agent (
       'data_dir'   => '/opt/consul',
       'datacenter' => 'pve',
       'log_level'  => 'INFO',
-      'node_name'  => ${::hostname},
+      'node_name'  => $::hostname,
       'retry_join' => [$consul_server]
     }
   }
