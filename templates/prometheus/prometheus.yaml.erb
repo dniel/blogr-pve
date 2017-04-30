@@ -13,15 +13,15 @@ scrape_configs:
   relabel_configs:
   - source_labels: ['__meta_consul_service']
     regex:         '(.*)'
-    target_label:  'service'
+    target_label:  'job'
     replacement:   '$1'
   - source_labels: ['__meta_consul_node']
     regex:         '(.*)'
-    target_label:  'node'
+    target_label:  'instance'
     replacement:   '$1'
   - source_labels: ['__meta_consul_tags']
-    regex:         ',(production|test|development),'
-    target_label:  'environment'
+    regex:         '(production|test|development)'
+    target_label:  'group'
     replacement:   '$1'
   - source_labels: ['__address__']
     separator:     ':'
