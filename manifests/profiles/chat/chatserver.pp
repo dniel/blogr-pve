@@ -9,7 +9,7 @@ class pve::profiles::chatserver {
     address      => $::ipaddress_eth0,
     port         => 8065,
     tags         => $tags
-  }
+  } ~> Service['consul']
 
   class { 'postgresql::server':
     ipv4acls => ['host all all 127.0.0.1/32 md5'],
