@@ -7,7 +7,12 @@ class pve::profiles::lb {
     port         => 80,
     tags         => $tags
   }
-
+  ::consul::service { "${::hostname}-exporter":
+    service_name => 'traefik-exporter',
+    address      => $::ipaddress_eth0,
+    port         => 8080,
+    tags         => [$::environment, "monitor"]
+  }
   ::consul::check { 'check_http_ping':
     http     => "http://127.0.0.1:8080/ping",
     interval => '5s',
