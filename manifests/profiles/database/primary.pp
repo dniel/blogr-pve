@@ -7,7 +7,7 @@ class pve::profiles::database::primary(
   $tags = [$::environment, "primary"]
   ::consul::service { "${::hostname}-postgres":
     service_name => 'postgres',
-    address      => $::ipaddress,
+    address      => $::ipaddress_eth0,
     port         => 5432,
     tags         => $tags
   }

@@ -3,7 +3,7 @@ class pve::profiles::lb {
   $tags = [$::environment]
   ::consul::service { "${::hostname}-lb":
     service_name => 'lb',
-    address      => $::ipaddress,
+    address      => $::ipaddress_eth0,
     port         => 80,
     tags         => $tags
   }
