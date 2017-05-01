@@ -1,7 +1,5 @@
 class pve::profiles::logging::server {
 
-
-class pve::profiles::pve {
   apt::source { 'elastic-curator':
     location => 'http://packages.elastic.co/curator/5/debian',
     repos    => 'stable',
@@ -10,11 +8,10 @@ class pve::profiles::pve {
       'server' => 'packages.elastic.co',
     }
   } -> Exec["apt_update"] -> package { 'elasticsearch-curator':
-    ensure => 'installed',
+    ensure => 'installed'
   }
 
   include pve::profiles::common::packages::java8
-
 
   class { 'kibana':
     ensure => latest,
@@ -26,7 +23,7 @@ class pve::profiles::pve {
   }
 
   ::consul::check { 'check_kibana_http_status':
-    script     => "/usr/lib/nagios/plugins/check_http -H localhost -p 5601 -j HEAD",
+    script   => "/usr/lib/nagios/plugins/check_http -H localhost -p 5601 -j HEAD",
     interval => '30s'
   }
 
@@ -91,7 +88,6 @@ class pve::profiles::pve {
     script   => '/usr/lib/nagios/plugins/check_tcp -p 5000',
     interval => '30s'
   }
-
 
 
 }
