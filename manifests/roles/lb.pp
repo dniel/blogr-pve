@@ -1,4 +1,4 @@
-class pve::roles::loadbalancer{
+class pve::roles::lb{
   include pve::profiles::common
   include pve::profiles::common::packages
   include pve::profiles::common::users
