@@ -2,6 +2,10 @@ class pve::profiles::logging::server {
 
   include pve::profiles::common::packages::java8
 
+  package { 'elasticsearch-curator':
+    ensure => 'installed',
+  }
+
   class { 'kibana':
     ensure => latest,
     config => {
