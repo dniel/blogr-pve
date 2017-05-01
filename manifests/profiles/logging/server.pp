@@ -12,9 +12,8 @@ class pve::profiles::logging::server {
   }
 
   ::consul::check { 'check_kibana_http_status':
-    http     => "http://127.0.0.1:5601/status",
-    interval => '5s',
-    timeout  => "1s"
+    script     => "/usr/lib/nagios/plugins/check_http -H localhost -p 5601 -j HEAD",
+    interval => '30s'
   }
 
   $tags = [$::environment,
