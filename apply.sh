@@ -41,8 +41,12 @@ ROLE=`expr "$HOST" : '[p|t|d]-\(\w*\)-[0-9]\{2\}'`
 # install modules
 ./bin/librarian-puppet install --path /opt/puppetlabs/puppet/modules --quiet|| exit 1
 
-# Run Puppet
-./bin/puppet apply --environment=$ENVIRONMENT --log_level=warning --color=ansi --modulepath=..:/opt/puppetlabs/puppet/modules manifests "$@"
+# Run Puppet with parsed ROLE and ENVIRONMENT from hostname
+./bin/puppet apply --environment=$ENVIRONMENT \
+                   --log_level=warning \
+                   --color=ansi \
+                   --modulepath=..:/opt/puppetlabs/puppet/modules \
+                   -e"include pve::roles::$ROLE" "$@"
 
 ## Log status of the Puppet run
 if [ $? -eq 0 ]

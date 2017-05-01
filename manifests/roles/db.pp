@@ -1,4 +1,4 @@
-class pve::roles::dbserver{
+class pve::roles::db{
   include pve::profiles::common
   include pve::profiles::common::packages
   include pve::profiles::common::users
@@ -10,11 +10,11 @@ class pve::roles::dbserver{
   include pve::profiles::monitoring::agent
 }
 
-class pve::roles::dbserver::primary inherits pve::roles::dbserver{
+class pve::roles::db::primary inherits pve::roles::db{
   include pve::profiles::database::primary
 }
 
-class pve::roles::dbserver::standby inherits pve::roles::dbserver{
+class pve::roles::db::standby inherits pve::roles::db{
   include pve::profiles::database::standby
 }
 
