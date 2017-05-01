@@ -1,7 +1,7 @@
 pve::profiles::rancher::host::rancher_url: http://10.0.60.100:8080/v1/scripts/443B929165E879B9F533:1483142400000:7C5YD5HkhiDu4foMN6V1XzFo6IY
 pve::profiles::config::agent::consul_server: 10.0.50.106
 
-pve::profiles::logging::forwarder::log_server: log.dragon.lan
+pve::profiles::logging::forwarder::log_server: log.service.consul
 pve::profiles::logging::forwarder::log_port: 5044
 
 pve::profiles::blogr::database::db_name: blogr
