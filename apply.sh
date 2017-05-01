@@ -36,7 +36,20 @@ case $srv in
 esac
 
 # Get current role from hostname
+HOST=$(hostname)
 ROLE=`expr "$HOST" : '[p|t|d]-\(\w*\)-[0-9]\{2\}'`
+
+if [ -z "$ROLE" ];
+then
+  echo "No role found on first try, check if it is a Proxmox host with special naming."
+  ROLE=`expr "$HOST" : "\(pve\)"`
+fi
+
+if [ -z "$ROLE"];
+then
+    /usr/bin/logger -i "Puppet Apply has run into an error, could not parse Role for $HOST" -t "puppet-run"
+    exit 1
+fi
 
 # install modules
 ./bin/librarian-puppet install --path /opt/puppetlabs/puppet/modules --quiet|| exit 1
