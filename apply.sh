@@ -32,7 +32,7 @@ case $srv in
   t) ENVIRONMENT="test" ;;
   d) ENVIRONMENT="development";;
   p) ENVIRONMENT="production";;
-  *) echo "Unknown server !!!"exit 1;
+  *) ENVIRONMENT="production";;
 esac
 
 # Get current role from hostname
