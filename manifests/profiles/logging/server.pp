@@ -2,13 +2,18 @@ class pve::profiles::logging::server {
 
   apt::source { 'elastic-curator':
     location => 'http://packages.elastic.co/curator/5/debian',
-    repos    => 'stable',
+    repos    => 'main',
     key      => {
       'id'     => '46095ACC8548582C1A2699A9D27D666CD88E42B4',
       'server' => 'packages.elastic.co',
     }
-  } -> Exec["apt_update"] -> package { 'elasticsearch-curator':
+  } -> Exec["replace-jessie-with-stable"]-> Exec["apt_update"] -> package { 'elasticsearch-curator':
     ensure => 'installed'
+  }
+
+  exec {
+    'replace-jessie-with-stable':
+      command => '/bin/sed -i.bak -e \'s/jessie/stable/\' /etc/apt/sources.list.d/elastic-curator.list';
   }
 
   include pve::profiles::common::packages::java8
