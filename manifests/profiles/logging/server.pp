@@ -1,10 +1,20 @@
 class pve::profiles::logging::server {
 
-  include pve::profiles::common::packages::java8
 
-  package { 'elasticsearch-curator':
+class pve::profiles::pve {
+  apt::source { 'elastic-curator':
+    location => 'http://packages.elastic.co/curator/5/debian',
+    repos    => 'stable',
+    key      => {
+      'id'     => '46095ACC8548582C1A2699A9D27D666CD88E42B4',
+      'server' => 'packages.elastic.co',
+    }
+  } -> Exec["apt_update"] -> package { 'elasticsearch-curator':
     ensure => 'installed',
   }
+
+  include pve::profiles::common::packages::java8
+
 
   class { 'kibana':
     ensure => latest,
