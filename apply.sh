@@ -45,7 +45,7 @@ then
   ROLE=`expr "$HOST" : "\(pve\)"`
 fi
 
-if [ -z "$ROLE"];
+if [ -z "$ROLE" ];
 then
     /usr/bin/logger -i "Puppet Apply has run into an error, could not parse Role for $HOST" -t "puppet-run"
     exit 1
