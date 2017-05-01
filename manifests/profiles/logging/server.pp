@@ -51,4 +51,17 @@ class pve::profiles::logging::server {
     content => template("pve/logstash/config.erb"),
   }
 
+  ::consul::service { "${::hostname}-filebeats":
+    service_name => "filebeats",
+    address      => $::ipaddress,
+    port         => 5044,
+    tags         => [$::environment]
+  }
+  ::consul::service { "${::hostname}-syslog":
+    service_name => "syslog",
+    address      => $::ipaddress,
+    port         => 5000,
+    tags         => [$::environment]
+  }
+
 }
