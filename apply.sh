@@ -41,9 +41,6 @@ ROLE=`expr "$HOST" : '[p|t|d]-\(\w*\)-[0-9]\{2\}'`
 # install modules
 ./bin/librarian-puppet install --path /opt/puppetlabs/puppet/modules --quiet|| exit 1
 
-git config user.email "daniel@engfeldt.net"
-git config user.name "Daniel"
-
 # Run Puppet
 ./bin/puppet apply --environment=$ENVIRONMENT --log_level=warning --color=ansi --modulepath=..:/opt/puppetlabs/puppet/modules manifests "$@"
 
