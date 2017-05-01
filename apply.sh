@@ -35,6 +35,9 @@ case $srv in
   *) echo "Unknown server !!!"exit 1;
 esac
 
+# Get current role from hostname
+ROLE=`expr "$HOST" : '[p|t|d]-\(\w*\)-[0-9]\{2\}'`
+
 # install modules
 ./bin/librarian-puppet install --path /opt/puppetlabs/puppet/modules --quiet|| exit 1
 
