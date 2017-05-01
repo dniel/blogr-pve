@@ -17,7 +17,7 @@ scrape_configs:
     replacement:   '$1'
   - source_labels: ['__meta_consul_node']
     regex:         '(.*)'
-    target_label:  'instance'
+    target_label:  'node'
     replacement:   '$1'
   - source_labels: ['__meta_consul_tags']
     regex: '(.*),monitor,(.*)'
