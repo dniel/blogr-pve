@@ -11,6 +11,12 @@ class pve::profiles::logging::server {
     }
   }
 
+  ::consul::check { 'check_kibana_http_status':
+    http     => "http://127.0.0.1:5601/status",
+    interval => '5s',
+    timeout  => "1s"
+  }
+
   $tags = [$::environment,
     "traefik.tags=${::environment}",
     "traefik.frontend.rule=Host:log.dragon.lan,log",
@@ -63,5 +69,16 @@ class pve::profiles::logging::server {
     port         => 5000,
     tags         => [$::environment]
   }
+
+  ::consul::check { 'check_filebeats':
+    script   => '/usr/lib/nagios/plugins/check_tcp -p 5044',
+    interval => '30s'
+  }
+  ::consul::check { 'check_syslog':
+    script   => '/usr/lib/nagios/plugins/check_tcp -p 5000',
+    interval => '30s'
+  }
+
+
 
 }
