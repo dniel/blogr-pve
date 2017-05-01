@@ -5,4 +5,5 @@ class pve::roles::pve{
   include pve::profiles::logging::forwarder
   include pve::profiles::config::agent
   include pve::profiles::monitoring::agent
+  include pve::profiles::pve
 }
