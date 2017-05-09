@@ -31,7 +31,7 @@
     {"name":"elastic-elasticsearch","version_requirement":">= 5.2.0"},
     {"name":"elastic-logstash","version_requirement":">= 5.2.1"},
     {"name":"elastic-kibana","version_requirement":">= 0.3.0"},
-    {"name":"pcfens-filebeat","version_requirement":">= 0.6.4"},
+    {"name":"pcfens-filebeat","version_requirement":">= 0.11.1"},
     {"name":"rtyler-jenkins","version_requirement":">= 1.7.0"},
     {"name":"camptocamp-accounts","version_requirement":">= 1.8.0"},
     {"name":"liger1978-mattermost","version_requirement":">= 1.6.1"},
