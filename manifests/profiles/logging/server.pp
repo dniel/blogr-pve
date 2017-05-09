@@ -7,7 +7,7 @@ class pve::profiles::logging::server {
       'id'     => '46095ACC8548582C1A2699A9D27D666CD88E42B4',
       'server' => 'packages.elastic.co',
     }
-  } -> Exec["replace-jessie-with-stable"]-> Exec["apt_update"] -> package { 'elasticsearch-curator':
+  } -> Exec["replace-jessie-with-stable"] -> Exec["apt_update"] -> package { 'elasticsearch-curator':
     ensure => 'installed'
   }
 
@@ -77,32 +77,34 @@ class pve::profiles::logging::server {
     address      => $::ipaddress,
     port         => 5044,
     tags         => [$::environment]
-  }
+  } ~> Service['consul']
   ::consul::service { "${::hostname}-syslog":
     service_name => "syslog",
     address      => $::ipaddress,
     port         => 5000,
     tags         => [$::environment]
-  }
+  } ~> Service['consul']
   ::consul::service { "${::hostname}-es":
     service_name => "elasticsearch",
     address      => $::ipaddress,
     port         => 9200,
     tags         => [$::environment]
-  }
+  } ~> Service['consul']
 
   ::consul::check { 'check_filebeats':
     script   => '/usr/lib/nagios/plugins/check_tcp -p 5044',
     interval => '30s'
-  }
+  } ~> Service['consul']
+
   ::consul::check { 'check_syslog':
     script   => '/usr/lib/nagios/plugins/check_tcp -p 5000',
     interval => '30s'
-  }
+  } ~> Service['consul']
+
   ::consul::check { 'check_elasticsearch':
     script   => '/usr/lib/nagios/plugins/check_tcp -p 9200',
     interval => '30s'
-  }
+  } ~> Service['consul']
 
 
 }
