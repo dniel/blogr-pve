@@ -84,6 +84,12 @@ class pve::profiles::logging::server {
     port         => 5000,
     tags         => [$::environment]
   }
+  ::consul::service { "${::hostname}-es":
+    service_name => "elasticsearch",
+    address      => $::ipaddress,
+    port         => 9200,
+    tags         => [$::environment]
+  }
 
   ::consul::check { 'check_filebeats':
     script   => '/usr/lib/nagios/plugins/check_tcp -p 5044',
@@ -91,6 +97,10 @@ class pve::profiles::logging::server {
   }
   ::consul::check { 'check_syslog':
     script   => '/usr/lib/nagios/plugins/check_tcp -p 5000',
+    interval => '30s'
+  }
+  ::consul::check { 'check_elasticsearch':
+    script   => '/usr/lib/nagios/plugins/check_tcp -p 9200',
     interval => '30s'
   }
 
