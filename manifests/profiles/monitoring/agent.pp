@@ -10,7 +10,7 @@ class pve::profiles::monitoring::agent {
   }
 
 
-  $tags = [$::environment, "monitor", "prometheus"]
+  $tags = [$::environment, "monitor"]
 
   ::consul::service { "${::hostname}-node_exporter":
     service_name => 'node_exporter',
