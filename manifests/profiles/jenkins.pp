@@ -34,8 +34,8 @@ class pve::profiles::jenkins {
     config => template("pve/jenkins/puppet-apply-job.xml.erb"),
   }
 
-  jenkins::job { 'puppet-apply-ci-job':
-    config => template("pve/jenkins/puppet-apply-ci-job.xml.erb"),
+  jenkins::job { 'puppet-ci-job':
+    config => template("pve/jenkins/puppet-ci-job.xml.erb"),
   }
 
   jenkins::job { 'elastic-curator-job':
