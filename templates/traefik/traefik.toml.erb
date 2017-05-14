@@ -3,7 +3,7 @@ endpoint = "127.0.0.1:8500"
 prefix = "traefik"
 
 [consulCatalog]
-endpoint = "127.0.0.1:8500"
+endpoint = "consul.service.consul:8500"
 domain = "dragon.lan"
 prefix = "traefik"
 constraints = ["tag==<%=@environment%>"]
