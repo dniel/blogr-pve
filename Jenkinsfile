@@ -32,6 +32,8 @@ ansiColor('xterm') {
                 currentBuild.result = "FAILURE"
                 mattermostSend color: "bad", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} FAILED."
                 throw err
+            } finally {
+                deleteDir
             }
         }
     }
