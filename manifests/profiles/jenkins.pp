@@ -30,8 +30,16 @@ class pve::profiles::jenkins {
     config => template("pve/jenkins/blogr-build-job.xml.erb"),
   }
 
-  jenkins::job { 'blogr-pve-job':
-    config => template("pve/jenkins/blogr-pve-job.xml.erb"),
+  jenkins::job { 'puppet-apply-job':
+    config => template("pve/jenkins/puppet-apply-job.xml.erb"),
+  }
+
+  jenkins::job { 'puppet-apply-ci-job':
+    config => template("pve/jenkins/puppet-apply-ci-job.xml.erb"),
+  }
+
+  jenkins::job { 'elastic-curator-job':
+    config => template("pve/jenkins/elastic-curator-job.xml.erb"),
   }
 
   include pve::profiles::jenkins::ansicolor
