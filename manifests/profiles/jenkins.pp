@@ -1,6 +1,7 @@
 class pve::profiles::jenkins {
 
   include pve::profiles::common::packages::java8
+  include pve::profiles::common::packages::docker
 
   $tags = [$::environment,
     "traefik.tags=${::environment}",
