@@ -48,9 +48,10 @@ class pve::profiles::logging::server {
     manage_repo  => true,
     repo_version => '5.x',
     autoupgrade  => true,
-    config => {
+/*    config => {
       'network.host' => '0.0.0.0',
     }
+*/
   }
 
   elasticsearch::instance { 'es-01': }
