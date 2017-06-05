@@ -3,6 +3,13 @@ class pve::profiles::jenkins {
   include pve::profiles::common::packages::java8
   include pve::profiles::common::packages::docker
 
+  cron { 'docker-cleanup':
+    ensure  => present,
+    command => "docker stop $(docker ps -q) || docker rm $(docker ps -a -q) || docker rmi $(docker images -q -f dangling=true)",
+    user    => root,
+    hour    => '1'
+  }
+
   $tags = [$::environment,
     "traefik.tags=${::environment}",
     "traefik.frontend.rule=Host:ci.dragon.lan,ci",
