@@ -39,8 +39,12 @@ class pve::profiles::jenkins {
     config => template("pve/jenkins/puppet-ci-job.xml.erb"),
   }
 
-  jenkins::job { 'elastic-curator-job':
-    config => template("pve/jenkins/elastic-curator-job.xml.erb"),
+  jenkins::job { 'cleanup-elastic-indices':
+    config => template("pve/jenkins/cleanup-elastic-indices-job.xml.erb"),
+  }
+
+  jenkins::job { 'cleanup-ci-docker':
+    config => template("pve/jenkins/cleanup-ci-docker.xml.erb"),
   }
 
   include pve::profiles::jenkins::ansicolor
