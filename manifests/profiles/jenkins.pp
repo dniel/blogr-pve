@@ -40,11 +40,11 @@ class pve::profiles::jenkins {
   }
 
   jenkins::job { 'cleanup-elastic-indices':
-    config => template("pve/jenkins/cleanup-elastic-indices-job.xml.erb"),
+    config => template("pve/jenkins/cleanup-elastic-indices.xml.erb"),
   }
 
   jenkins::job { 'cleanup-ci-docker':
-    config => template("pve/jenkins/cleanup-ci-docker.xml.erb"),
+    config => template("pve/jenkins/cleanup-docker-builds.xml.erb"),
   }
 
   include pve::profiles::jenkins::ansicolor
