@@ -48,10 +48,10 @@ class pve::profiles::logging::server {
     manage_repo  => true,
     repo_version => '5.x',
     autoupgrade  => true,
-/*    config => {
-      'network.host' => '0.0.0.0',
-    }
-*/
+    /*    config => {
+          'network.host' => '0.0.0.0',
+        }
+    */
   }
 
   elasticsearch::instance { 'es-01': }
@@ -70,7 +70,8 @@ class pve::profiles::logging::server {
     auto_upgrade => true,
   }
 
-  #  logstash::plugin { 'logstash-input-beats': }
+#  logstash::plugin { 'logstash-input-beats': }
+#  logstash::plugin { 'logstash-input-gelf': }
 
   logstash::configfile { 'beats_logstash_config':
     content => template("pve/logstash/config.erb"),
@@ -82,12 +83,14 @@ class pve::profiles::logging::server {
     port         => 5044,
     tags         => [$::environment]
   } ~> Service['consul']
+
   ::consul::service { "${::hostname}-syslog":
     service_name => "syslog",
     address      => $::ipaddress,
     port         => 5000,
     tags         => [$::environment]
   } ~> Service['consul']
+
   ::consul::service { "${::hostname}-es":
     service_name => "elasticsearch",
     address      => $::ipaddress,

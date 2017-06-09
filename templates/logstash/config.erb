@@ -10,6 +10,9 @@
     beats {
       port => 5044
     }
+    gelf {
+      port => 12201
+    }
   }
   filter {
     if [type] == "traefik_access" {
