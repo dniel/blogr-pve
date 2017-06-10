@@ -22,3 +22,9 @@ to avoid needing to specify ip-adresses on each container.
 ### VLAN configuration
 The different vlans has been created in pfSense.
 ![vlan setup in pfsense](network_pfsense.png)
+
+
+### IPSec configuration to Amazon AWS VPC  
+I followed this guide to create a vpn tunnel between Amazon AWS and my pfSense gateway
+so that its possible to communicate with hosts running in EC2.
+https://www.ceos3c.com/2017/04/24/site-to-site-vpn-between-pfsense-and-aws-vpc/
