@@ -94,6 +94,10 @@ class pve::profiles::lb {
     hasstatus  => true,
   }
 
+
+  # find download url for latest release of traefik for linux
+  #  curl -s https://api.github.com/repos/containous/traefik/releases/latest | jq -r ".assets[] | select(.name==\"traefik_linux-amd64\") | .browser_download_url"
+
   file { '/opt/traefik/traefik_linux-amd64':
     source  => 'puppet:///modules/pve/opt/traefik/traefik_linux-amd64',
     owner   => $traefikUser,

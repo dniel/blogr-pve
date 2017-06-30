@@ -15,6 +15,19 @@ class pve::profiles::jenkins {
     tags         => $tags
   }
 
+
+
+  file { '/opt/ecs-deploy':
+    source  => 'puppet:///modules/pve/opt/ecs-deploy',
+    owner   => "jenkins",
+    group   => "jenkins",
+    mode    => "700",
+    require => [
+      User["jenkins"],
+      Group["jenkins"]]
+  }
+
+
   class { 'jenkins':
     version      => 'latest',
     lts          => false,
