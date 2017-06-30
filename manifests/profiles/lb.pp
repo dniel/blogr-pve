@@ -85,7 +85,7 @@ class pve::profiles::lb {
   file { '/etc/init.d/traefik':
     source => 'puppet:///modules/pve/etc/init.d/traefik',
     mode   => "755",
-  } -> Service['traefik']
+  } ~> Service['traefik']
 
   service { 'traefik':
     ensure     => running,
@@ -110,7 +110,7 @@ class pve::profiles::lb {
       File['/etc/traefik'],
       File['/var/log/traefik'],
       File['/etc/init.d/traefik']]
-  } -> Exec["setcap-traefik"] -> Service['traefik']
+  } -> Exec["setcap-traefik"] ~> Service['traefik']
 
   exec { 'setcap-traefik':
     command => '/sbin/setcap \'cap_net_bind_service=ep\' /opt/traefik/traefik_linux-amd64'
