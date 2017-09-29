@@ -15,7 +15,7 @@ ansiColor('xterm') {
                     def node = nodesJson[i];
                     nodes[node.Node] = {
                         // retrieve status of serfHealth to check if node is online.
-                        response = httpRequest "http://consul.service.consul:8500/v1/health/node/${node.Node}"
+                        response = httpRequest "http://10.0.50.10:8500/v1/health/node/${node.Node}"
                         status = parseHealthCheck response
 
                         if (!node.Node.contains('p-ci-01') && status == "passing") {
