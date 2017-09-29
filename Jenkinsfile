@@ -8,14 +8,15 @@ ansiColor('xterm') {
                  * Retrieve Nodes from Consul HTTP API.
                  * https://www.consul.io/docs/agent/http.html
                  */
-                def response = httpRequest "http://10.0.50.10:8500:8500/v1/catalog/nodes"
+                def consul_base_url = "http://10.0.50.10:8500"
+                def response = httpRequest "${consul_base_url}/v1/catalog/nodes"
                 def nodesJson = parseJsonText response.content
                 def nodes = [:]
                 for (int i = 0; i < nodesJson.size(); i++) {
                     def node = nodesJson[i];
                     nodes[node.Node] = {
                         // retrieve status of serfHealth to check if node is online.
-                        response = httpRequest "http://10.0.50.10:8500/v1/health/node/${node.Node}"
+                        response = httpRequest "${consul_base_url}/v1/health/node/${node.Node}"
                         status = parseHealthCheck response
 
                         if (!node.Node.contains('p-ci-01') && status == "passing") {
