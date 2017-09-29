@@ -8,7 +8,7 @@ ansiColor('xterm') {
                  * Retrieve Nodes from Consul HTTP API.
                  * https://www.consul.io/docs/agent/http.html
                  */
-                def response = httpRequest "http://consul.service.consul:8500/v1/catalog/nodes"
+                def response = httpRequest "http://10.0.50.10:8500:8500/v1/catalog/nodes"
                 def nodesJson = parseJsonText response.content
                 def nodes = [:]
                 for (int i = 0; i < nodesJson.size(); i++) {
