@@ -5,7 +5,6 @@ class pve::roles::db{
   include pve::profiles::database
   include pve::profiles::blogr::database
   include pve::profiles::logging::forwarder
-  include pve::profiles::network
   include pve::profiles::config::agent
   include pve::profiles::monitoring::agent
 }
