@@ -6,4 +6,5 @@ class pve::profiles::unifi {
       'id'     => '06E85760C0A52C50',
       'server' => 'keyserver.ubuntu.com',
     }
+  }
 }
