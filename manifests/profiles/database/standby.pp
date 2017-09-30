@@ -10,7 +10,7 @@ class pve::profiles::database::standby(
   $tags = [$::environment, "standby"]
   ::consul::service { "${::hostname}-postgres":
     service_name => 'postgres',
-    address      => $::ipaddress_eth0,
+    address      => $::ipaddress,
     port         => 5432,
     tags         => $tags
   }

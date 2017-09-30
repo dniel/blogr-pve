@@ -10,7 +10,7 @@ class pve::profiles::config::agent (
   class { '::consul':
     init_style  => $init_style,
     config_hash => {
-      'bind_addr'  => $::ipaddress_eth0,
+      'bind_addr'  => $::ipaddress,
       'data_dir'   => '/opt/consul',
       'datacenter' => 'pve',
       'log_level'  => 'INFO',

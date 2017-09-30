@@ -12,7 +12,7 @@ class pve::profiles::monitoring::server {
 
   ::consul::service { "${::hostname}-grafana":
     service_name => 'grafana',
-    address      => $::ipaddress_eth0,
+    address      => $::ipaddress,
     port         => 3000,
     tags         => $tags
   } ~> Service['consul']

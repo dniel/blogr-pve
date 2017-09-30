@@ -3,13 +3,13 @@ class pve::profiles::lb {
   $tags = [$::environment]
   ::consul::service { "${::hostname}-lb":
     service_name => 'lb',
-    address      => $::ipaddress_eth0,
+    address      => $::ipaddress,
     port         => 80,
     tags         => $tags
   }
   ::consul::service { "${::hostname}-exporter":
     service_name => 'traefik-exporter',
-    address      => $::ipaddress_eth0,
+    address      => $::ipaddress,
     port         => 8080,
     tags         => [$::environment, "monitor"]
   }

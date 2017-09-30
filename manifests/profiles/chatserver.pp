@@ -6,7 +6,7 @@ class pve::profiles::chatserver {
 
   ::consul::service { "${::hostname}-chat":
     service_name => 'chat',
-    address      => $::ipaddress_eth0,
+    address      => $::ipaddress,
     port         => 8065,
     tags         => $tags
   } ~> Service['consul']

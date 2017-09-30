@@ -7,6 +7,6 @@ class pve::profiles::rancher::host (
 
   class { 'rancher':
     registration_url => $rancher_url,
-    agent_address    => $::ipaddress_eth0
+    agent_address    => $::ipaddress
   }
 }
