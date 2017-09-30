@@ -1,9 +1,6 @@
 class pve::profiles::common::packages::unifi {
-  service { 'unifi':
-    ensure => 'running',
-  }
-
-  service { 'mongodb':
-    ensure => 'running',
+  package { 'unifi':
+    ensure  => latest,
+    require => Yumrepo['HP-spp'],
   }
 }

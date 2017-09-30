@@ -1,4 +1,6 @@
 class pve::profiles::common{
+  Apt::Ppa <| |> -> Package <| |>
+  Apt::Key<| |> -> Package<| |>
 
   include unattended_upgrades
   include sudo

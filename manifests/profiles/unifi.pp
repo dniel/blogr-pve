@@ -9,5 +9,11 @@ class pve::profiles::unifi {
     }
   }
 
+  service { 'unifi':
+    ensure => 'running',
+  }
 
+  service { 'mongodb':
+    ensure => 'running',
+  }
 }
