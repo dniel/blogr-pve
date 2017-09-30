@@ -1,0 +1,3 @@
+class pve::profiles::unifi {
+
+}
