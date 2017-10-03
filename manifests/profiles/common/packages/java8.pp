@@ -3,7 +3,7 @@ class pve::profiles::common::packages::java8 {
     location => 'http://ppa.launchpad.net/webupd8team/java/ubuntu',
     repos    => 'main',
     key      => {
-      'id'     => 'EEA14886',
+      'id'     => '7B2C3B0889BF5709A105D03AC2518248EEA14886',
       'server' => 'keyserver.ubuntu.com',
     }
   } -> Exec["replace-jessie-with-trusty"] -> Exec["apt_update"]
