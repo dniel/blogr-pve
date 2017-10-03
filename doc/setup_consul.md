@@ -55,7 +55,7 @@ Example service names in Consul that work also as hostnames when querying Consul
  * development.app.service.consul
 
 #### Puppet scripts
-Included in all roles are the profile class [pve::profiles::config::agent](/manifests/profiles/config/agent.pp)
+Included in all roles are the profile class [pve::profiles::discovery::agent](/manifests/profiles/discovery/agent.pp)
 All server roles include this profile. Which also means that every container that are provisioned by puppet
 does self register with consul when provisioning.
 

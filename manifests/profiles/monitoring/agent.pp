@@ -14,7 +14,7 @@ class pve::profiles::monitoring::agent {
 
   ::consul::service { "${::hostname}-node_exporter":
     service_name => 'node_exporter',
-    address      => $::ipaddress,
+    address      => $::ipaddress_eth0,
     port         => 9100,
     tags         => $tags
   } ~> Service['consul']

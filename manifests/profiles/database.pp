@@ -22,7 +22,7 @@ class pve::profiles::database () {
   $tags = [$::environment]
   ::consul::service { "${::hostname}-postgres":
     service_name => "postgres",
-    address      => $::ipaddress,
+    address      => $::ipaddress_eth0,
     port         => 5432,
     tags         => $tags
   }

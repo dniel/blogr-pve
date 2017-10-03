@@ -1,6 +1,7 @@
 class pve::profiles::config::server {
   class { '::consul':
     init_style  => 'debian',
+    version     => '0.9.3',
     config_hash => {
       'bootstrap'   => true,
       'client_addr' => '0.0.0.0',

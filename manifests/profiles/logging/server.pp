@@ -38,7 +38,7 @@ class pve::profiles::logging::server {
     "traefik.frontend.passHostHeader=true"]
   ::consul::service { "${::hostname}-log":
     service_name => "log",
-    address      => "${::ipaddress}",
+    address      => "${::ipaddress_eth0}",
     port         => 5601,
     tags         => $tags
   }
@@ -79,21 +79,21 @@ class pve::profiles::logging::server {
 
   ::consul::service { "${::hostname}-filebeats":
     service_name => "filebeats",
-    address      => $::ipaddress,
+    address      => $::ipaddress_eth0,
     port         => 5044,
     tags         => [$::environment]
   } ~> Service['consul']
 
   ::consul::service { "${::hostname}-syslog":
     service_name => "syslog",
-    address      => $::ipaddress,
+    address      => $::ipaddress_eth0,
     port         => 5000,
     tags         => [$::environment]
   } ~> Service['consul']
 
   ::consul::service { "${::hostname}-es":
     service_name => "elasticsearch",
-    address      => $::ipaddress,
+    address      => $::ipaddress_eth0,
     port         => 9200,
     tags         => [$::environment]
   } ~> Service['consul']

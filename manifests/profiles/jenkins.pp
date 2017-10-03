@@ -10,7 +10,7 @@ class pve::profiles::jenkins {
 
   ::consul::service { "${::hostname}-ci":
     service_name => 'ci',
-    address      => $::ipaddress,
+    address      => $::ipaddress_eth0,
     port         => 8080,
     tags         => $tags
   }

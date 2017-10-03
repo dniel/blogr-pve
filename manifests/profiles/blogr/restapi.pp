@@ -28,7 +28,7 @@ class pve::profiles::blogr::restapi {
   $tags = [$::environment, "traefik.tags=${::environment}"]
   ::consul::service { "${::hostname}-app":
     service_name => "app",
-    address      => $::ipaddress,
+    address      => $::ipaddress_eth0,
     port         => 3000,
     tags         => $tags
   }
