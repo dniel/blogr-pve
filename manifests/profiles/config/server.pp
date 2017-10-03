@@ -10,7 +10,7 @@ class pve::profiles::config::server {
       'log_level'   => 'INFO',
       'node_name'   => $::hostname,
       'server'      => true,
-      'ui_dir'      => '/opt/consul/ui',
+      'ui'          => true
     }
   }
 }
