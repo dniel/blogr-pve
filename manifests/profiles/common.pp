@@ -5,11 +5,11 @@ class pve::profiles::common{
   include unattended_upgrades
   include sudo
 
-  class { 'apt':
-    update => {
-      frequency => 'daily',
-    },
-  }
+#  class { 'apt':
+#    update => {
+#      frequency => 'daily',
+#    },
+#  }
 
 
   class { 'timezone':
