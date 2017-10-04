@@ -13,10 +13,11 @@ class pve::profiles::monitoring::agent {
   $tags = [$::environment, "monitor"]
 
   ::consul::service { "${::hostname}-node_exporter":
-    service_name => 'node_exporter',
-    address      => $::ipaddress_eth0,
-    port         => 9100,
-    tags         => $tags
+    service_name        => 'node_exporter',
+    address             => $::ipaddress_eth0,
+    port                => 9100,
+    tags                => $tags,
+    enable_tag_override => undef
   } ~> Service['consul']
 
 }

@@ -1,7 +1,7 @@
 class pve::profiles::config::server {
   class { '::consul':
     init_style  => 'debian',
-    version     => '0.8.0',
+    version     => '1.0.0-beta1',
     config_hash => {
       'bootstrap'   => true,
       'client_addr' => '0.0.0.0',
@@ -11,7 +11,6 @@ class pve::profiles::config::server {
       'node_name'   => $::hostname,
       'server'      => true,
       'ui'          => true,
-      'ui_dir'           => '/opt/consul/ui'
     }
   }
 }
