@@ -1,9 +1,5 @@
 class pve::profiles::config::server {
 
-  service { 'consul':
-    ensure => 'running'
-  }
-
   class { '::consul':
     init_style  => 'debian',
     version     => '0.9.3',
