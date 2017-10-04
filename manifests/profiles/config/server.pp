@@ -11,6 +11,7 @@ class pve::profiles::config::server {
       'node_name'   => $::hostname,
       'server'      => true,
       'ui'          => true,
+      'enable_script_checks' => true
     }
   }
 }
