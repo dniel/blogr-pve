@@ -9,7 +9,7 @@ class pve::profiles::config::agent (
 
   class { '::consul':
     init_style  => $init_style,
-    version     => '0.9.3',
+    version     => '0.8.0',
     config_hash => {
       'bind_addr'  => $::ipaddress_eth0,
       'data_dir'   => '/opt/consul',
