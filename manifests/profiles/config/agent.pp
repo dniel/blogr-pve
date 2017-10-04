@@ -2,6 +2,10 @@ class pve::profiles::config::agent (
   $consul_server
 ) {
 
+  service { 'consul':
+    ensure => 'running'
+  }
+
   $init_style = $::initsystem ? {
     /systemd/ => 'systemd',
     default   => 'debian'
