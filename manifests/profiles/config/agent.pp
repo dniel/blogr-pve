@@ -8,7 +8,7 @@ class pve::profiles::config::agent (
   }
 
   class { '::consul':
-    extra_options => ' -disable-host-node-id ',
+    extra_options => ' -disable-host-node-id true ',
     init_style    => $init_style,
     version       => '0.9.3',
     config_hash   => {
