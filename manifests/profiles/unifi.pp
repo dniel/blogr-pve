@@ -16,4 +16,11 @@ class pve::profiles::unifi {
   service { 'mongodb':
     ensure => 'running',
   }
+
+  ::consul::service { "${::hostname}-unifi":
+    service_name => "unifi",
+    address      => $::ipaddress_eth0,
+    port         => 8080,
+    tags         => [$::environment]
+  } ~> Service['consul']
 }
