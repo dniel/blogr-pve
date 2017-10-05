@@ -8,9 +8,10 @@ class pve::profiles::config::agent (
   }
 
   class { '::consul':
-    init_style  => $init_style,
-    version     => '0.9.3',
-    config_hash => {
+    extra_options => '-disable-host-node-id',
+    init_style    => $init_style,
+    version       => '0.9.3',
+    config_hash   => {
       'bind_addr'            => $::ipaddress_eth0,
       'data_dir'             => '/opt/consul',
       'datacenter'           => 'pve',
