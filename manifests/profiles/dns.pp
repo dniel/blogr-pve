@@ -1,7 +1,6 @@
 class pve::profiles::dns {
 
-  class { '::dnsmasq':
-  }
+  include dnsmasq
 
   dnsmasq::conf { 'consul':
     ensure  => present,
