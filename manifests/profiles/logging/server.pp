@@ -52,7 +52,7 @@ class pve::profiles::logging::server {
           'network.host' => '0.0.0.0',
         }
     */
-  }
+  }  ~> Service['elasticsearch-es-01']
 
   elasticsearch::instance { 'es-01': }
 
