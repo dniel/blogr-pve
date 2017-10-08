@@ -34,10 +34,10 @@ class pve::profiles::logging::server {
 
   $tags = [$::environment,
     "traefik.tags=${::environment}",
-    "traefik.frontend.rule=Host:log.dragon.lan,log",
+    "traefik.frontend.rule=Host:logs.dragon.lan,logs",
     "traefik.frontend.passHostHeader=true"]
   ::consul::service { "${::hostname}-log":
-    service_name => "log",
+    service_name => "logs",
     address      => "${::ipaddress_eth0}",
     port         => 5601,
     tags         => $tags
