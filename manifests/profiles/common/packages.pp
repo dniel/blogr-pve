@@ -1,5 +1,8 @@
 class pve::profiles::common::packages {
 
+  package { 'apt-transport-https':
+    ensure => 'installed',
+  }
 
   package { 'openjdk-7-jre':
     ensure => 'purged',
