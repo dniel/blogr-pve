@@ -22,6 +22,7 @@
     {"name":"saz-ssh","version_requirement":">= 2.8.1"},
     {"name":"saz-timezone","version_requirement":">= 3.3.0"},
     {"name":"saz-sudo","version_requirement":">= 3.1.0"},
+    {"name":"saz-dnsmasq","version_requirement":">= 1.3.1"},
     {"name":"elastic-elasticsearch","version_requirement":">= 5.2.0"},
     {"name":"elastic-logstash","version_requirement":">= 5.2.1"},
     {"name":"elastic-kibana","version_requirement":">= 0.3.0"},
