@@ -1,4 +1,4 @@
-class pve::roles::unifi{
+class pve::roles::dns{
   include pve::profiles::common
   include pve::profiles::common::packages
   include pve::profiles::common::users

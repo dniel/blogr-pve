@@ -1,4 +1,4 @@
-class pve::profiles::unifi {
+class pve::profiles::dns {
 
   include dnsmasq
   dnsmasq::conf { 'consul':
