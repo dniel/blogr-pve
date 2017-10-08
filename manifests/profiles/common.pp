@@ -2,8 +2,10 @@ class pve::profiles::common{
   Apt::Ppa <| |> -> Package <| |>
   Apt::Key<| |> -> Package<| |>
 
-  include unattended_upgrades
   include sudo
+
+# include unattended_upgrades
+# trouble to get this working on debian9
 
 #  class { 'apt':
 #    update => {
