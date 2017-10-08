@@ -1,72 +1,6 @@
-dnsmasq::hosts_hash:
-  ci:
-    ip: 10.0.10.6
-    hostname: ci.dragon.lan
-  logs:
-    ip: 10.0.10.6
-    hostname: logs.dragon.lan
-  metrics:
-    ip: 10.0.10.6
-    hostname: metrics.dragon.lan
-
-pve::profiles::rancher::host::rancher_url: http://10.0.60.100:8080/v1/scripts/443B929165E879B9F533:1483142400000:7C5YD5HkhiDu4foMN6V1XzFo6IY
 pve::profiles::config::agent::consul_server: 10.0.50.10
-
-pve::profiles::logging::forwarder::log_server: log.service.consul
+pve::profiles::logging::forwarder::log_server: logs.service.consul
 pve::profiles::logging::forwarder::log_port: 5044
-
-pve::profiles::blogr::database::db_name: blogr
-pve::profiles::blogr::database::db_user: blogr
-pve::profiles::blogr::database::db_password: >
-    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
-    DQYJKoZIhvcNAQEBBQAEggEAXEPoF6uqubPwY3DUBSC+BODSkElHIKgFc6MM
-    ipSqVs6m+tqZfgvkKDlgE3CtnFvNDADJraYzgwQa8xHvzUtFVD+6qvhHrA2R
-    2nL+AdwRiFhHs1mEcTSggJUws+n2oxmvx51Dz+viYVj4dSg57EqtDalty/zX
-    fdX7L2Y7G/KiMb5vNejzXEmkmXf5lqGPCsBvvrhgUWvob0/Le8SzbkqKt0gG
-    hM+QBwsCn4tEWWhEvLVcREl233wLjm/DRmxQqtuKFPokC1Po1HsnkLJNokIA
-    h/C3sHhv0d/dcOFsZ/PAjLIe2aL2WqeEMF0I0VkAdPkzYo6UFv4yisFjwPx6
-    SiZuxDA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCupQp8Byr0mLGXFU/s
-    xURlgBBcUqS8iVdrk0XqS4M+Bm0y]
-
-pve::profiles::database::primary::rep_user: repuser
-pve::profiles::database::primary::rep_password: >
-    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
-    DQYJKoZIhvcNAQEBBQAEggEAXEPoF6uqubPwY3DUBSC+BODSkElHIKgFc6MM
-    ipSqVs6m+tqZfgvkKDlgE3CtnFvNDADJraYzgwQa8xHvzUtFVD+6qvhHrA2R
-    2nL+AdwRiFhHs1mEcTSggJUws+n2oxmvx51Dz+viYVj4dSg57EqtDalty/zX
-    fdX7L2Y7G/KiMb5vNejzXEmkmXf5lqGPCsBvvrhgUWvob0/Le8SzbkqKt0gG
-    hM+QBwsCn4tEWWhEvLVcREl233wLjm/DRmxQqtuKFPokC1Po1HsnkLJNokIA
-    h/C3sHhv0d/dcOFsZ/PAjLIe2aL2WqeEMF0I0VkAdPkzYo6UFv4yisFjwPx6
-    SiZuxDA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCupQp8Byr0mLGXFU/s
-    xURlgBBcUqS8iVdrk0XqS4M+Bm0y]
-
-pve::profiles::database::primary::rep_adress: 10.0.3.6/32
-
-pve::profiles::database::standby::db_name: blogr
-pve::profiles::database::standby::db_user: blogr
-pve::profiles::database::standby::db_password: >
-    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
-    DQYJKoZIhvcNAQEBBQAEggEAXEPoF6uqubPwY3DUBSC+BODSkElHIKgFc6MM
-    ipSqVs6m+tqZfgvkKDlgE3CtnFvNDADJraYzgwQa8xHvzUtFVD+6qvhHrA2R
-    2nL+AdwRiFhHs1mEcTSggJUws+n2oxmvx51Dz+viYVj4dSg57EqtDalty/zX
-    fdX7L2Y7G/KiMb5vNejzXEmkmXf5lqGPCsBvvrhgUWvob0/Le8SzbkqKt0gG
-    hM+QBwsCn4tEWWhEvLVcREl233wLjm/DRmxQqtuKFPokC1Po1HsnkLJNokIA
-    h/C3sHhv0d/dcOFsZ/PAjLIe2aL2WqeEMF0I0VkAdPkzYo6UFv4yisFjwPx6
-    SiZuxDA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCupQp8Byr0mLGXFU/s
-    xURlgBBcUqS8iVdrk0XqS4M+Bm0y]
-
-pve::profiles::database::standby::db_host: p-db-1.dragon.lan
-pve::profiles::database::standby::rep_user: repuser
-pve::profiles::database::standby::rep_password: >
-    ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
-    DQYJKoZIhvcNAQEBBQAEggEAXEPoF6uqubPwY3DUBSC+BODSkElHIKgFc6MM
-    ipSqVs6m+tqZfgvkKDlgE3CtnFvNDADJraYzgwQa8xHvzUtFVD+6qvhHrA2R
-    2nL+AdwRiFhHs1mEcTSggJUws+n2oxmvx51Dz+viYVj4dSg57EqtDalty/zX
-    fdX7L2Y7G/KiMb5vNejzXEmkmXf5lqGPCsBvvrhgUWvob0/Le8SzbkqKt0gG
-    hM+QBwsCn4tEWWhEvLVcREl233wLjm/DRmxQqtuKFPokC1Po1HsnkLJNokIA
-    h/C3sHhv0d/dcOFsZ/PAjLIe2aL2WqeEMF0I0VkAdPkzYo6UFv4yisFjwPx6
-    SiZuxDA8BgkqhkiG9w0BBwEwHQYJYIZIAWUDBAEqBBCupQp8Byr0mLGXFU/s
-    xURlgBBcUqS8iVdrk0XqS4M+Bm0y]
 
 accounts::ssh_keys:
   jenkins:
@@ -77,7 +11,6 @@ accounts::users:
   jenkins:
     uid: 1000
     comment: Jenkins
-
 
 sudo::configs:
   jenkins:
