@@ -3,7 +3,7 @@ class pve::profiles::unifi {
   include dnsmasq
   dnsmasq::conf { 'consul':
     ensure  => present,
-    content => 'server=/consul/127.0.0.1#8600',
+    content => 'server=/consul/10.0.50.10#8600',
   }
 
 }
