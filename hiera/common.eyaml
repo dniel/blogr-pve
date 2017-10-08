@@ -1,3 +1,18 @@
+dnsmasq::hosts_hash:
+  ci:
+    ip: 10.0.10.6
+    hostname: ci.dragon.lan
+  logs:
+    ip: 10.0.10.6
+    hostname: logs.dragon.lan
+  metrics:
+    ip: 10.0.10.6
+    hostname: metrics.dragon.lan
+
+dnsmasq::configs_hash:
+  consul:
+    content: server=/consul/10.0.50.10#8600
+
 pve::profiles::config::agent::consul_server: 10.0.50.10
 pve::profiles::logging::forwarder::log_server: logs.service.consul
 pve::profiles::logging::forwarder::log_port: 5044
