@@ -1,3 +1,14 @@
+dnsmasq::host:
+  ci:
+    ip: 10.0.10.6
+    hostname: ci.dragon.lan
+  logs:
+    ip: 10.0.10.6
+    hostname: logs.dragon.lan
+  metrics:
+    ip: 10.0.10.6
+    hostname: metrics.dragon.lan
+
 pve::profiles::rancher::host::rancher_url: http://10.0.60.100:8080/v1/scripts/443B929165E879B9F533:1483142400000:7C5YD5HkhiDu4foMN6V1XzFo6IY
 pve::profiles::config::agent::consul_server: 10.0.50.10
 
