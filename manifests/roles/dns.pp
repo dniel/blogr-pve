@@ -5,4 +5,5 @@ class pve::roles::dns{
   include pve::profiles::logging::forwarder
   include pve::profiles::config::agent
   include pve::profiles::monitoring::agent
+  include pve::profiles::dns
 }
