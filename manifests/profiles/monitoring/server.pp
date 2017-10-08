@@ -7,11 +7,11 @@ class pve::profiles::monitoring::server {
 
   $tags = [$::environment,
     "traefik.tags=${::environment}",
-    "traefik.frontend.rule=Host:dash.dragon.lan,dash",
+    "traefik.frontend.rule=Host:metrics.dragon.lan,metrics",
     "traefik.frontend.passHostHeader=true"]
 
-  ::consul::service { "${::hostname}-grafana":
-    service_name => 'grafana',
+  ::consul::service { "${::hostname}-metrics":
+    service_name => 'metrics',
     address      => $::ipaddress_eth0,
     port         => 3000,
     tags         => $tags
