@@ -32,9 +32,4 @@ class pve::profiles::config::agent (
     interval => '30s'
   }
 
-  ::consul::check { 'check_swap':
-    script   => '/usr/lib/nagios/plugins/check_swap -w 90 -c 50',
-    interval => '30s'
-  }
-
 }
