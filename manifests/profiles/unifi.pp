@@ -26,7 +26,7 @@ class pve::profiles::unifi {
     service_name => "unifi",
     address      => $::ipaddress_eth0,
     port         => 8080,
-    tags         => tags
+    tags         => $tags
   } ~> Service['consul']
 
 
