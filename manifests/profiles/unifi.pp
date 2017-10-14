@@ -17,10 +17,17 @@ class pve::profiles::unifi {
     ensure => 'running',
   }
 
+
+  $tags = [$::environment,
+    "traefik.tags=${::environment}",
+    "traefik.frontend.rule=Host:unifi.dragon.lan,unifi",
+    "traefik.frontend.passHostHeader=true"]
   ::consul::service { "${::hostname}-unifi":
     service_name => "unifi",
     address      => $::ipaddress_eth0,
     port         => 8080,
-    tags         => [$::environment]
+    tags         => tags
   } ~> Service['consul']
+
+
 }
