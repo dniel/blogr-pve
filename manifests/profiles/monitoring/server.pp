@@ -1,6 +1,7 @@
 class pve::profiles::monitoring::server {
 
   class { 'prometheus':
+    version         => '1.8.0',
     init_style      => $init_style,
     config_template => 'pve/prometheus/prometheus.yaml.erb'
   }
