@@ -18,7 +18,7 @@ class pve::profiles::monitoring::server {
   } ~> Service['consul']
 
   class { 'grafana':
-    version => '4.2.0'
+    version => 'latest'
   }
 
   #  grafana_datasource { 'prometheus':
