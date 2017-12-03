@@ -4,6 +4,8 @@ ansiColor('xterm') {
     stage("Puppet Apply On All Nodes") {
         node('master') {
             try {
+                slackSend "Started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+
                 /**
                  * Retrieve Nodes from Consul HTTP API.
                  * https://www.consul.io/docs/agent/http.html
@@ -20,18 +22,15 @@ ansiColor('xterm') {
                         status = parseHealthCheck response
 
                         if (!node.Node.contains('p-ci-01') && status == "passing") {
-                            mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Update ${node.Node} , ${node.Address}"
                             puppetApply node.Address
-                        } else {
-                            mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} Ignore update ${node.Node} , ${node.Address}"
                         }
                     }
                 }
                 parallel nodes
-                mattermostSend color: "good", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} ${nodes.size} nodes was updated."
+                slackSend "${env.JOB_NAME} - ${env.BUILD_NUMBER} ${nodes.size} nodes was updated. (<${env.BUILD_URL}|Open>)"
             } catch (err) {
                 currentBuild.result = "FAILURE"
-                mattermostSend color: "bad", message: "${env.JOB_NAME} - ${env.BUILD_NUMBER} FAILED."
+                slackSend "${env.JOB_NAME} - ${env.BUILD_NUMBER} FAILED."
                 throw err
             } finally {
                 deleteDir()
