@@ -10,5 +10,7 @@ class pve::profiles::common::users{
   accounts::account { 'jenkins':
     authorized_keys => ['jenkins'],
   }
-
+  accounts::account { 'daniel':
+    authorized_keys => ['daniel'],
+  }
 }
