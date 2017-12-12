@@ -27,7 +27,7 @@ ansiColor('xterm') {
                     }
                 }
                 parallel nodes
-                slackSend "${env.JOB_NAME} - ${env.BUILD_NUMBER} ${nodes.size} nodes was updated. (<${env.BUILD_URL}|Open>)"
+                slackSend "${env.JOB_NAME} - ${env.BUILD_NUMBER} ${nodes.size()} nodes was updated. (<${env.BUILD_URL}|Open>)"
             } catch (err) {
                 currentBuild.result = "FAILURE"
                 slackSend "${env.JOB_NAME} - ${env.BUILD_NUMBER} FAILED."
