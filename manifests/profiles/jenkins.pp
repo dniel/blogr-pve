@@ -15,7 +15,10 @@ class pve::profiles::jenkins {
     tags         => $tags
   }
 
-
+  ::consul::check { 'check_jenkins_http_status':
+    script   => "/usr/lib/nagios/plugins/check_http -H localhost -p 8080 -j HEAD",
+    interval => '30s'
+  }
 
   file { '/opt/ecs-deploy':
     source  => 'puppet:///modules/pve/opt/ecs-deploy',
@@ -34,11 +37,6 @@ class pve::profiles::jenkins {
     install_java => false
   }
 
-  # install node so that we can build blogr.
-  class { 'nodejs':
-    version      => 'latest',
-    make_install => false
-  }
 
   jenkins::job { 'blogr-build-job':
     config => template("pve/jenkins/blogr-build-job.xml.erb"),
