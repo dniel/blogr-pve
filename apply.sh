@@ -10,6 +10,7 @@ cd $dir
 # workaround for
 # https://github.com/elastic/elasticsearch/issues/22340
 export ES_SKIP_SET_KERNEL_PARAMETERS=true
+export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 
 # first run, no bundle commmand
 if ! hash bundle 2>/dev/null;  then
