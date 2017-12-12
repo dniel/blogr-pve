@@ -24,7 +24,7 @@ class pve::profiles::common {
       'PermitRootLogin'                 => 'without-password',
       'ChallengeResponseAuthentication' => 'no',
       'PasswordAuthentication'          => 'no',
-      'UsePAM'                          => 'no'
+#      'UsePAM'                          => 'no'
     },
   }
 
