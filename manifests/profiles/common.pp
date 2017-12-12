@@ -22,6 +22,9 @@ class pve::profiles::common{
     storeconfigs_enabled => false,
     options              => {
       'PermitRootLogin'  => 'without-password',
+      'ChallengeResponseAuthentication' => 'no',
+      'PasswordAuthentication' => 'no',
+      'UsePAM' => 'no'
     },
   }
 
