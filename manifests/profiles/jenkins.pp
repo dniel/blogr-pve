@@ -5,7 +5,7 @@ class pve::profiles::jenkins {
 
   $tags = [$::environment,
     "traefik.tags=${::environment}",
-    "traefik.frontend.rule=Host:ci.dragon.lan,ci",
+    "traefik.frontend.rule=Host:ci.dniel.in,ci",
     "traefik.frontend.passHostHeader=true"]
 
   ::consul::service { "${::hostname}-ci":

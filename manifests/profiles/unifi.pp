@@ -20,7 +20,7 @@ class pve::profiles::unifi {
 
   $tags = [$::environment,
     "traefik.tags=${::environment}",
-    "traefik.frontend.rule=Host:unifi.dragon.lan,unifi",
+    "traefik.frontend.rule=Host:unifi.dniel.in,unifi",
     "traefik.frontend.passHostHeader=true"]
   ::consul::service { "${::hostname}-unifi":
     service_name => "unifi",

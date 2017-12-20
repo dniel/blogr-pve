@@ -4,15 +4,7 @@ prefix = "traefik"
 
 [consulCatalog]
 endpoint = "127.0.0.1:8500"
-domain = "dragon.lan"
+domain = "dniel.in"
 prefix = "traefik"
 constraints = ["tag==<%=@environment%>"]
 watch = true
-
-#[rancher]
-#domain = "dragon.lan"
-#prefix = "traefik"
-#Watch = true
-#ExposedByDefault = false
-#Endpoint = "http://rancher.service.consul:8080"
-# filename = "rancher.tmpl"

@@ -34,7 +34,7 @@ class pve::profiles::logging::server {
 
   $tags = [$::environment,
     "traefik.tags=${::environment}",
-    "traefik.frontend.rule=Host:logs.dragon.lan,logs",
+    "traefik.frontend.rule=Host:logs.dniel.in,logs",
     "traefik.frontend.passHostHeader=true"]
   ::consul::service { "${::hostname}-log":
     service_name => "logs",

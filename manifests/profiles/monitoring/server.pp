@@ -8,7 +8,7 @@ class pve::profiles::monitoring::server {
 
   $tags = [$::environment,
     "traefik.tags=${::environment}",
-    "traefik.frontend.rule=Host:metrics.dragon.lan,metrics",
+    "traefik.frontend.rule=Host:metrics.dniel.in,metrics",
     "traefik.frontend.passHostHeader=true"]
 
   ::consul::service { "${::hostname}-metrics":
