@@ -21,10 +21,9 @@ class pve::profiles::common {
   class { 'ssh::server':
     storeconfigs_enabled => false,
     options              => {
-      'PermitRootLogin'                 => 'without-password',
+      'PermitRootLogin'                 => 'no',
       'ChallengeResponseAuthentication' => 'no',
       'PasswordAuthentication'          => 'no',
-#      'UsePAM'                          => 'no'
     },
   }
 
