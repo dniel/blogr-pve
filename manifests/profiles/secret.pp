@@ -1,3 +1,0 @@
-class pve::profiles::secret {
-
-}
