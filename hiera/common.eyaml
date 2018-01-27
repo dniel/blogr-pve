@@ -23,7 +23,7 @@ sudo::configs:
     source: puppet:///modules/pve/etc/sudoers.d/jenkins
 
 
-pve::profiles::jenkins::slave::masterurl: http://p-ci-01.dniel.in:8080
+pve::profiles::jenkins::slave::masterurl: http://10.0.50.122:8080
 pve::profiles::jenkins::slave::admin_user: admin
 pve::profiles::jenkins::slave::admin_password: >
     ENC[PKCS7,MIIBeQYJKoZIhvcNAQcDoIIBajCCAWYCAQAxggEhMIIBHQIBADAFMAACAQEw
