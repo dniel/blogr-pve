@@ -16,7 +16,7 @@ export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
 if ! hash bundle 2>/dev/null;  then
   if [ -f /etc/debian_version ]; then
     apt-get update
-    apt-get install -y ruby ruby-dev make git ca-certificates lsb-release libaugeas-ruby apt-transport-https
+    apt-get install -y ruby ruby-dev make git ca-certificates lsb-release libaugeas-dev apt-transport-https
     gem install bundler --no-ri --no-rdoc --quiet
   else
     echo "OS not supported yet"; exit 1
