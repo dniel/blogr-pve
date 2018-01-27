@@ -1,4 +1,5 @@
 class pve::profiles::jenkins::slave(
+  $masterurl,
   $admin_password,
   $admin_user
 ) {
@@ -7,7 +8,7 @@ class pve::profiles::jenkins::slave(
   include pve::profiles::common::packages::docker
 
   class { 'jenkins::slave':
-    masterurl => 'http://p-ci-01.dniel.in:8080',
+    masterurl => $masterurl,
     ui_user => $admin_user,
     ui_pass => $admin_password
   }
