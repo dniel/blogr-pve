@@ -1,4 +1,4 @@
-class pve::roles::ci{
+class pve::roles::cislave{
   include pve::profiles::common
   include pve::profiles::common::packages
   include pve::profiles::jenkins::slave
