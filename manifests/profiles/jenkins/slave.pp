@@ -10,7 +10,8 @@ class pve::profiles::jenkins::slave(
   class { 'jenkins::slave':
     masterurl => $masterurl,
     ui_user => $admin_user,
-    ui_pass => $admin_password
+    ui_pass => $admin_password,
+    install_java => false
   }
 
 }
