@@ -16,7 +16,7 @@ class pve::profiles::logging::server {
       command => '/bin/sed -i.bak -e \'s/jessie/stable/\' /etc/apt/sources.list.d/elastic-curator.list';
   }
 
-  include pve::profiles::common::packages::java8
+  include pve::profiles::common::packages::java
 
   class { 'kibana':
     ensure => latest,

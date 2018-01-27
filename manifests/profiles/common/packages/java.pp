@@ -1,4 +1,4 @@
-class pve::profiles::common::packages::java8 {
+class pve::profiles::common::packages::java {
 
   package { 'default-jdk':
     ensure => 'installed',
