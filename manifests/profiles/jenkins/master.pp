@@ -38,10 +38,4 @@ class pve::profiles::jenkins::master {
 
   include jenkins::master
 
-  include pve::profiles::jenkins::ansicolor
-  include pve::profiles::jenkins::git
-  include pve::profiles::jenkins::blueocean
-  include pve::profiles::jenkins::pipeline
-  include pve::profiles::jenkins::mattermost
-
 }
