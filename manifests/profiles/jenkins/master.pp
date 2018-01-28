@@ -36,6 +36,8 @@ class pve::profiles::jenkins::master {
     install_java => false
   }
 
-  include jenkins::master
+  class { 'jenkins::master':
+    version      => '3.8'
+  }
 
 }
