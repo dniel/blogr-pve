@@ -1,0 +1,21 @@
+[Unit]
+Description=Jenkins Slave (for Docker operation)
+
+[Service]
+User=root
+WorkingDirectory=/home/jenkins-slave
+ExecStart=/usr/bin/java -Xmx256m -jar /home/jenkins-slave/swarm-client.jar -executors 3
+SuccessExitStatus=143
+TimeoutStopSec=10
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target
+
+# Reference
+# https://superuser.com/questions/944244/running-a-java-process-from-systemd
+#
+# To install, e.g. if you've put this file to /opt/myservice.service:
+# $ systemctl enable /opt/myservice.service
+#
