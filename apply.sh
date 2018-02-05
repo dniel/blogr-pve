@@ -38,7 +38,7 @@ esac
 
 # Get current role from hostname
 HOST=$(hostname)
-ROLE=`expr "$HOST" : '[p|t|d]-\(\w*\)-[0-9]\{2\}'`
+ROLE=`expr "$HOST" : '[p|t|d]-\(\w*\)-'`
 
 if [ -z "$ROLE" ];
 then
